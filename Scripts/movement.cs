@@ -49,16 +49,19 @@ public class movement : MonoBehaviour
 
     void MovementManager()
     {
-        Vector3 pos = this.transform.position;
-        if (Input.GetKey(KeyCode.A))
-            pos.x -= speed * Time.deltaTime;
-        if (Input.GetKey(KeyCode.D))
-            pos.x += speed * Time.deltaTime;
-        if (Input.GetKey(KeyCode.S))
-            pos.y -= speed * Time.deltaTime;
-        if (Input.GetKey(KeyCode.W))
-            pos.y += speed * Time.deltaTime;
+        Vector2 direction = new Vector2(0f, 0f);
+        if (Input.GetKey(KeyCode.J))
+            direction.x--;
+        if (Input.GetKey(KeyCode.L))
+            direction.x++;
+        if (Input.GetKey(KeyCode.K))
+            direction.y--;
+        if(Input.GetKey(KeyCode.I))
+            direction.y++;
 
+        Vector2 pos = this.transform.position;
+        pos.x += direction.normalized.x * speed * Time.deltaTime;
+        pos.y += direction.normalized.y * speed * Time.deltaTime;
         this.transform.position = pos;
     }
 }
