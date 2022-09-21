@@ -50,13 +50,13 @@ public class movement : MonoBehaviour
     void MovementManager()
     {
         Vector2 direction = new Vector2(0f, 0f);
-        if (Input.GetKey(KeyCode.J))
+        if (Input.GetKey(KeyCode.J) || Input.GetKey(KeyCode.LeftArrow))
             direction.x--;
-        if (Input.GetKey(KeyCode.L))
+        if (Input.GetKey(KeyCode.L) || Input.GetKey(KeyCode.RightArrow)) 
             direction.x++;
-        if (Input.GetKey(KeyCode.K))
+        if (Input.GetKey(KeyCode.K) || Input.GetKey(KeyCode.DownArrow))
             direction.y--;
-        if(Input.GetKey(KeyCode.I))
+        if(Input.GetKey(KeyCode.I) || Input.GetKey(KeyCode.UpArrow))
             direction.y++;
 
         Vector2 pos = this.transform.position;
