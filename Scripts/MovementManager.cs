@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class movement : MonoBehaviour
+public class MovementManager : MonoBehaviour
 {
     public float speed = 10.0f;
     private float initialSpeed = 10.0f;
@@ -20,9 +20,8 @@ public class movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("hello");
         DashManager();
-        MovementManager();
+        MoveManager();
     }
 
     void DashManager()
@@ -47,7 +46,7 @@ public class movement : MonoBehaviour
         }
     }
 
-    void MovementManager()
+    void MoveManager()
     {
         Vector2 direction = new Vector2(0f, 0f);
         if (Input.GetKey(KeyCode.J) || Input.GetKey(KeyCode.LeftArrow))
