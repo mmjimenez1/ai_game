@@ -2,22 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class teleport : MonoBehaviour
+public class teleport : ManagerClass
 {
     Vector2 node_location;
     public bool is_dropped = false;
-    public bool isActive;
+    //public bool isActive;
     public float tel_cool_down = 5.0f;
     public float cur_tel_cool_down;
     public float timeElapsed;
     public int epPerSecond;
 
-    private Player myPlayer;
+    public Sprite[] sprites;
+    private string sprite_loc;
+    public GameObject gameObject;
+    public SpriteRenderer spriteRenderer;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        sprite_loc = "gem";
         cur_tel_cool_down = 0f;
         is_dropped = false;
         //isActive = false;
@@ -68,6 +72,9 @@ public class teleport : MonoBehaviour
 
                 // store that cur location
                 node_location = this.transform.position;
+                this.spriteRenderer = this.gameObject.AddComponent<SpriteRenderer>();
+                this.sprites = Resources.LoadAll<Sprite>(sprite_loc);
+                this.spriteRenderer.sprite = sprites[0];
                 //set_sprite(node_location);
                 is_dropped = true;
                 timeElapsed = 0;
@@ -96,8 +103,5 @@ public class teleport : MonoBehaviour
         this.transform.position = i_location;
     }
 
-    public void setPlayer(Player p)
-    {
-        this.myPlayer = p;
-    }
+   
 }
