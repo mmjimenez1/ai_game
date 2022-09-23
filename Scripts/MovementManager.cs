@@ -9,10 +9,14 @@ public class MovementManager : MonoBehaviour
     public float dashFactor = 3.0f;
     public float dashCooldown = 5.0f;
     public float currentDashCooldown;
+    public Vector2 direction;
+
+    private Player myPlayer;
 
     // Start is called before the first frame update
     void Start()
     {
+        direction = new Vector2(0f, 0f);
         initialSpeed = speed;
         currentDashCooldown = 0f;
     }
@@ -48,7 +52,7 @@ public class MovementManager : MonoBehaviour
 
     void MoveManager()
     {
-        Vector2 direction = new Vector2(0f, 0f);
+        direction = new Vector2(0f, 0f);
         if (Input.GetKey(KeyCode.J) || Input.GetKey(KeyCode.LeftArrow))
             direction.x--;
         if (Input.GetKey(KeyCode.L) || Input.GetKey(KeyCode.RightArrow)) 
@@ -58,9 +62,15 @@ public class MovementManager : MonoBehaviour
         if(Input.GetKey(KeyCode.I) || Input.GetKey(KeyCode.UpArrow))
             direction.y++;
 
+        direction.Normalize();
         Vector2 pos = this.transform.position;
-        pos.x += direction.normalized.x * speed * Time.deltaTime;
-        pos.y += direction.normalized.y * speed * Time.deltaTime;
+        pos.x += direction.x * speed * Time.deltaTime;
+        pos.y += direction.y * speed * Time.deltaTime;
         this.transform.position = pos;
+    }
+
+    public void setPlayer(Player p)
+    {
+        this.myPlayer = p;
     }
 }
