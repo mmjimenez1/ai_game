@@ -6,8 +6,12 @@ public class teleport : MonoBehaviour
 {
     Vector2 node_location;
     public bool is_dropped = false;
-    public float tel_cool_down = 10.0f;
+    public bool isActive;
+    public float tel_cool_down = 5.0f;
     public float cur_tel_cool_down;
+    public float timeElapsed;
+    public int epPerSecond;
+
     private Player myPlayer;
 
 
@@ -15,6 +19,8 @@ public class teleport : MonoBehaviour
     void Start()
     {
         cur_tel_cool_down = 0f;
+        is_dropped = false;
+        //isActive = false;
     }
 
     // Update is called once per frame
@@ -30,6 +36,15 @@ public class teleport : MonoBehaviour
             cur_tel_cool_down = 0f;
         }
 
+        if (is_dropped)
+        {
+            timeElapsed += Time.deltaTime;
+            if (timeElapsed >= 1)
+            {
+                timeElapsed--;
+                myPlayer.energyManager.minusEP(epPerSecond);
+            }
+        }
 
         // if pressed q and have not dropped node
         if (Input.GetKeyDown(KeyCode.Q))
@@ -37,11 +52,12 @@ public class teleport : MonoBehaviour
             if (is_dropped)
             {
 
-                Debug.Log("Dropped");
+
                 if (cur_tel_cool_down <= 0f)
                 {
                     teleport_object(node_location);
                     is_dropped = false;
+                    //timeElapsed = 0; 
                     Debug.Log("storing cur pos");
                     cur_tel_cool_down = tel_cool_down;
                     Debug.Log("cooling..");
@@ -54,6 +70,9 @@ public class teleport : MonoBehaviour
                 node_location = this.transform.position;
                 //set_sprite(node_location);
                 is_dropped = true;
+                timeElapsed = 0;
+
+
 
             }
 
