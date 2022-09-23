@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnergyManager : MonoBehaviour
+public class EnergyManager : ManagerClass
 {
     [SerializeField]
     private int energyPoints;
     [SerializeField]
     private int energyCap;
 
-    private Player myPlayer;
+    //private Player myPlayer;
 
     // Start is called before the first frame update
     void Start()
@@ -41,8 +41,8 @@ public class EnergyManager : MonoBehaviour
         return energyPoints;
     }
 
-    public void setPlayer(Player p)
-    {
-        this.myPlayer = p;
-    }
+    //public void setPlayer(Player p)
+    //{
+    //    this.myPlayer = p;
+    //}
 }

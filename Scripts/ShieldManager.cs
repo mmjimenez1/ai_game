@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShieldManager : MonoBehaviour
+public class ShieldManager : ManagerClass
 {
     public int epPerSecond;
     public float timeElapsed;
@@ -11,7 +11,7 @@ public class ShieldManager : MonoBehaviour
 
     private string spritesLocation = "/sci-fi-effects/front_shieldB";
 
-    private Player myPlayer;
+    //private Player myPlayer;
 
     // Start is called before the first frame update
     void Start()
@@ -70,8 +70,8 @@ public class ShieldManager : MonoBehaviour
         }
     }
 
-    public void setPlayer(Player p)
-    {
-        this.myPlayer = p;
-    }
+    //public void setPlayer(Player p)
+    //{
+    //    this.myPlayer = p;
+    //}
 }

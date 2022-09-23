@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HealthManager : MonoBehaviour
+public class HealthManager : ManagerClass
 {
     [SerializeField]
     private int healthPoints;
     [SerializeField]
     private int healthCap;
 
-    private Player myPlayer;
+    //private Player myPlayer;
 
     // Start is called before the first frame update
     void Start()
@@ -40,8 +40,8 @@ public class HealthManager : MonoBehaviour
         return healthPoints;
     }
 
-    public void setPlayer(Player p)
-    {
-        this.myPlayer = p;
-    }
+    //public void setPlayer(Player p)
+    //{
+    //    this.myPlayer = p;
+    //}
 }
