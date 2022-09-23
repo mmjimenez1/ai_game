@@ -26,7 +26,7 @@ public class Player
         this.dashManager = this.gameObject.AddComponent<DashManager>();
         this.dashManager.setPlayer(this);
         this.teleport = this.gameObject.AddComponent<teleport>();
-        //this.teleport.setPlayer(this);
+        this.teleport.setPlayer(this);
         this.healthManager = this.gameObject.AddComponent<HealthManager>();
         this.healthManager.setPlayer(this);
         this.energyManager = this.gameObject.AddComponent<EnergyManager>();
