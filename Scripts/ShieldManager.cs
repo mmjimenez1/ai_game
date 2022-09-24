@@ -8,10 +8,14 @@ public class ShieldManager : ManagerClass
     public float timeElapsed;
     public bool isActive;
     public bool waitingForDirection;
+    public Vector3 currentDirection;
 
     public GameObject shieldObject;
     public SpriteRenderer spriteRenderer;
     public Sprite[] sprites;
+    public int currentSprite;
+    public int framesPerSecond;
+    public float fluctuationTime;
 
     private string spritesLocation;
 
@@ -29,11 +33,13 @@ public class ShieldManager : ManagerClass
         this.shieldObject.transform.localScale = new Vector2(0.45f, 0.35f);
         this.shieldObject.transform.localRotation = Quaternion.identity;
 
+        framesPerSecond = 15;
+        currentSprite = 0;
         spritesLocation = "sci-fi-effects/front_shieldB";
         this.spriteRenderer = this.shieldObject.AddComponent<SpriteRenderer>();
         this.sprites = Resources.LoadAll<Sprite>(spritesLocation);
         Debug.Log(this.sprites.Length);
-        this.spriteRenderer.sprite = this.sprites[0];
+        this.spriteRenderer.sprite = this.sprites[currentSprite];
     }
 
     // Update is called once per frame
@@ -41,6 +47,16 @@ public class ShieldManager : ManagerClass
     {
         if (isActive)
         {
+            fluctuationTime += Time.deltaTime;
+            float fluctuationFrequency = 1f / framesPerSecond;
+            if(fluctuationTime > fluctuationFrequency)
+            {
+                currentSprite++;
+                if (currentSprite == this.sprites.Length)
+                    currentSprite = 0;
+                fluctuationTime -= fluctuationFrequency;
+                this.spriteRenderer.sprite = this.sprites[currentSprite];
+            }
             timeElapsed += Time.deltaTime;
             if(timeElapsed >= 1)
             {
@@ -82,7 +98,7 @@ public class ShieldManager : ManagerClass
                     this.timeElapsed = 0;
                     Debug.Log("Shield enabled at " + direction.x + ", " + direction.y);
                     float angle = Vector3.Angle(Vector3.up, new Vector3(direction.x, direction.y, 0));
-                    //this.shieldObject.transform.Rotate(new Vector3(0, 0, angle));   
+                    this.shieldObject.transform.Rotate(new Vector3(0, 0, angle));
                 }
             }
         }
