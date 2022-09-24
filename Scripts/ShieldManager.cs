@@ -9,7 +9,11 @@ public class ShieldManager : ManagerClass
     public bool isActive;
     public bool waitingForDirection;
 
-    private string spritesLocation = "/sci-fi-effects/front_shieldB";
+    public GameObject shieldObject;
+    public SpriteRenderer spriteRenderer;
+    public Sprite[] sprites;
+
+    private string spritesLocation;
 
     //private Player myPlayer;
 
@@ -18,6 +22,18 @@ public class ShieldManager : ManagerClass
     {
         isActive = false;
         waitingForDirection = false;
+
+        this.shieldObject = new GameObject("Shield " + myPlayer.username);
+        this.shieldObject.transform.parent = myPlayer.gameObject.transform;
+        this.shieldObject.transform.localPosition = new Vector2(0, 0.35f);
+        this.shieldObject.transform.localScale = new Vector2(0.45f, 0.35f);
+        this.shieldObject.transform.localRotation = Quaternion.identity;
+
+        spritesLocation = "sci-fi-effects/front_shieldB";
+        this.spriteRenderer = this.shieldObject.AddComponent<SpriteRenderer>();
+        this.sprites = Resources.LoadAll<Sprite>(spritesLocation);
+        Debug.Log(this.sprites.Length);
+        this.spriteRenderer.sprite = this.sprites[0];
     }
 
     // Update is called once per frame
@@ -63,8 +79,10 @@ public class ShieldManager : ManagerClass
                     direction.Normalize();
                     this.isActive = true;
                     this.waitingForDirection = false;
-                    timeElapsed = 0;
+                    this.timeElapsed = 0;
                     Debug.Log("Shield enabled at " + direction.x + ", " + direction.y);
+                    float angle = Vector3.Angle(Vector3.up, new Vector3(direction.x, direction.y, 0));
+                    //this.shieldObject.transform.Rotate(new Vector3(0, 0, angle));   
                 }
             }
         }
