@@ -4,32 +4,72 @@ using UnityEngine;
 
 public class teleport : ManagerClass
 {
+    // teleport stuff
     Vector2 node_location;
     public bool is_dropped = false;
-    //public bool isActive;
     public float tel_cool_down = 5.0f;
     public float cur_tel_cool_down;
     public float timeElapsed;
+
     public int epPerSecond;
 
+    // teleport node
     public Sprite[] sprites;
     private string sprite_loc;
-    public GameObject gameObject;
+    public GameObject teleportObject;
     public SpriteRenderer spriteRenderer;
+    private int cur_sprite;
 
+    public int fps;
+    public float flunctuation_time;
 
     // Start is called before the first frame update
     void Start()
     {
         sprite_loc = "gem";
+
+        this.teleportObject = new GameObject("node " + myPlayer.username);
+        this.spriteRenderer = this.teleportObject.AddComponent<SpriteRenderer>();
+        this.sprites = Resources.LoadAll<Sprite>(sprite_loc);
+        cur_sprite = 0;
+        this.spriteRenderer.sprite = sprites[cur_sprite];
+        this.teleportObject.SetActive(false);
+        this.spriteRenderer.sortingOrder = 0;
+        this.teleportObject.transform.localScale = new Vector2(3f,3f);
         cur_tel_cool_down = 0f;
         is_dropped = false;
-        //isActive = false;
+
+        fps = 15;
     }
 
+    // fix so it continues spinning after teleporting
+    // fix cool down so it starts after teleported to the location
     // Update is called once per frame
     void Update()
     {
+        if (is_dropped)
+        {
+            teleportObject.SetActive(true);
+
+            flunctuation_time += Time.deltaTime;
+            float flunctuationFrequency = 1f / fps;
+
+            if(flunctuation_time > flunctuationFrequency)
+            {
+                cur_sprite++;
+                if (cur_sprite >= sprites.Length)
+                {
+                    cur_sprite = 0;
+                }
+                    this.spriteRenderer.sprite = sprites[cur_sprite];
+                }
+            
+        }
+        else
+        {
+            teleportObject.SetActive(false);
+
+        }
         // decrease cool_down counter
         if (cur_tel_cool_down > 0f)
         {
@@ -60,6 +100,7 @@ public class teleport : ManagerClass
                 if (cur_tel_cool_down <= 0f)
                 {
                     teleport_object(node_location);
+                    //teleportObject.SetActive(true);
                     is_dropped = false;
                     //timeElapsed = 0; 
                     Debug.Log("storing cur pos");
@@ -70,14 +111,12 @@ public class teleport : ManagerClass
             else
             {
 
-                // store that cur location
-                node_location = this.transform.position;
-                this.spriteRenderer = this.gameObject.AddComponent<SpriteRenderer>();
-                this.sprites = Resources.LoadAll<Sprite>(sprite_loc);
-                this.spriteRenderer.sprite = sprites[0];
-                //set_sprite(node_location);
+                node_location = myPlayer.gameObject.transform.position;
+                teleportObject.transform.position = node_location;
+                //teleportObject.SetActive(false);
                 is_dropped = true;
                 timeElapsed = 0;
+
 
 
 

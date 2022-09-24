@@ -20,6 +20,7 @@ public class Player
 
         this.spriteRenderer = this.gameObject.AddComponent<SpriteRenderer>();
         this.spriteRenderer.sprite = Resources.Load("jupiter", typeof(Sprite)) as Sprite;
+        this.spriteRenderer.sortingOrder = 1;
 
         this.movementManager = this.gameObject.AddComponent<MovementManager>();
         this.movementManager.setPlayer(this);
