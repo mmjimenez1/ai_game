@@ -17,13 +17,13 @@ public class Player
 
     public Dictionary<string, KeyCode> controls;
 
-    public Player(string username)
+    public Player(string username, string spriteLocation)
     {
         this.username = username;
         this.gameObject = new GameObject("Player " + this.username);
 
         this.spriteRenderer = this.gameObject.AddComponent<SpriteRenderer>();
-        this.spriteRenderer.sprite = Resources.Load("jupiter", typeof(Sprite)) as Sprite;
+        this.spriteRenderer.sprite = Resources.Load(spriteLocation, typeof(Sprite)) as Sprite;
         this.spriteRenderer.sortingOrder = 1;
 
         this.movementManager = this.gameObject.AddComponent<MovementManager>();

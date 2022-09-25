@@ -23,6 +23,15 @@ public class BoostManager : ManagerClass
     // Update is called once per frame
     void Update()
     {
+        normalizeSpeed();
+        if (Input.GetKeyDown(myPlayer.controls["Boost"]))
+        {
+            Boost();
+        }
+    }
+
+    void normalizeSpeed()
+    {
         float speed = myPlayer.movementManager.speed;
         float initialSpeed = myPlayer.movementManager.getInitialSpeed();
 
@@ -35,20 +44,15 @@ public class BoostManager : ManagerClass
             currentBoostCooldown -= Time.deltaTime;
         else
             currentBoostCooldown = 0f;
-
-        if (Input.GetKeyDown(myPlayer.controls["Boost"]))
-        {
-            Boost(speed, initialSpeed);
-        }
         myPlayer.movementManager.speed = speed;
     }
 
-    void Boost(float speed, float initialSpeed)
+    void Boost()
     {
         if (currentBoostCooldown <= 0f && myPlayer.energyManager.isEnough(epCost))
         {
             myPlayer.energyManager.minusEP(epCost);
-            speed += initialSpeed * boostFactor;
+            myPlayer.movementManager.speed += myPlayer.movementManager.getInitialSpeed() * boostFactor;
             currentBoostCooldown = boostCooldown;
         }
     }

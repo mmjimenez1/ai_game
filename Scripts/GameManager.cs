@@ -10,8 +10,8 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         players = new List<Player>();
-        this.players.Add(new Player("Player1"));
-        this.players.Add(new Player("Player2"));
+        this.players.Add(new Player("Player1", "neptune"));
+        this.players.Add(new Player("Player2", "jupiter"));
         players.ForEach(p => {
             Debug.Log(p.username);
             if(p.username == "Player2")
