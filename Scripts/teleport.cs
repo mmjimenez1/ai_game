@@ -11,7 +11,7 @@ public class teleport : ManagerClass
     public float cur_tel_cool_down;
     public float timeElapsed;
 
-    public int epPerSecond;
+    public int epCost;
 
     // teleport node
     public Sprite[] sprites;
@@ -40,6 +40,7 @@ public class teleport : ManagerClass
         is_dropped = false;
 
         fps = 15;
+        epCost = 10;
     }
 
     // fix so it continues spinning after teleporting
@@ -86,12 +87,11 @@ public class teleport : ManagerClass
             if (timeElapsed >= 1)
             {
                 timeElapsed--;
-                myPlayer.energyManager.minusEP(epPerSecond);
             }
         }
 
         // if pressed q and have not dropped node
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(myPlayer.controls["Teleport"]))
         {
             if (is_dropped)
             {
@@ -100,26 +100,20 @@ public class teleport : ManagerClass
                 if (cur_tel_cool_down <= 0f)
                 {
                     teleport_object(node_location);
-                    //teleportObject.SetActive(true);
-                    is_dropped = false;
-                    //timeElapsed = 0; 
-                    Debug.Log("storing cur pos");
-                    cur_tel_cool_down = tel_cool_down;
+                }
+                else
+                {
                     Debug.Log("cooling..");
                 }
             }
             else
             {
+               Debug.Log("storing cur pos");
 
                 node_location = myPlayer.gameObject.transform.position;
                 teleportObject.transform.position = node_location;
-                //teleportObject.SetActive(false);
                 is_dropped = true;
                 timeElapsed = 0;
-
-
-
-
             }
 
         }
@@ -138,8 +132,19 @@ public class teleport : ManagerClass
 
     void teleport_object(Vector2 i_location)
     {
-        Debug.Log("teleporting");
-        this.transform.position = i_location;
+        if (myPlayer.energyManager.isEnough(epCost))
+        {
+            myPlayer.energyManager.minusEP(epCost);
+            is_dropped = false;
+            cur_tel_cool_down = tel_cool_down;
+            this.transform.position = i_location;
+            Debug.Log("teleporting");
+        }
+        else
+        {
+            Debug.Log("not enough energy for teleport");
+        }
+        
     }
 
    
