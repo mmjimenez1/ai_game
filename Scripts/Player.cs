@@ -39,12 +39,22 @@ public class Player
         this.shieldManager = this.gameObject.AddComponent<ShieldManager>();
         this.shieldManager.setPlayer(this);
 
+        setDefaultControls();
+    }
+
+    public void setControls(Dictionary<string, KeyCode> newControls)
+    {
+        this.controls = newControls;
+    }
+
+    public void setDefaultControls()
+    {
         this.controls = new Dictionary<string, KeyCode>()
         {
-            { "Left", KeyCode.J},
-            { "Right", KeyCode.L},
-            { "Down", KeyCode.K},
-            { "Up", KeyCode.I},
+            { "Left", KeyCode.G},
+            { "Right", KeyCode.J},
+            { "Down", KeyCode.H},
+            { "Up", KeyCode.Y},
 
             { "Alt_Left", KeyCode.LeftArrow},
             { "Alt_Right", KeyCode.RightArrow},

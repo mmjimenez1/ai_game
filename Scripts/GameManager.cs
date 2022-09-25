@@ -12,7 +12,33 @@ public class GameManager : MonoBehaviour
         players = new List<Player>();
         this.players.Add(new Player("Player1"));
         this.players.Add(new Player("Player2"));
-        players.ForEach(p => Debug.Log(p.username));
+        players.ForEach(p => {
+            Debug.Log(p.username);
+            if(p.username == "Player2")
+            {
+                p.setControls(new Dictionary<string, KeyCode>()
+                {
+                    { "Left", KeyCode.Keypad4},
+                    { "Right", KeyCode.Keypad6},
+                    { "Down", KeyCode.Keypad5},
+                    { "Up", KeyCode.Keypad8},
+
+                    { "Alt_Left", KeyCode.None},
+                    { "Alt_Right", KeyCode.None},
+                    { "Alt_Down", KeyCode.None},
+                    { "Alt_Up", KeyCode.None},
+
+                    { "Boost", KeyCode.RightShift},
+                    { "Teleport", KeyCode.O},
+
+                    { "Shield", KeyCode.Comma},
+                    { "Shield_Left", KeyCode.L},
+                    { "Shield_Right", KeyCode.Quote},
+                    { "Shield_Down", KeyCode.Semicolon},
+                    { "Shield_Up", KeyCode.P}
+                });
+            }
+        });
         
     }
 

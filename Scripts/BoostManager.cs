@@ -38,14 +38,18 @@ public class BoostManager : ManagerClass
 
         if (Input.GetKeyDown(myPlayer.controls["Boost"]))
         {
-            if (currentBoostCooldown <= 0f && myPlayer.energyManager.isEnough(epCost))
-            {
-                myPlayer.energyManager.minusEP(epCost);
-                speed += initialSpeed * boostFactor;
-                currentBoostCooldown = boostCooldown;
-            }
+            Boost(speed, initialSpeed);
         }
         myPlayer.movementManager.speed = speed;
     }
 
+    void Boost(float speed, float initialSpeed)
+    {
+        if (currentBoostCooldown <= 0f && myPlayer.energyManager.isEnough(epCost))
+        {
+            myPlayer.energyManager.minusEP(epCost);
+            speed += initialSpeed * boostFactor;
+            currentBoostCooldown = boostCooldown;
+        }
+    }
 }
