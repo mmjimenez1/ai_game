@@ -13,6 +13,7 @@ public class Player
     public teleport teleport;
     public HealthManager healthManager;
     public EnergyManager energyManager;
+    public BombManager explosion;
     public ShieldManager shieldManager;
 
     public Dictionary<string, KeyCode> controls;
@@ -32,6 +33,8 @@ public class Player
         this.dashManager.setPlayer(this);
         this.teleport = this.gameObject.AddComponent<teleport>();
         this.teleport.setPlayer(this);
+        this.explosion = this.gameObject.AddComponent < BombManager>();
+        this.explosion.setPlayer(this);
         this.healthManager = this.gameObject.AddComponent<HealthManager>();
         this.healthManager.setPlayer(this);
         this.energyManager = this.gameObject.AddComponent<EnergyManager>();
@@ -62,6 +65,7 @@ public class Player
             { "Alt_Up", KeyCode.UpArrow},
 
             { "Boost", KeyCode.Space},
+            {"Bomb", KeyCode.E },
             { "Teleport", KeyCode.Q},
 
             { "Shield", KeyCode.LeftShift},
