@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     {
         players = new List<Player>();
         this.players.Add(new Player("Player1"));
+        this.players.Add(new Player("Player2"));
         players.ForEach(p => Debug.Log(p.username));
         
     }

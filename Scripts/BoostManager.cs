@@ -36,7 +36,7 @@ public class BoostManager : ManagerClass
         else
             currentBoostCooldown = 0f;
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(myPlayer.controls["Boost"]))
         {
             if (currentBoostCooldown <= 0f && myPlayer.energyManager.isEnough(epCost))
             {

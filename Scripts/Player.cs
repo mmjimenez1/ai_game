@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Player
@@ -12,6 +14,8 @@ public class Player
     public HealthManager healthManager;
     public EnergyManager energyManager;
     public ShieldManager shieldManager;
+
+    public Dictionary<string, KeyCode> controls;
 
     public Player(string username)
     {
@@ -34,6 +38,28 @@ public class Player
         this.energyManager.setPlayer(this);
         this.shieldManager = this.gameObject.AddComponent<ShieldManager>();
         this.shieldManager.setPlayer(this);
+
+        this.controls = new Dictionary<string, KeyCode>()
+        {
+            { "Left", KeyCode.J},
+            { "Right", KeyCode.L},
+            { "Down", KeyCode.K},
+            { "Up", KeyCode.I},
+
+            { "Alt_Left", KeyCode.LeftArrow},
+            { "Alt_Right", KeyCode.RightArrow},
+            { "Alt_Down", KeyCode.DownArrow},
+            { "Alt_Up", KeyCode.UpArrow},
+
+            { "Boost", KeyCode.Space},
+            { "Teleport", KeyCode.Q},
+
+            { "Shield", KeyCode.LeftShift},
+            { "Shield_Left", KeyCode.A},
+            { "Shield_Right", KeyCode.D},
+            { "Shield_Down", KeyCode.S},
+            { "Shield_Up", KeyCode.W}
+        };
     }
 
     public string setUsername(string newUsername)

@@ -20,26 +20,30 @@ public class MovementManager : ManagerClass
     // Update is called once per frame
     void Update()
     {
+        updateDirection();
         MoveManager();
     }
 
     void MoveManager()
     {
-        direction = new Vector2(0f, 0f);
-        if (Input.GetKey(KeyCode.J) || Input.GetKey(KeyCode.LeftArrow))
-            direction.x--;
-        if (Input.GetKey(KeyCode.L) || Input.GetKey(KeyCode.RightArrow)) 
-            direction.x++;
-        if (Input.GetKey(KeyCode.K) || Input.GetKey(KeyCode.DownArrow))
-            direction.y--;
-        if(Input.GetKey(KeyCode.I) || Input.GetKey(KeyCode.UpArrow))
-            direction.y++;
-
-        direction.Normalize();
         Vector2 pos = this.transform.position;
         pos.x += direction.x * speed * Time.deltaTime;
         pos.y += direction.y * speed * Time.deltaTime;
         this.transform.position = pos;
+    }
+
+    void updateDirection()
+    {
+        direction = new Vector2(0f, 0f);
+        if (Input.GetKey(myPlayer.controls["Left"]) || Input.GetKey(myPlayer.controls["Alt_Left"]))
+            direction.x--;
+        if (Input.GetKey(myPlayer.controls["Right"]) || Input.GetKey(myPlayer.controls["Alt_Right"]))
+            direction.x++;
+        if (Input.GetKey(myPlayer.controls["Down"]) || Input.GetKey(myPlayer.controls["Alt_Down"]))
+            direction.y--;
+        if (Input.GetKey(myPlayer.controls["Up"]) || Input.GetKey(myPlayer.controls["Alt_Up"]))
+            direction.y++;
+        direction.Normalize();
     }
 
     public float getInitialSpeed()

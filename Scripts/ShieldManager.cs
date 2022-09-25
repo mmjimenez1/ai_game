@@ -69,7 +69,7 @@ public class ShieldManager : ManagerClass
 
     void updateStatus()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(myPlayer.controls["Shield"]))
         {
             setActiveShield(!this.isActive);
         }
@@ -77,10 +77,18 @@ public class ShieldManager : ManagerClass
 
     void setActiveShield(bool active)
     {
-        this.isActive = active;
-        this.shieldContainer.SetActive(this.isActive);
-        if(this.isActive)
-            timeElapsed++;//add 1 second so that the player will lose 2 ep per activation
+        // needs energy to at least be active for 1 second
+        if (active && myPlayer.energyManager.isEnough(epPerSecond * 2))
+        {
+            this.isActive = true;
+            this.shieldContainer.SetActive(true);
+            myPlayer.energyManager.minusEP(epPerSecond);
+        }
+        else
+        {
+            this.isActive = false;
+            this.shieldContainer.SetActive(false);
+        }
     }
 
     void updateSprite()
@@ -99,19 +107,14 @@ public class ShieldManager : ManagerClass
 
     void updatePlayerEnergy()
     {
-        if (!myPlayer.energyManager.isEnough(epPerSecond))
-        {
-            print("Not enough energy1. Deactivating.");
-            setActiveShield(false);
-            return;
-        }
         timeElapsed += Time.deltaTime;
         if (timeElapsed >= 1)
         {
             timeElapsed--;
-            if (myPlayer.energyManager.minusEP(epPerSecond) < epPerSecond)
+            myPlayer.energyManager.minusEP(epPerSecond);
+            if (!myPlayer.energyManager.isEnough(epPerSecond))
             {
-                print("Not enough energy2. Deactivating.");
+                print("Not enough energy. Deactivating Shield.");
                 setActiveShield(false);
             }
         }
@@ -125,13 +128,13 @@ public class ShieldManager : ManagerClass
     bool updateDirection()
     {
         Vector2 direction = Vector2.zero;
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(myPlayer.controls["Shield_Left"]))
             direction.x--;
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(myPlayer.controls["Shield_Right"]))
             direction.x++;
-        if (Input.GetKey(KeyCode.S))
+        if (Input.GetKey(myPlayer.controls["Shield_Down"]))
             direction.y--;
-        if (Input.GetKey(KeyCode.W))
+        if (Input.GetKey(myPlayer.controls["Shield_Up"]))
             direction.y++;
         if (direction == Vector2.zero)
             direction = myPlayer.movementManager.direction;
