@@ -15,6 +15,7 @@ public class Player
     public EnergyManager energyManager;
     public BombManager explosion;
     public ShieldManager shieldManager;
+    public MissileManager missileManager;
 
     public Dictionary<string, KeyCode> controls;
 
@@ -33,7 +34,7 @@ public class Player
         this.dashManager.setPlayer(this);
         this.teleport = this.gameObject.AddComponent<teleport>();
         this.teleport.setPlayer(this);
-        this.explosion = this.gameObject.AddComponent < BombManager>();
+        this.explosion = this.gameObject.AddComponent <BombManager>();
         this.explosion.setPlayer(this);
         this.healthManager = this.gameObject.AddComponent<HealthManager>();
         this.healthManager.setPlayer(this);
@@ -41,6 +42,8 @@ public class Player
         this.energyManager.setPlayer(this);
         this.shieldManager = this.gameObject.AddComponent<ShieldManager>();
         this.shieldManager.setPlayer(this);
+        this.missileManager = this.gameObject.AddComponent<MissileManager>();
+        this.missileManager.setPlayer(this);
 
         setDefaultControls();
     }
@@ -65,10 +68,11 @@ public class Player
             { "Alt_Up", KeyCode.UpArrow},
 
             { "Boost", KeyCode.Space},
-            {"Bomb", KeyCode.E },
+            { "Bomb", KeyCode.E},
             { "Teleport", KeyCode.Q},
 
-            { "Shield", KeyCode.LeftShift},
+            { "Shield", KeyCode.Tab},
+            { "Missile", KeyCode.LeftShift},
             { "Shield_Left", KeyCode.A},
             { "Shield_Right", KeyCode.D},
             { "Shield_Down", KeyCode.S},

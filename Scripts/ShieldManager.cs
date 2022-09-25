@@ -24,7 +24,6 @@ public class ShieldManager : ManagerClass
     // Start is called before the first frame update
     void Start()
     {
-
         this.shieldContainer = new GameObject("ShieldContainer" + myPlayer.username);
         this.shieldContainer.transform.parent = myPlayer.gameObject.transform;
 
@@ -122,7 +121,7 @@ public class ShieldManager : ManagerClass
 
     void updateRotation()
     {
-        this.shieldContainer.transform.rotation = Quaternion.Slerp(this.shieldObject.transform.rotation, this.targetRotation, this.rotationSpeed);
+        this.shieldContainer.transform.rotation = Quaternion.Slerp(this.shieldContainer.transform.rotation, this.targetRotation, this.rotationSpeed);
     }
 
     bool updateDirection()
