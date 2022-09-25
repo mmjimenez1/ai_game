@@ -29,6 +29,8 @@ public class GameManager : MonoBehaviour
                     { "Alt_Up", KeyCode.None},
 
                     { "Boost", KeyCode.RightShift},
+                    //{ "Bomb", KeyCode.LeftBracket },
+                    { "Bomb", KeyCode.E },
                     { "Teleport", KeyCode.O},
 
                     { "Shield", KeyCode.Comma},
