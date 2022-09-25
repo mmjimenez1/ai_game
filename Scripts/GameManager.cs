@@ -29,7 +29,8 @@ public class GameManager : MonoBehaviour
                     { "Alt_Up", KeyCode.None},
 
                     { "Boost", KeyCode.RightShift},
-                    { "Bomb", KeyCode.E },
+                    { "Bomb", KeyCode.LeftBracket },
+                    //{ "Bomb", KeyCode.E },
                     { "Teleport", KeyCode.O},
 
                     { "Shield", KeyCode.I},
@@ -41,12 +42,12 @@ public class GameManager : MonoBehaviour
                 });
             }
         });
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
