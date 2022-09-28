@@ -11,6 +11,7 @@ public class MissileManager : ManagerClass
     public int ammunition;
     public bool inPreparation;
     private Quaternion targetRotation;
+    private Vector3 targetPosition;
     public float rotationSpeed;
 
     private SpriteRenderer spriteRenderer;
@@ -110,7 +111,8 @@ public class MissileManager : ManagerClass
 
     void updateRotation()
     {
-        this.missileContainer.transform.rotation = Quaternion.Slerp(this.missileContainer.transform.rotation, this.targetRotation, this.rotationSpeed);
+        missileContainer.transform.up = Vector3.Slerp(missileContainer.transform.up, targetPosition, rotationSpeed);
+        //this.missileContainer.transform.rotation = Quaternion.Slerp(this.missileContainer.transform.rotation, this.targetRotation, this.rotationSpeed);
     }
 
     bool updateDirection()
@@ -125,18 +127,23 @@ public class MissileManager : ManagerClass
         if (Input.GetKey(myPlayer.controls["Shield_Up"]))
             direction.y++;
         if (direction == Vector2.zero)
-            direction = myPlayer.movementManager.direction;
-        if (direction != Vector2.zero)
         {
-            direction.Normalize();
-            //float currentZAngle = shieldObject.transform.eulerAngles.z;
-            float newAngle = -Vector2.SignedAngle(direction, Vector2.up);
-            //float deltaAngle = newAngle - currentZAngle;
-            //this.shieldObject.transform.Rotate(Vector3.forward, deltaAngle);
-            this.targetRotation = Quaternion.Euler(new Vector3(0, 0, newAngle));
-            return true;
+            Vector3 closest = myPlayer.getClosestPlayer().gameObject.transform.position;
+            Vector3 myPosition = myPlayer.gameObject.transform.position;
+            targetPosition = closest - myPosition;
         }
-        return false;
+        else
+        {
+            targetPosition = direction;
+        }
+        //if (direction != Vector2.zero)
+        //{
+        //    direction.Normalize();
+        //    float newAngle = -Vector2.SignedAngle(direction, Vector2.up);
+        //    this.targetRotation = Quaternion.Euler(new Vector3(0, 0, newAngle));
+        //    return true;
+        //}
+        return true;
     }
 
     void Launch()

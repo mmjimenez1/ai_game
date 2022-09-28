@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
         this.players.Add(new Player("Player2", "jupiter"));
         players.ForEach(p => {
             Debug.Log(p.username);
+            p.gameManager = this;
             if(p.username == "Player2")
             {
                 p.setControls(new Dictionary<string, KeyCode>()

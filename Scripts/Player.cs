@@ -7,6 +7,7 @@ public class Player
     public string username;
     public GameObject gameObject;
     public SpriteRenderer spriteRenderer;
+    public GameManager gameManager;
 
     public MovementManager movementManager;
     public BoostManager dashManager;
@@ -84,5 +85,44 @@ public class Player
     {
         this.username = newUsername;
         return this.username;
+    }
+
+    public List<Player> getEnemies(Player p)
+    {
+        List<Player> enemies = new List<Player>();
+        foreach (Player player in gameManager.players)
+        {
+            if (player.username != p.username)
+            {
+                enemies.Add(player);
+            }
+        }
+        return enemies;
+    }
+
+    public float getDistanceToPlayer(Player p)
+    {
+        if (p == null)
+            return -1;
+        Vector3 pLocation = p.gameObject.transform.position;
+        Vector3 myLocation = this.gameObject.transform.position;
+        return Vector3.Distance(myLocation, pLocation);
+    }
+
+    public Player getClosestPlayer()
+    {
+        List<Player> enemies = getEnemies(this);
+        float min = float.MaxValue;
+        Player closest = null;
+        foreach(Player p in enemies)
+        {
+            float distance = getDistanceToPlayer(p);
+            if(distance < min)
+            {
+                min = distance;
+                closest = p;
+            }
+        }
+        return closest;
     }
 }
