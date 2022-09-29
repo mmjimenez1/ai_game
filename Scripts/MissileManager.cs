@@ -27,7 +27,8 @@ public class MissileManager : ManagerClass
         this.missileContainer = new GameObject("MissileAimContainer" + myPlayer.username);
         this.missileContainer.transform.parent = myPlayer.gameObject.transform;
 
-        this.missileObject = Instantiate(Resources.Load("Prefabs/Missile") as GameObject, Vector3.zero, Quaternion.identity);
+        this.missilePrefab = Resources.Load("Prefabs/Missile") as GameObject;
+        this.missileObject = Instantiate(this.missilePrefab, Vector3.zero, Quaternion.identity);
         this.missileObject.name = "MissileAim " + myPlayer.username;
 
         this.missileObject.transform.parent = missileContainer.transform;
@@ -36,7 +37,7 @@ public class MissileManager : ManagerClass
 
         this.targetRotation = this.missileContainer.transform.rotation;
         this.rotationSpeed = 0.1f;
-        ammunition = 2;
+        ammunition = 2000;
         inPreparation = false;
         missileContainer.SetActive(false);
 
@@ -60,13 +61,7 @@ public class MissileManager : ManagerClass
             if (updateDirection())
                 updateRotation();
             updateSprite();
-        }
-        if (inPreparation)
-        {
             updateDirection();
-        }
-        if (Input.GetKey(KeyCode.LeftShift))
-        {
         }
     }
 
@@ -74,24 +69,33 @@ public class MissileManager : ManagerClass
     {
         if (Input.GetKeyDown(myPlayer.controls["Missile"]))
         {
-            if (ammunition > 0)
+            if (inPreparation)
             {
-                if (inPreparation)
-                {
-                    inPreparation = false;
-                    missileContainer.SetActive(false);
+                setActiveMissile(false);
+                if (ammunition > 0)
                     Launch();
-                }
                 else
-                {
-                    inPreparation = true;
-                    missileContainer.SetActive(true);
-                }
+                    Debug.Log(myPlayer.username + ": No ammo.");
             }
             else
             {
-                Debug.Log(myPlayer.username + ": No ammo.");
+                setActiveMissile(true);
             }
+        }
+    }
+
+    public void setActiveMissile(bool active)
+    {
+        if (active && ammunition > 0)
+        {
+            inPreparation = true;
+            missileContainer.SetActive(true);
+            myPlayer.shieldManager.setActiveShield(false);
+        }
+        else
+        {
+            inPreparation = false;
+            missileContainer.SetActive(false);
         }
     }
 
@@ -148,6 +152,17 @@ public class MissileManager : ManagerClass
 
     void Launch()
     {
-
+        if (ammunition <= 0)
+            return;
+        ammunition--;
+        Player closestEnemy = myPlayer.getClosestPlayer();
+        GameObject newMissileObject = Instantiate(missilePrefab);
+        Missile newMissile = newMissileObject.AddComponent<Missile>();
+        print(this.missileObject.transform.position);
+        Vector2 from = this.missileObject.transform.position;
+        Vector2 to = closestEnemy.gameObject.transform.position;
+        float distance = Vector2.Distance(from, to) / 2;
+        Debug.Log("Missile launched");
+        newMissile.Launch(missileContainer.transform.up, (from + to) / 2f, distance, distance / 2f);
     }
 }

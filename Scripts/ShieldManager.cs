@@ -74,7 +74,7 @@ public class ShieldManager : ManagerClass
         }
     }
 
-    void setActiveShield(bool active)
+    public void setActiveShield(bool active)
     {
         // needs energy to at least be active for 1 second
         if (active && myPlayer.energyManager.isEnough(epPerSecond * 2))
