@@ -38,6 +38,17 @@ public class EnergyManager : ManagerClass
         }
     }
 
+    public int getEnergyPoints()
+    {
+
+        return energyPoints;
+    }
+
+    public int getEnergyCap()
+    {
+        return energyCap;
+    }
+
     public int minusEP(int cost)
     {
         if (cost < 0)

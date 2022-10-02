@@ -17,8 +17,11 @@ public class GameManager : MonoBehaviour
         players.ForEach(p => {
             Debug.Log(p.username);
             p.gameManager = this;
-            if(p.username == "Player2")
+            if (p.username == "Player1")
+                p.uiManager.isPlayer1 = true;
+            if (p.username == "Player2")
             {
+                p.uiManager.isPlayer1 = false;
                 p.setControls(new Dictionary<string, KeyCode>()
                 {
                     { "Left", KeyCode.Keypad4},

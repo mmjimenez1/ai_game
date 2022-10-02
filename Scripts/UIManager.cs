@@ -1,34 +1,113 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class UIManager : MonoBehaviour
+public class UIManager : ManagerClass
 {
     public GUISkin guiSkin;
+    public GameObject maskPrefab;
+    public GameObject maskObject;
 
     Rect windowRect = new Rect(0, 0, 400, 380);
     bool toggleTxt = false;
     string stringToEdit = "Text Label";
     string textToEdit = "TextBox:\nHello World\nI've got few lines...";
-    float hSliderValue = 0.0f;
-    float vSliderValue = 0.0f;
-    float hSbarValue;
-    float vSbarValue;
-    Vector2 scrollPosition = Vector2.zero;
+    //float hSliderValue = 0.0f;
+    //float vSliderValue = 0.0f;
+    //float hSbarValue;
+    //float vSbarValue;
+    //Vector2 scrollPosition = Vector2.zero;
+
+    private SpriteRenderer spriteRenderer;
+    private SpriteRenderer spriteRenderer2;
+    private SpriteRenderer spriteRenderer3;
+    private GameObject healthBlue;
+    private GameObject healthBackground;
+    private GameObject healthOutline;
+    private Vector2 mask_pos;
+    private Vector2 player2Pos;
+        
+
+    public bool isPlayer1;
+    private Vector2 startMaskPos;
+
+
+    private GameObject uiContainer;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        mask_pos= new Vector2(-6.62f, 3.63f);
+        player2Pos = new Vector2();
         guiSkin = Resources.Load("Sci-FiUI/_SciFi_GUISkin_/SciFi_Skin") as GUISkin;
         windowRect.x = (Screen.width - windowRect.width) / 2;
         windowRect.y = (Screen.height - windowRect.height) / 2;
+
+        this.uiContainer = new GameObject("UIContainer" + myPlayer.username);
+
+
+        this.maskPrefab = Resources.Load("Prefabs/sMask") as GameObject;
+        this.maskObject = Instantiate(this.maskPrefab, mask_pos, Quaternion.identity);
+        this.maskObject.transform.parent = uiContainer.transform;
+
+
+        this.healthBlue = new GameObject("HealthBlue" + myPlayer.username);
+        this.healthOutline = new GameObject("HealthContainer" + myPlayer.username);
+        this.healthBackground = new GameObject("HealthBG" + myPlayer.username);
+
+        this.healthBlue.transform.parent = this.uiContainer.transform;
+        this.healthOutline.transform.parent = this.uiContainer.transform;
+        this.healthBackground.transform.parent = this.uiContainer.transform;
+
+
+        this.spriteRenderer = this.healthOutline.AddComponent<SpriteRenderer>();
+        this.spriteRenderer.sprite = Resources.Load("Border_0", typeof(Sprite)) as Sprite;
+        this.spriteRenderer.sortingOrder = 12;
+        this.healthOutline.transform.localScale = new Vector2(0.6914f, 0.514325f);
+
+
+        this.spriteRenderer2 = this.healthBlue.AddComponent<SpriteRenderer>();
+        this.spriteRenderer2.sprite = Resources.Load("Health_0", typeof(Sprite)) as Sprite;
+        this.spriteRenderer2.sortingOrder = 11;
+        this.healthBlue.transform.localScale = new Vector2(0.6914f, 0.514325f);
+        this.spriteRenderer2.maskInteraction = SpriteMaskInteraction.VisibleInsideMask;
+
+        this.spriteRenderer3 = this.healthBackground.AddComponent<SpriteRenderer>();
+        this.spriteRenderer3.sprite = Resources.Load("Health_1", typeof(Sprite)) as Sprite;
+        this.spriteRenderer3.sortingOrder = 10;
+
+        if (isPlayer1)
+        {
+            this.healthOutline.transform.localPosition = new Vector2(-6.53f, 3.52f);
+            this.healthBlue.transform.localPosition = new Vector2(-6.54f, 3.52f);
+            this.healthBackground.transform.localPosition = new Vector2(-6.54f, 3.52f);
+        }
+        else
+        {
+            this.spriteRenderer.flipX = true;
+            this.spriteRenderer2.flipX = true;
+            this.spriteRenderer3.flipX = true;
+
+            this.healthOutline.transform.localPosition = new Vector2(6.9f, 3.52f);
+            this.healthBlue.transform.localPosition = new Vector2(6.9f, 3.52f);
+            this.healthBackground.transform.localPosition = new Vector2(6.9f, 3.52f);
+            this.maskObject.transform.localPosition = new Vector2(7f, 3.52f);
+
+        }
+        this.startMaskPos = this.maskObject.transform.position;
+
+
+        this.healthBackground.transform.localScale = new Vector2(0.6914f, 0.514325f);
+
+
     }
 
     void OnGUI()
     {
         GUI.skin = guiSkin;
-        windowRect = GUI.Window(0, windowRect, DoMyWindow, "Play Game");
+        //windowRect = GUI.Window(0, windowRect, DoMyWindow, "Play Game");
     }
 
 
@@ -68,7 +147,24 @@ public class UIManager : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        
+    {   
+
+        float cur_health = myPlayer.energyManager.getEnergyPoints();
+        float health_cap = myPlayer.energyManager.getEnergyCap();
+        float current_x = startMaskPos.x;
+        float scale_x = maskObject.transform.localScale.x;
+        float deltaX = (1 - cur_health / health_cap);
+        if (isPlayer1) {
+            current_x -= deltaX * scale_x;
+        }
+        else
+        {   
+            current_x += deltaX * scale_x;
+        }
+        print(myPlayer.username + ": " + current_x);
+        maskObject.transform.position = new Vector2(current_x, startMaskPos.y);
+
+
+
     }
 }

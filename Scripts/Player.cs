@@ -17,6 +17,7 @@ public class Player
     public BombManager explosion;
     public ShieldManager shieldManager;
     public MissileManager missileManager;
+    public UIManager uiManager;
 
 
     public Dictionary<string, KeyCode> controls;
@@ -46,6 +47,9 @@ public class Player
         this.shieldManager.setPlayer(this);
         this.missileManager = this.gameObject.AddComponent<MissileManager>();
         this.missileManager.setPlayer(this);
+        this.uiManager = this.gameObject.AddComponent<UIManager>();
+        this.uiManager.setPlayer(this);
+
 
         setDefaultControls();
     }
