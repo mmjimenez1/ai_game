@@ -1,3 +1,4 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -9,29 +10,40 @@ public class UIManager : ManagerClass
     public GameObject maskPrefab;
     public GameObject maskObject;
 
+    public GameObject maskPrefab2;
+    public GameObject maskObject2;
+
     Rect windowRect = new Rect(0, 0, 400, 380);
     bool toggleTxt = false;
     string stringToEdit = "Text Label";
     string textToEdit = "TextBox:\nHello World\nI've got few lines...";
-    //float hSliderValue = 0.0f;
-    //float vSliderValue = 0.0f;
-    //float hSbarValue;
-    //float vSbarValue;
-    //Vector2 scrollPosition = Vector2.zero;
+  
 
-    private SpriteRenderer spriteRenderer;
-    private SpriteRenderer spriteRenderer2;
-    private SpriteRenderer spriteRenderer3;
-    private GameObject healthBlue;
+    //private SpriteRenderer srEOutline;
+    private SpriteRenderer srEBlue;
+    private SpriteRenderer srEBackground;
+
+    //private SpriteRenderer srHOutline;
+    private SpriteRenderer srHRed;
+    private SpriteRenderer srHBackground;
+
+
+    private GameObject energyBlue;
+    private GameObject energyBackground;
+    private GameObject energyOutline;
+
+    private GameObject healthRed;
     private GameObject healthBackground;
     private GameObject healthOutline;
+
     private Vector2 mask_pos;
+    private Vector2 mask_pos2;
+
     private Vector2 player2Pos;
-        
+    private Vector2 startMaskPos;
+    private Vector2 startMaskPos2;
 
     public bool isPlayer1;
-    private Vector2 startMaskPos;
-
 
     private GameObject uiContainer;
 
@@ -39,7 +51,9 @@ public class UIManager : ManagerClass
     // Start is called before the first frame update
     void Start()
     {
-        mask_pos= new Vector2(-6.62f, 3.63f);
+        mask_pos= new Vector2(-6.62f, 4.75f);
+        mask_pos2 = new Vector2(-6.62f, 3.55f);
+
         player2Pos = new Vector2();
         guiSkin = Resources.Load("Sci-FiUI/_SciFi_GUISkin_/SciFi_Skin") as GUISkin;
         windowRect.x = (Screen.width - windowRect.width) / 2;
@@ -50,56 +64,74 @@ public class UIManager : ManagerClass
 
         this.maskPrefab = Resources.Load("Prefabs/sMask") as GameObject;
         this.maskObject = Instantiate(this.maskPrefab, mask_pos, Quaternion.identity);
-        this.maskObject.transform.parent = uiContainer.transform;
+        this.maskObject.transform.parent = this.uiContainer.transform;
+
+        this.maskPrefab2 = Resources.Load("Prefabs/sMask") as GameObject;
+        this.maskObject2 = Instantiate(this.maskPrefab2, mask_pos2, Quaternion.identity);
+        this.maskObject2.transform.parent = this.uiContainer.transform;
 
 
-        this.healthBlue = new GameObject("HealthBlue" + myPlayer.username);
-        this.healthOutline = new GameObject("HealthContainer" + myPlayer.username);
-        this.healthBackground = new GameObject("HealthBG" + myPlayer.username);
+        this.energyBlue = new GameObject("EnergyBlue" + myPlayer.username);
+        //this.energyOutline = new GameObject("EnergyContainer" + myPlayer.username);
+        this.energyBackground = new GameObject("EnergyBG" + myPlayer.username);
+        this.healthRed = new GameObject("Health Red" + myPlayer.username);
+        this.healthBackground = new GameObject("Health BG");
 
-        this.healthBlue.transform.parent = this.uiContainer.transform;
-        this.healthOutline.transform.parent = this.uiContainer.transform;
+        this.energyBlue.transform.parent = this.uiContainer.transform;
+        this.energyBackground.transform.parent = this.uiContainer.transform;
+        this.healthRed.transform.parent = this.uiContainer.transform;
         this.healthBackground.transform.parent = this.uiContainer.transform;
 
 
-        this.spriteRenderer = this.healthOutline.AddComponent<SpriteRenderer>();
-        this.spriteRenderer.sprite = Resources.Load("Border_0", typeof(Sprite)) as Sprite;
-        this.spriteRenderer.sortingOrder = 12;
-        this.healthOutline.transform.localScale = new Vector2(0.6914f, 0.514325f);
+        // sprites for energy bar
+        this.srEBlue = this.energyBlue.AddComponent<SpriteRenderer>();
+        this.srEBlue.sprite = Resources.Load("HUD/Bars/Exp/2", typeof(Sprite)) as Sprite;
+        this.srEBlue.sortingOrder = 11;
+        this.srEBlue.maskInteraction = SpriteMaskInteraction.VisibleInsideMask;
+
+        this.srEBackground = this.energyBackground.AddComponent<SpriteRenderer>();
+        this.srEBackground.sprite = Resources.Load("HUD/Bars/Exp/background2", typeof(Sprite)) as Sprite;
+        this.srEBackground.sortingOrder = 10;
 
 
-        this.spriteRenderer2 = this.healthBlue.AddComponent<SpriteRenderer>();
-        this.spriteRenderer2.sprite = Resources.Load("Health_0", typeof(Sprite)) as Sprite;
-        this.spriteRenderer2.sortingOrder = 11;
-        this.healthBlue.transform.localScale = new Vector2(0.6914f, 0.514325f);
-        this.spriteRenderer2.maskInteraction = SpriteMaskInteraction.VisibleInsideMask;
+        // sprites for health bar
+        this.srHRed = this.healthRed.AddComponent<SpriteRenderer>();
+        this.srHRed.sprite = Resources.Load("HUD/Bars/Exp/3", typeof(Sprite)) as Sprite;
+        this.srHRed.sortingOrder = 11;
+        this.srHRed.maskInteraction = SpriteMaskInteraction.VisibleInsideMask;
 
-        this.spriteRenderer3 = this.healthBackground.AddComponent<SpriteRenderer>();
-        this.spriteRenderer3.sprite = Resources.Load("Health_1", typeof(Sprite)) as Sprite;
-        this.spriteRenderer3.sortingOrder = 10;
+        this.srHBackground = this.healthBackground.AddComponent<SpriteRenderer>();
+        this.srHBackground.sprite = Resources.Load("HUD/Bars/Exp/background2", typeof(Sprite)) as Sprite;
+        this.srHBackground.sortingOrder = 10;
 
         if (isPlayer1)
         {
-            this.healthOutline.transform.localPosition = new Vector2(-6.53f, 3.52f);
-            this.healthBlue.transform.localPosition = new Vector2(-6.54f, 3.52f);
-            this.healthBackground.transform.localPosition = new Vector2(-6.54f, 3.52f);
+            this.energyBlue.transform.localPosition = new Vector2(-6.58f, 3.95f);
+            this.energyBackground.transform.localPosition = new Vector2(-6.58f, 3.95f);
+           
+            this.healthRed.transform.localPosition = new Vector2(-6.58f, 4.38f);
+            this.healthBackground.transform.localPosition = new Vector2(-6.58f, 4.38f);
         }
         else
         {
-            this.spriteRenderer.flipX = true;
-            this.spriteRenderer2.flipX = true;
-            this.spriteRenderer3.flipX = true;
+            //this.srEOutline.flipX = true;
+            this.srEBlue.flipX = true;
+            this.srEBackground.flipX = true;
 
-            this.healthOutline.transform.localPosition = new Vector2(6.9f, 3.52f);
-            this.healthBlue.transform.localPosition = new Vector2(6.9f, 3.52f);
-            this.healthBackground.transform.localPosition = new Vector2(6.9f, 3.52f);
-            this.maskObject.transform.localPosition = new Vector2(7f, 3.52f);
+            this.energyBlue.transform.localPosition = new Vector2(6.65f, 3.95f);
+            this.energyBackground.transform.localPosition = new Vector2(6.65f, 3.95f);
+            this.maskObject.transform.localPosition = new Vector2(6.65f, 4.75f);
+            this.maskObject2.transform.localPosition = new Vector2(6.65f, 3.55f);
 
+
+            this.healthRed.transform.localPosition = new Vector2(6.65f, 4.38f);
+            this.healthBackground.transform.localPosition = new Vector2(6.65f, 4.38f);
         }
         this.startMaskPos = this.maskObject.transform.position;
+        this.startMaskPos2 = this.maskObject2.transform.position;
 
 
-        this.healthBackground.transform.localScale = new Vector2(0.6914f, 0.514325f);
+        //this.energyBackground.transform.localScale = new Vector2(0.6914f, 0.514325f);
 
 
     }
@@ -149,20 +181,30 @@ public class UIManager : ManagerClass
     void Update()
     {   
 
-        float cur_health = myPlayer.energyManager.getEnergyPoints();
-        float health_cap = myPlayer.energyManager.getEnergyCap();
+        float cur_health = myPlayer.healthManager.getHealthPoints();
+        float health_cap = myPlayer.healthManager.getHealthCap();
         float current_x = startMaskPos.x;
         float scale_x = maskObject.transform.localScale.x;
         float deltaX = (1 - cur_health / health_cap);
+
+        float cur_energy = myPlayer.energyManager.getEnergyPoints();
+        float energy_cap = myPlayer.energyManager.getEnergyCap();
+        float cur_x_e = startMaskPos2.x;
+        float scale_x_e = maskObject2.transform.localScale.x;
+        float deltaXE = (1 - cur_energy / energy_cap);
+
         if (isPlayer1) {
             current_x -= deltaX * scale_x;
+            cur_x_e -= deltaXE * scale_x_e;
         }
         else
         {   
             current_x += deltaX * scale_x;
+            cur_x_e += deltaXE * scale_x_e;
         }
         print(myPlayer.username + ": " + current_x);
         maskObject.transform.position = new Vector2(current_x, startMaskPos.y);
+        maskObject2.transform.position = new Vector2(cur_x_e, startMaskPos2.y);
 
 
 
