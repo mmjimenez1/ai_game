@@ -5,12 +5,14 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public List<Player> players;
-    //public UIManager uIManager;
+    public UIManager uIManager;
+    public Timer timer;
 
     // Start is called before the first frame update
     void Start()
     {
-        //uIManager = this.gameObject.AddComponent<UIManager>();
+        uIManager = this.gameObject.AddComponent<UIManager>();
+        timer = this.gameObject.AddComponent<Timer>();
         players = new List<Player>();
         this.players.Add(new Player("Player1", "neptune"));
         this.players.Add(new Player("Player2", "jupiter"));
