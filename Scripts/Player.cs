@@ -18,7 +18,7 @@ public class Player
     public ShieldManager shieldManager;
     public MissileManager missileManager;
     public UIManager uiManager;
-
+    public Inventory inv;
 
     public Dictionary<string, KeyCode> controls;
 
@@ -49,7 +49,8 @@ public class Player
         this.missileManager.setPlayer(this);
         this.uiManager = this.gameObject.AddComponent<UIManager>();
         this.uiManager.setPlayer(this);
-
+        this.inv = this.gameObject.AddComponent<Inventory>();
+        this.inv.setPlayer(this);
 
         setDefaultControls();
     }

@@ -180,6 +180,7 @@ public class UIManager : ManagerClass
     // Update is called once per frame
     void Update()
     {   
+        //print(myPlayer.healthManager.getHealthPoints());
 
         float cur_health = myPlayer.healthManager.getHealthPoints();
         float health_cap = myPlayer.healthManager.getHealthCap();

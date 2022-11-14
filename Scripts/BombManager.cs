@@ -16,6 +16,7 @@ public class BombManager : ManagerClass
     private int currentSprite;
     public int fps;
     private float flunctuationTime;
+    public int bomb_amt;
 
     Vector2 node_location;
 
@@ -25,11 +26,9 @@ public class BombManager : ManagerClass
     void Start()
     {
         bomb_location = "bomb";
-        
-
         sprite_loc = "sci-fi-effects/explosion";
         this.sprites = Resources.LoadAll<Sprite>(sprite_loc);
-
+        this.bomb_amt = 5;
 
         isActive = false;
         isDetonated = false;
@@ -86,33 +85,41 @@ public class BombManager : ManagerClass
         this.bombObject = new GameObject("bomb " + myPlayer.username);
         this.spriteRenderer = this.bombObject.AddComponent<SpriteRenderer>();
         this.spriteRenderer.sprite = Resources.Load(bomb_location, typeof(Sprite)) as Sprite;
-        this.bombObject.transform.localScale = new Vector2(.3f, .3f);
+        this.bombObject.transform.localScale = new Vector2(0.092023f, 0.07978807f);
         //this.bombObject.SetActive(false);
     }
 
     void dropBomb(Vector2 cur_location)
     {
-        if (myPlayer.energyManager.isEnough(ep_cost))
+        //if (myPlayer.energyManager.isEnough(ep_cost))
+        //{
+        if (bomb_amt > 0)
         {
             if (!isActive && Input.GetKeyDown(myPlayer.controls["Bomb"]))
             {
                 print(cur_location);
                 createBomb();
-                this.bombObject.transform.localScale = new Vector2(.3f, .3f);
+                this.bombObject.transform.localScale = new Vector2(0.092023f, 0.07978807f);
                 isDetonated = false;
                 Debug.Log("dropping bomb");
                 bombObject.SetActive(true);
                 isActive = true;
                 bombObject.transform.position = cur_location;
-                myPlayer.energyManager.minusEP(ep_cost);
+                this.bomb_amt = this.bomb_amt - 1;
+                //myPlayer.energyManager.minusEP(ep_cost);
 
 
             }
         }
         else
         {
-            Debug.Log("not enough energy for dropping bombs");
+            Debug.Log("no more bombs to drop");
         }
+        //}
+        //else
+        //{
+        //    Debug.Log("not enough energy for dropping bombs");
+        //}
         
     }
 

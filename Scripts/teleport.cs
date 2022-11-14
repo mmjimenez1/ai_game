@@ -35,7 +35,7 @@ public class teleport : ManagerClass
         this.spriteRenderer.sprite = sprites[cur_sprite];
         this.teleportObject.SetActive(false);
         this.spriteRenderer.sortingOrder = 0;
-        this.teleportObject.transform.localScale = new Vector2(3f,3f);
+        this.teleportObject.transform.localScale = new Vector2(2f,2f);
         cur_tel_cool_down = 0f;
         is_dropped = false;
 
