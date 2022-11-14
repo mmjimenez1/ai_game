@@ -7,12 +7,14 @@ public class GameManager : MonoBehaviour
     public List<Player> players;
     public UIManager uIManager;
     public Timer timer;
+    //public Inventory inv;
 
     // Start is called before the first frame update
     void Start()
     {
         uIManager = this.gameObject.AddComponent<UIManager>();
         timer = this.gameObject.AddComponent<Timer>();
+        //inv = this.gameObject.AddComponent<Inventory>();
         players = new List<Player>();
         this.players.Add(new Player("Player1", "neptune"));
         this.players.Add(new Player("Player2", "jupiter"));
@@ -21,9 +23,11 @@ public class GameManager : MonoBehaviour
             p.gameManager = this;
             if (p.username == "Player1")
                 p.uiManager.isPlayer1 = true;
+                p.inv.isplayer1 = true;
             if (p.username == "Player2")
             {
                 p.uiManager.isPlayer1 = false;
+                p.inv.isplayer1 = true;
                 p.setControls(new Dictionary<string, KeyCode>()
                 {
                     { "Left", KeyCode.Keypad4},
@@ -56,8 +60,10 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        //if (timer.isTimeRunning())
+        //{
+        //}
 
     }
 
-}
+ }

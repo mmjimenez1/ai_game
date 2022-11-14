@@ -71,5 +71,10 @@ public class Timer : ManagerClass
         
     }
 
+    public bool isTimeRunning()
+    {
+        return isRunning;
+    }
+
     
 }

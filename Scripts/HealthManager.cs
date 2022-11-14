@@ -50,6 +50,11 @@ public class HealthManager : ManagerClass
         return healthPoints;
     }
 
+    public void resetHealthPoints()
+    {
+        this.healthPoints = healthCap;
+    }
+
     //public void setPlayer(Player p)
     //{
     //    this.myPlayer = p;

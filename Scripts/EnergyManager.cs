@@ -74,6 +74,11 @@ public class EnergyManager : ManagerClass
         return ep <= this.energyPoints;
     }
 
+    public void resetHealthPoints()
+    {
+        this.energyPoints = energyCap;
+    }
+
     //public void setPlayer(Player p)
     //{
     //    this.myPlayer = p;
