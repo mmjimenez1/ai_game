@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class MovementManager : ManagerClass
 {
     public float speed = 10.0f;
-    private float initialSpeed = 10.0f;
+    public float baseSpeed = 10.0f;
     public Vector2 direction;
+
+    NavMeshAgent agent;
 
     //private Player myPlayer;
 
@@ -14,7 +17,9 @@ public class MovementManager : ManagerClass
     void Start()
     {
         direction = new Vector2(0f, 0f);
-        initialSpeed = speed;
+        baseSpeed = speed;
+
+        agent = GetComponent<NavMeshAgent>();
     }
 
     // Update is called once per frame
@@ -34,21 +39,33 @@ public class MovementManager : ManagerClass
 
     void updateDirection()
     {
-        direction = new Vector2(0f, 0f);
-        if (Input.GetKey(myPlayer.controls["Left"]) || Input.GetKey(myPlayer.controls["Alt_Left"]))
-            direction.x--;
-        if (Input.GetKey(myPlayer.controls["Right"]) || Input.GetKey(myPlayer.controls["Alt_Right"]))
-            direction.x++;
-        if (Input.GetKey(myPlayer.controls["Down"]) || Input.GetKey(myPlayer.controls["Alt_Down"]))
-            direction.y--;
-        if (Input.GetKey(myPlayer.controls["Up"]) || Input.GetKey(myPlayer.controls["Alt_Up"]))
-            direction.y++;
+        if (Input.GetMouseButton(0) && myPlayer.username == "Player1")
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            Vector2 mousePos = ray.origin;
+            Vector2 pos = this.transform.position;
+            direction = mousePos - pos;
+            if (direction.magnitude < 0.1f)
+                direction = new Vector2(0f, 0f);
+        }
+        else
+        {
+            direction = new Vector2(0f, 0f);
+            if (Input.GetKey(myPlayer.controls["Left"]) || Input.GetKey(myPlayer.controls["Alt_Left"]))
+                direction.x--;
+            if (Input.GetKey(myPlayer.controls["Right"]) || Input.GetKey(myPlayer.controls["Alt_Right"]))
+                direction.x++;
+            if (Input.GetKey(myPlayer.controls["Down"]) || Input.GetKey(myPlayer.controls["Alt_Down"]))
+                direction.y--;
+            if (Input.GetKey(myPlayer.controls["Up"]) || Input.GetKey(myPlayer.controls["Alt_Up"]))
+                direction.y++;
+        }
         direction.Normalize();
     }
 
     public float getInitialSpeed()
     {
-        return initialSpeed;
+        return baseSpeed;
     }
 
     //public void setPlayer(Player p)

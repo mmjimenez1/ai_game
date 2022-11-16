@@ -79,6 +79,7 @@ public class ShieldManager : ManagerClass
         // needs energy to at least be active for 1 second
         if (active && myPlayer.energyManager.isEnough(epPerSecond * 2))
         {
+            myPlayer.missileManager.setActiveMissile(false);
             this.isActive = true;
             this.shieldContainer.SetActive(true);
             myPlayer.energyManager.minusEP(epPerSecond);

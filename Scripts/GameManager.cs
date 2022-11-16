@@ -30,19 +30,18 @@ public class GameManager : MonoBehaviour
                 //p.inv.isplayer1 = false;
                 p.setControls(new Dictionary<string, KeyCode>()
                 {
-                    { "Left", KeyCode.Keypad4},
-                    { "Right", KeyCode.Keypad6},
-                    { "Down", KeyCode.Keypad5},
-                    { "Up", KeyCode.Keypad8},
+                    { "Left", KeyCode.LeftArrow},
+                    { "Right", KeyCode.RightArrow},
+                    { "Down", KeyCode.DownArrow},
+                    { "Up", KeyCode.UpArrow},
 
-                    { "Alt_Left", KeyCode.None},
-                    { "Alt_Right", KeyCode.None},
-                    { "Alt_Down", KeyCode.None},
-                    { "Alt_Up", KeyCode.None},
+                    { "Alt_Left", KeyCode.Keypad4},
+                    { "Alt_Right", KeyCode.Keypad6},
+                    { "Alt_Down", KeyCode.Keypad5},
+                    { "Alt_Up", KeyCode.Keypad8},
 
                     { "Boost", KeyCode.RightShift},
                     { "Bomb", KeyCode.LeftBracket },
-                    //{ "Bomb", KeyCode.E },
                     { "Teleport", KeyCode.O},
 
                     { "Shield", KeyCode.I},

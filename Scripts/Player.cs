@@ -64,15 +64,15 @@ public class Player
     {
         this.controls = new Dictionary<string, KeyCode>()
         {
-            { "Left", KeyCode.G},
-            { "Right", KeyCode.J},
-            { "Down", KeyCode.H},
-            { "Up", KeyCode.Y},
+            { "Left", KeyCode.F},
+            { "Right", KeyCode.H},
+            { "Down", KeyCode.G},
+            { "Up", KeyCode.T},
 
-            { "Alt_Left", KeyCode.LeftArrow},
-            { "Alt_Right", KeyCode.RightArrow},
-            { "Alt_Down", KeyCode.DownArrow},
-            { "Alt_Up", KeyCode.UpArrow},
+            { "Alt_Left", KeyCode.None},
+            { "Alt_Right", KeyCode.None},
+            { "Alt_Down", KeyCode.None},
+            { "Alt_Up", KeyCode.None},
 
             { "Boost", KeyCode.Space},
             { "Bomb", KeyCode.E},

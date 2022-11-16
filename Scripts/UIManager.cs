@@ -203,7 +203,7 @@ public class UIManager : ManagerClass
             current_x += deltaX * scale_x;
             cur_x_e += deltaXE * scale_x_e;
         }
-        print(myPlayer.username + ": " + current_x);
+        //print(myPlayer.username + ": " + current_x);
         maskObject.transform.position = new Vector2(current_x, startMaskPos.y);
         maskObject2.transform.position = new Vector2(cur_x_e, startMaskPos2.y);
 

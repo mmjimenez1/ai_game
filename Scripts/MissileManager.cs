@@ -88,6 +88,7 @@ public class MissileManager : ManagerClass
     {
         if (active && ammunition > 0)
         {
+            myPlayer.shieldManager.setActiveShield(false);
             inPreparation = true;
             missileContainer.SetActive(true);
             myPlayer.shieldManager.setActiveShield(false);
@@ -158,11 +159,17 @@ public class MissileManager : ManagerClass
         Player closestEnemy = myPlayer.getClosestPlayer();
         GameObject newMissileObject = Instantiate(missilePrefab);
         Missile newMissile = newMissileObject.AddComponent<Missile>();
-        print(this.missileObject.transform.position);
+        //print("Missile Position: " + this.missileObject.transform.position);
         Vector2 from = this.missileObject.transform.position;
+        //print("From Position: " + from);
         Vector2 to = closestEnemy.gameObject.transform.position;
+        //print("To Position: " + to);
         float distance = Vector2.Distance(from, to) / 2;
-        Debug.Log("Missile launched");
-        newMissile.Launch(missileContainer.transform.up, (from + to) / 2f, distance, distance / 2f);
+        //Debug.Log("Missile launched");
+        //newMissile.Launch(missileContainer.transform.up, (from + to) / 2f, distance, distance / 2f);
+
+        Vector2 von = (missileObject.transform.position - this.transform.position);
+        print("Normalized Vector: " + von);
+        newMissile.Launch2(von, from, to);
     }
 }

@@ -73,6 +73,32 @@ public class Missile : MonoBehaviour
         setLaunchStatus(true);
     }
 
+    public void Launch2(Vector2 von, Vector2 from, Vector2 to)
+    {
+        Vector2 objectiveDirection = to - from;
+        // the angle of the missile
+        float rawAngle = -Vector2.SignedAngle(Vector2.up, von) % 360f;
+        //if (t0 < 0) t0 += 2 * 180f;
+        //print("Initial angle: " + t0);
+
+        // the angle of the slope
+        float slopeAngle = -Vector2.SignedAngle(objectiveDirection, Vector2.right) % 360f;
+        //if (slopeAngle < 0) slopeAngle += 2 * 180f;
+        float t0 = (slopeAngle + rawAngle) % 360f;
+        print("Angle: " + slopeAngle + " + " + rawAngle + " = " + t0);
+
+        float invertedSlope = Mathf.Tan(t0 * Mathf.PI / 180f);
+        float x = objectiveDirection.magnitude / 2;
+        float y = -x * invertedSlope;
+        origin.transform.position = new Vector2(x, y) + from;
+        origin.transform.rotation = Quaternion.Euler(0f, 0f, slopeAngle);
+        this.transform.position = from;
+        print("Center: " + new Vector2(x, y));
+        this.a = this.b = x;
+
+        setLaunchStatus(true);
+    }
+
     public bool setLaunchStatus(bool newStatus)
     {
         this.launched = newStatus;
