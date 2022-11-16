@@ -10,7 +10,7 @@ public class Player
     public GameManager gameManager;
 
     public MovementManager movementManager;
-    public BoostManager dashManager;
+    public BoostManager boostManager;
     public teleport teleport;
     public HealthManager healthManager;
     public EnergyManager energyManager;
@@ -33,8 +33,8 @@ public class Player
 
         this.movementManager = this.gameObject.AddComponent<MovementManager>();
         this.movementManager.setPlayer(this);
-        this.dashManager = this.gameObject.AddComponent<BoostManager>();
-        this.dashManager.setPlayer(this);
+        this.boostManager = this.gameObject.AddComponent<BoostManager>();
+        this.boostManager.setPlayer(this);
         this.teleport = this.gameObject.AddComponent<teleport>();
         this.teleport.setPlayer(this);
         this.explosion = this.gameObject.AddComponent <BombManager>();

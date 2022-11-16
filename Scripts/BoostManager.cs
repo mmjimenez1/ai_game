@@ -9,6 +9,7 @@ public class BoostManager : ManagerClass
     public float currentBoostCooldown;
     public float boostDuration;
     public int epCost;
+    public bool isActive;
 
     // Start is called before the first frame update
     void Start()
@@ -18,6 +19,7 @@ public class BoostManager : ManagerClass
         currentBoostCooldown = 0f;
         boostDuration = 1f;
         epCost = 5;
+        isActive = false;
     }
 
     // Update is called once per frame
@@ -27,6 +29,7 @@ public class BoostManager : ManagerClass
         if (Input.GetKeyDown(myPlayer.controls["Boost"]))
         {
             Boost();
+            isActive = true;
         }
     }
 
@@ -55,5 +58,21 @@ public class BoostManager : ManagerClass
             myPlayer.movementManager.speed += myPlayer.movementManager.getInitialSpeed() * boostFactor;
             currentBoostCooldown = boostCooldown;
         }
+    }
+
+    public float getBoostCoolDown()
+    {
+        return boostCooldown;
+    }
+
+
+    public float getCurrentBoostCoolDown()
+    {
+        return currentBoostCooldown;
+    }
+
+    public bool getisActive()
+    {
+        return isActive;
     }
 }

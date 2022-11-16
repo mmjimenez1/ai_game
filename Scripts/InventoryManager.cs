@@ -20,18 +20,18 @@ public class Inventory : ManagerClass
         // add bomb-
         string bomb_spriteLoc = "bomb-2-512";
         float bomb_itemLoc = -8.99f;
-        float bomb_cd = myPlayer.teleport.cur_tel_cool_down;
-        inventory.items.Add(new Item(myPlayer, "bomb", bomb_spriteLoc, bomb_itemLoc, 0.1f, false, false, username, bomb_cd));
+        float bomb_cd = myPlayer.teleport.cur_tel_cool_down; 
+        inventory.items.Add(new Item(myPlayer, "bomb",bomb_spriteLoc, bomb_itemLoc, 0.1f, false,false, username, bomb_cd));
 
         // add missile-
         string missile_spriteLoc = "missile";
         float missile_pos = -8.24f;
-        inventory.items.Add(new Item(myPlayer, "missile", missile_spriteLoc, missile_pos, 0.1f, false, false, username, 0));
+        inventory.items.Add(new Item(myPlayer,"missile", missile_spriteLoc,missile_pos ,0.1f, false, false, username, 0));
 
         // add lasers
         string laser_spriteLoc = "lasers";
         float laser_pos = -7.5f;
-        inventory.items.Add(new Item(myPlayer, "laser", laser_spriteLoc, laser_pos, 0.1f, false, false, username, 0));
+        inventory.items.Add(new Item(myPlayer,"laser", laser_spriteLoc, laser_pos, 0.1f, false, false, username, 0));
 
         // add teleport cool_down
         string teleport_spriteLoc = "gem/0003";
@@ -49,6 +49,10 @@ public class Inventory : ManagerClass
     // Update is called once per frame
     void Update()
     {
+        float curTime = Time.deltaTime;
+
+        items[3].updateCoolDownIMG(curTime);
+        items[4].updateCoolDownIMG(curTime);
 
 
     }
@@ -74,24 +78,24 @@ public class Item
 
     public bool isAmmo;
     public bool isCoolDown;
-
+    
     // constructor-
     public Item(Player myPlayer, string item_name, string iconSpriteLocation, float item_x_Location, float scale, bool ammo, bool cd, string username, float amount)
     {
         this.myPlayer = myPlayer;
         this.item_x_Location = item_x_Location;
 
-        this.background = new GameObject(item_name + username);
+        this.background = new GameObject(item_name + username) ;
         this.blockBG = this.background.AddComponent<SpriteRenderer>();
         this.blockBG.sprite = Resources.Load("HUD/Bars/Spells/Modulable_1", typeof(Sprite)) as Sprite;
         this.blockBG.sortingOrder = 20;
         if (myPlayer.isplayer1())
         {
-            this.background.transform.localPosition = new Vector2(item_x_Location, 3.19f);
+            this.background.transform.localPosition = new Vector2(item_x_Location,3.19f);
         }
         else
         {
-            item_x_Location = -1.00f * item_x_Location;
+            item_x_Location = -1.00f * item_x_Location;  
             this.background.transform.localPosition = new Vector2(item_x_Location, 3.19f);
 
 
@@ -113,8 +117,8 @@ public class Item
         //this.maksContainer.AddComponent<RectTransform>();
 
         rt = this.maksContainer.GetComponent<RectTransform>();
-        rt.localPosition = new Vector2(0, 0);
-        rt.sizeDelta = new Vector2(1.2f, 0.9f);
+        rt.localPosition = new Vector2(0,0);
+        rt.sizeDelta = new Vector2(1.2f, 0.9f); 
 
         // Overlay counter mask, 
         myCanvas = this.maksContainer.GetComponent<Canvas>();
@@ -127,8 +131,7 @@ public class Item
 
     }
 
-
-    private void makeCanvas(float cur_text, bool ammo, bool cooldown)
+    private void makeCanvas(float cur_text,bool ammo, bool cooldown)
     {
 
         if (ammo)
@@ -143,6 +146,8 @@ public class Item
             this.mask.transform.parent = this.maksContainer.transform;
             this.mask.sprite = img1;
             this.mask.type = Image.Type.Filled;
+            this.mask.fillAmount = 1.00f;
+
             //if(cur_text < 0.0f)
             //{
             //    this.mask.fillAmount = 0.00f;
@@ -156,24 +161,52 @@ public class Item
         }
     }
 
-    public void updateCoolDownIMG()
+    public void updateCoolDownIMG(float time)
     {
         float cur_tel_cooldown;
         float tel_cool_down;
         bool isActive;
 
-        // if(item_name=="teleport")
-        //{
-        //    isActive = myPlayer.teleport.getisDropped();
-        //    tel_cool_down = myPlayer.teleport.getCoolDown();
-        //    cur_tel_cooldown = myPlayer.teleport.getCurCoolDown();
-        //    if (isActive)
-        //    {
-        //        this.mask.fillAmount =
-        //    }
+        if (item_name == "teleport")
+        {
+            isActive = myPlayer.teleport.getisDropped();
+            tel_cool_down = myPlayer.teleport.getCoolDown();
+            cur_tel_cooldown = myPlayer.teleport.getCurCoolDown();
+            if (isActive)
+            {
+                float fill = (Time.deltaTime + cur_tel_cooldown) / tel_cool_down;
+                //Debug.Log("fill amt=" + fill);
+                this.mask.fillAmount = fill;
+            }
+            else
+             {
+            this.mask.fillAmount = 1.00f;
+            }
+        }
 
-        //}
+        if(item_name == "speed")
+        {
+            isActive = myPlayer.boostManager.getisActive();
+            tel_cool_down = myPlayer.boostManager.getBoostCoolDown();
+            cur_tel_cooldown = myPlayer.boostManager.getCurrentBoostCoolDown();
+            if (isActive)
+            {
+                float fill = (Time.deltaTime + cur_tel_cooldown) / tel_cool_down;
+                //Debug.Log("fill amt=" + fill);
+                this.mask.fillAmount = fill;
+            }
+            else
+            {
+                this.mask.fillAmount = 1.00f;
+            }
+        }
+        
+
+
+        
     }
+
+    //public vo
 
 
 }

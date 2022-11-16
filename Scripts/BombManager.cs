@@ -138,7 +138,7 @@ public class BombManager : ManagerClass
             isDetonated = true;
             isActive = false;
             currentSprite = 0;
-            this.bombObject.transform.localScale = new Vector2(1, 1);
+            this.bombObject.transform.localScale = new Vector2(2, 2);
             this.spriteRenderer.sprite = sprites[currentSprite];
 
 
@@ -153,12 +153,7 @@ public class BombManager : ManagerClass
 
      private void checkRadius(Vector2 location, float radius, int dmgAmt)
         {
-            //    if (enemy != null)
-            //    {
-            //        // linear falloff of effect
-            //        float proximity = (location - myPlayer.transform.position).magnitude;
-            //        float effect = 1 - (proximity / radius);
-            //    }
+            
         }
 
     public int getBombAmt()
