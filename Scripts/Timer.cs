@@ -64,9 +64,17 @@ public class Timer : ManagerClass
             }
             else
             {
-                this.timeRemaining = 0;
+                //this.timeRemaining = 0;
                 this.isRunning = false;
             }
+        }
+        else
+        {
+            Debug.Log("Time ran out reseting");
+
+            myPlayer.healthManager.resetHealthPoints();
+            myPlayer.energyManager.resetHealthPoints();
+
         }
         
     }
