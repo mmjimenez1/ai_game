@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.FilePathAttribute;
 
 public class BombManager : ManagerClass
 {
@@ -20,7 +21,7 @@ public class BombManager : ManagerClass
 
     Vector2 node_location;
 
-    private int ep_cost;
+    //private int ep_cost;
 
     // Start is called before the first frame update
     void Start()
@@ -33,7 +34,7 @@ public class BombManager : ManagerClass
         isActive = false;
         isDetonated = false;
         fps = 16;
-        ep_cost = 10;
+        //ep_cost = 10;
 
 
     }
@@ -42,12 +43,18 @@ public class BombManager : ManagerClass
     // Update is called once per frame
     void Update()
     {
+
         if (isDetonated)
         {
             updateSprite();
+            float radius = 5.00f;
+            int damage = 10;
+
+            checkRadius(node_location,radius ,damage);
         }
 
         node_location = myPlayer.gameObject.transform.position;
+
         if (isActive)
         {
             activateBomb();
@@ -60,7 +67,7 @@ public class BombManager : ManagerClass
 
     }
 
-    void updateSprite()
+    private void updateSprite()
     {
         Debug.Log("explosion");
 
@@ -80,7 +87,7 @@ public class BombManager : ManagerClass
 
     }
 
-    void createBomb()
+    private void createBomb()
     {
         this.bombObject = new GameObject("bomb " + myPlayer.username);
         this.spriteRenderer = this.bombObject.AddComponent<SpriteRenderer>();
@@ -89,7 +96,7 @@ public class BombManager : ManagerClass
         //this.bombObject.SetActive(false);
     }
 
-    void dropBomb(Vector2 cur_location)
+    private void dropBomb(Vector2 cur_location)
     {
         //if (myPlayer.energyManager.isEnough(ep_cost))
         //{
@@ -123,9 +130,9 @@ public class BombManager : ManagerClass
         
     }
 
-    void activateBomb()
+    private void activateBomb()
     {
-        if(isActive && Input.GetKeyDown(myPlayer.controls["Bomb"]))
+        if (isActive && Input.GetKeyDown(myPlayer.controls["Bomb"]))
         {
             Debug.Log("detonating");
             isDetonated = true;
@@ -133,6 +140,8 @@ public class BombManager : ManagerClass
             currentSprite = 0;
             this.bombObject.transform.localScale = new Vector2(1, 1);
             this.spriteRenderer.sprite = sprites[currentSprite];
+
+
             Destroy(bombObject, 0.5f);
 
 
@@ -140,10 +149,30 @@ public class BombManager : ManagerClass
 
 
         }
-
     }
 
-    
+     private void checkRadius(Vector2 location, float radius, int dmgAmt)
+        {
+            //    if (enemy != null)
+            //    {
+            //        // linear falloff of effect
+            //        float proximity = (location - myPlayer.transform.position).magnitude;
+            //        float effect = 1 - (proximity / radius);
+            //    }
+        }
+
+    public int getBombAmt()
+    {
+        return bomb_amt;
+    }
+
+
+    public void uBombAmt(int amt)
+    {
+        bomb_amt = amt;
+    }
+
 
 
 }
+

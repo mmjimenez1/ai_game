@@ -147,5 +147,20 @@ public class teleport : ManagerClass
         
     }
 
+    public float getCurCoolDown()
+    {
+        return cur_tel_cool_down;
+    }
+
+    public float getCoolDown()
+    {
+        return tel_cool_down;
+    }
+
+    public bool getisDropped()
+    {
+        return is_dropped;
+    }
+
    
 }

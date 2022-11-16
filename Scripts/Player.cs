@@ -131,4 +131,9 @@ public class Player
         }
         return closest;
     }
+
+    public bool isplayer1()
+    {
+        return username == "Player1";
+    }
 }
