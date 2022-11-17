@@ -18,6 +18,7 @@ public class BombManager : ManagerClass
     public int fps;
     private float flunctuationTime;
     public int bomb_amt;
+    public float explosionRadius;
 
     Vector2 node_location;
 
@@ -30,6 +31,7 @@ public class BombManager : ManagerClass
         sprite_loc = "sci-fi-effects/explosion";
         this.sprites = Resources.LoadAll<Sprite>(sprite_loc);
         this.bomb_amt = 5;
+        this.explosionRadius = 3.0f;
 
         isActive = false;
         isDetonated = false;
@@ -44,7 +46,7 @@ public class BombManager : ManagerClass
     void Update()
     {
 
-        if (isDetonated)
+        if (isDetonated)// why is this in update smh
         {
             updateSprite();
             float radius = 5.00f;
@@ -141,7 +143,17 @@ public class BombManager : ManagerClass
             this.bombObject.transform.localScale = new Vector2(2, 2);
             this.spriteRenderer.sprite = sprites[currentSprite];
 
+            List<Player> enemies = myPlayer.getEnemies(myPlayer);
+            foreach(Player p in enemies)
+            {
+                Vector2 playerPos = p.gameObject.transform.position;
+                Vector2 bombPos = bombObject.transform.position;
+                if(Vector2.Distance(playerPos, bombPos) < explosionRadius)
+                {
+                    p.healthManager.minusHP(32);
+                }
 
+            }
             Destroy(bombObject, 0.5f);
 
 
@@ -152,9 +164,9 @@ public class BombManager : ManagerClass
     }
 
      private void checkRadius(Vector2 location, float radius, int dmgAmt)
-        {
-            
-        }
+    {
+            // this is not needed
+    }
 
     public int getBombAmt()
     {

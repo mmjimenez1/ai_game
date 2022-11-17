@@ -16,8 +16,6 @@ public class Missile : MonoBehaviour
     {
         origin = new GameObject("Bullet Container");
         this.transform.SetParent(origin.transform);
-        a = 2f;
-        b = 1f;
         w = 2f;
         launched = false;
     }
@@ -88,13 +86,14 @@ public class Missile : MonoBehaviour
         print("Angle: " + slopeAngle + " + " + rawAngle + " = " + t0);
 
         float invertedSlope = Mathf.Tan(t0 * Mathf.PI / 180f);
+        t = t0;
         float x = objectiveDirection.magnitude / 2;
         float y = -x * invertedSlope;
         origin.transform.position = new Vector2(x, y) + from;
         origin.transform.rotation = Quaternion.Euler(0f, 0f, slopeAngle);
         this.transform.position = from;
         print("Center: " + new Vector2(x, y));
-        this.a = this.b = x;
+        a = b = x;
 
         setLaunchStatus(true);
     }

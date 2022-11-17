@@ -45,6 +45,7 @@ public class MovementManager : ManagerClass
             Vector2 mousePos = ray.origin;
             Vector2 pos = this.transform.position;
             direction = mousePos - pos;
+            print("Mouse position: " + mousePos);
             if (direction.magnitude < 0.1f)
                 direction = new Vector2(0f, 0f);
         }

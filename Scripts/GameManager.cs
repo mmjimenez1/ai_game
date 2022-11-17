@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         uIManager = this.gameObject.AddComponent<UIManager>();
-        timer = this.gameObject.AddComponent<Timer>();
+        //timer = this.gameObject.AddComponent<Timer>();
         //inv = this.gameObject.AddComponent<Inventory>();
         players = new List<Player>();
         this.players.Add(new Player("Player1", "neptune"));

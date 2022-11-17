@@ -21,7 +21,7 @@ public class Timer : ManagerClass
 
     public float timeRemaining = 60.00f;
     public string timerText;
-    private bool isRunning= true;
+    private bool isRunning = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -46,8 +46,8 @@ public class Timer : ManagerClass
         GUI.skin = guiSkin;
         guiStyle.fontSize = 65; //change the font size
         guiStyle.normal.textColor = Color.white;
-        Rect position = new Rect((Screen.width-50)/2, 30, 100, 200);
-        int cur_time = (int) timeRemaining;
+        Rect position = new Rect((Screen.width - 50) / 2, 30, 100, 200);
+        int cur_time = (int)timeRemaining;
         string timeText = cur_time.ToString();
         GUI.Label(position, timeText, guiStyle);
     }
@@ -76,7 +76,7 @@ public class Timer : ManagerClass
             myPlayer.energyManager.resetHealthPoints();
 
         }
-        
+
     }
 
     public bool isTimeRunning()
@@ -84,5 +84,5 @@ public class Timer : ManagerClass
         return isRunning;
     }
 
-    
+
 }
