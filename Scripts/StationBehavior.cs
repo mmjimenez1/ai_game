@@ -5,8 +5,11 @@ using UnityEngine;
 public class StationBehavior : ManagerClass
 {
     private SpriteRenderer stationImg;
+    private SpriteRenderer healthImg;
     private GameObject stationObject;
-    private Vector2 station_pos;
+    private GameObject healthObject;
+
+    public Vector2 station_pos;
     public bool isHealth;
     private int waitTime;
     private float counter;
@@ -20,9 +23,17 @@ public class StationBehavior : ManagerClass
     {
 
         this.stationObject = new GameObject("station");
+        this.healthObject = new GameObject("health");
+        this.healthObject.transform.parent = this.stationObject.transform;
+        this.healthObject.transform.localScale = new Vector2(0.05510619f, 0.05510619f);
         this.stationImg = this.stationObject.AddComponent<SpriteRenderer>();
+        this.healthImg = this.healthObject.AddComponent<SpriteRenderer>(); 
         this.stationImg.sprite = Resources.Load("sci-fi-effects/rotators/rotator1B", typeof(Sprite)) as Sprite;
+        this.healthImg.sprite = Resources.Load("health", typeof(Sprite)) as Sprite;
+
         this.stationImg.sortingOrder = 3;
+        this.healthImg.sortingOrder = 5;
+        this.stationImg.color = new Color32(255,0,0,255);
         this.counter = 0;
         this.waitTime = 5;
         this.isSpawned = false;
@@ -49,7 +60,6 @@ public class StationBehavior : ManagerClass
         this.station_pos = pos;
         this. isSpawned = true;
         counter = waitTime;
-        
     }
 
     void increaseHealth()
@@ -62,11 +72,8 @@ public class StationBehavior : ManagerClass
             {
                 p.healthManager.plusHP(10);
             }
-
         }
     }
-
-
 
 
 }
