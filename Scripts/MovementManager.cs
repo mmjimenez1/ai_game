@@ -5,8 +5,8 @@ using UnityEngine.AI;
 
 public class MovementManager : ManagerClass
 {
-    public float speed = 10.0f;
-    public float baseSpeed = 10.0f;
+    public float speed = 15.0f;
+    public float baseSpeed = 15.0f;
     public Vector2 direction;
 
     NavMeshAgent agent;

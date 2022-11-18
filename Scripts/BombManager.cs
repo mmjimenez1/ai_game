@@ -19,6 +19,7 @@ public class BombManager : ManagerClass
     private float flunctuationTime;
     public int bomb_amt;
     public float explosionRadius;
+    public int bombDamage;
 
     Vector2 node_location;
 
@@ -30,8 +31,9 @@ public class BombManager : ManagerClass
         bomb_location = "bomb";
         sprite_loc = "sci-fi-effects/explosion";
         this.sprites = Resources.LoadAll<Sprite>(sprite_loc);
-        this.bomb_amt = 5;
-        this.explosionRadius = 3.0f;
+        this.bomb_amt = 50;
+        this.explosionRadius = 2.2f;
+        this.bombDamage = 20;
 
         isActive = false;
         isDetonated = false;
@@ -49,10 +51,7 @@ public class BombManager : ManagerClass
         if (isDetonated)// why is this in update smh
         {
             updateSprite();
-            float radius = 5.00f;
-            int damage = 10;
 
-            checkRadius(node_location,radius ,damage);
         }
 
         node_location = myPlayer.gameObject.transform.position;
@@ -95,13 +94,11 @@ public class BombManager : ManagerClass
         this.spriteRenderer = this.bombObject.AddComponent<SpriteRenderer>();
         this.spriteRenderer.sprite = Resources.Load(bomb_location, typeof(Sprite)) as Sprite;
         this.bombObject.transform.localScale = new Vector2(0.092023f, 0.07978807f);
-        //this.bombObject.SetActive(false);
     }
 
     private void dropBomb(Vector2 cur_location)
     {
-        //if (myPlayer.energyManager.isEnough(ep_cost))
-        //{
+        
         if (bomb_amt > 0)
         {
             if (!isActive && Input.GetKeyDown(myPlayer.controls["Bomb"]))
@@ -115,7 +112,6 @@ public class BombManager : ManagerClass
                 isActive = true;
                 bombObject.transform.position = cur_location;
                 this.bomb_amt = this.bomb_amt - 1;
-                //myPlayer.energyManager.minusEP(ep_cost);
 
 
             }
@@ -124,11 +120,6 @@ public class BombManager : ManagerClass
         {
             Debug.Log("no more bombs to drop");
         }
-        //}
-        //else
-        //{
-        //    Debug.Log("not enough energy for dropping bombs");
-        //}
         
     }
 
@@ -143,30 +134,24 @@ public class BombManager : ManagerClass
             this.bombObject.transform.localScale = new Vector2(2, 2);
             this.spriteRenderer.sprite = sprites[currentSprite];
 
-            List<Player> enemies = myPlayer.getEnemies(myPlayer);
-            foreach(Player p in enemies)
+            Vector2 bombPos = bombObject.transform.position;
+
+            List<Player> players = myPlayer.gameManager.players;
+            foreach(Player p in players)
             {
                 Vector2 playerPos = p.gameObject.transform.position;
-                Vector2 bombPos = bombObject.transform.position;
                 if(Vector2.Distance(playerPos, bombPos) < explosionRadius)
                 {
-                    p.healthManager.minusHP(32);
+                    p.healthManager.minusHP(bombDamage);
                 }
 
             }
             Destroy(bombObject, 0.5f);
 
-
-            //bombObject.SetActive(false);
-
-
         }
     }
 
-     private void checkRadius(Vector2 location, float radius, int dmgAmt)
-    {
-            // this is not needed
-    }
+
 
     public int getBombAmt()
     {

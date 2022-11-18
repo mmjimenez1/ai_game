@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     public List<Player> players;
     public UIManager uIManager;
     public Timer timer;
+    public StationBehavior station;
     //public Inventory inv;
 
     // Start is called before the first frame update
@@ -53,16 +54,17 @@ public class GameManager : MonoBehaviour
                 });
             }
         });
+        station = this.gameObject.AddComponent<StationBehavior>();
+        station.lisPlayers = players;
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        //if (timer.isTimeRunning())
-        //{
-        //}
+       
 
     }
+
 
  }
