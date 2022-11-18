@@ -19,7 +19,6 @@ public class Player
     public MissileManager missileManager;
     public UIManager uiManager;
     public Inventory inv;
-
     public Dictionary<string, KeyCode> controls;
 
     public Player(string username, string spriteLocation)
@@ -104,6 +103,16 @@ public class Player
             }
         }
         return enemies;
+    }
+
+    public List<Player> getPlayers()
+    {
+        List<Player> players = new List<Player>();
+        foreach (Player player in gameManager.players)
+        {
+                players.Add(player);
+        }
+        return players;
     }
 
     public float getDistanceToPlayer(Player p)

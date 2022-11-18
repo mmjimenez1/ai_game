@@ -19,7 +19,7 @@ public class Timer : ManagerClass
     private GameObject timerContainer;
     public GameObject text;
 
-    public float timeRemaining = 60.00f;
+    public float timeRemaining = 20.00f;
     public string timerText;
     private bool isRunning = true;
     // Start is called before the first frame update
@@ -71,10 +71,9 @@ public class Timer : ManagerClass
         else
         {
             Debug.Log("Time ran out reseting");
-
-            myPlayer.healthManager.resetHealthPoints();
-            myPlayer.energyManager.resetHealthPoints();
-
+            //myPlayer.healthManager.resetHealthPoints();
+            //myPlayer.energyManager.resetHealthPoints();
+            //Application.Quit();
         }
 
     }

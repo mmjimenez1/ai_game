@@ -22,10 +22,8 @@ public class HealthManager : ManagerClass
 
     }
 
-
     public int getHealthPoints()
     {
-
         return healthPoints;
     }
 
