@@ -136,7 +136,7 @@ public class BombManager : ManagerClass
 
             Vector2 bombPos = bombObject.transform.position;
 
-            List<Player> players = myPlayer.gameManager.players;
+            List<Player> players = GameManager.players;
             foreach(Player p in players)
             {
                 Vector2 playerPos = p.gameObject.transform.position;

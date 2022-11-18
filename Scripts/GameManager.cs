@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public List<Player> players;
+    public static List<Player> players;
+    public static Dictionary<string, Player> playerDictionary;
+
     public UIManager uIManager;
     public Timer timer;
     public StationBehavior station;
@@ -17,11 +19,10 @@ public class GameManager : MonoBehaviour
         //timer = this.gameObject.AddComponent<Timer>();
         //inv = this.gameObject.AddComponent<Inventory>();
         players = new List<Player>();
-        this.players.Add(new Player("Player1", "neptune"));
-        this.players.Add(new Player("Player2", "jupiter"));
+        players.Add(new Player("Player1", "neptune"));
+        players.Add(new Player("Player2", "jupiter"));
         players.ForEach(p => {
-            Debug.Log(p.username);
-            p.gameManager = this;
+            //p.gameManager = this;
             if (p.username == "Player1")
                 p.uiManager.isPlayer1 = true;
                 //p.inv.isplayer1 = true;
@@ -58,6 +59,17 @@ public class GameManager : MonoBehaviour
         station = this.gameObject.AddComponent<StationBehavior>();
         station.lisPlayers = players;
 
+        playerDictionary = GetPlayerDictionary();
+    }
+
+    private Dictionary<string, Player> GetPlayerDictionary()
+    {
+        Dictionary<string, Player> dict = new Dictionary<string, Player>();
+        foreach (Player p in players)
+        {
+            dict.Add(p.username, p);
+        }
+        return dict;
     }
 
     // Update is called once per frame

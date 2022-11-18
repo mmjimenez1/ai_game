@@ -68,9 +68,4 @@ public class MovementManager : ManagerClass
     {
         return baseSpeed;
     }
-
-    //public void setPlayer(Player p)
-    //{
-    //    this.myPlayer = p;
-    //}
 }

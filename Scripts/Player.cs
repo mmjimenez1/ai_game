@@ -7,8 +7,9 @@ public class Player
     public string username;
     public GameObject gameObject;
     public SpriteRenderer spriteRenderer;
-    public GameManager gameManager;
+    //public GameManager gameManager;
 
+    public PlayerManager playerManager;
     public MovementManager movementManager;
     public BoostManager boostManager;
     public teleport teleport;
@@ -26,11 +27,20 @@ public class Player
     {
         this.username = username;
         this.gameObject = new GameObject("Player " + this.username);
+        this.gameObject.tag = "Player";
 
         this.spriteRenderer = this.gameObject.AddComponent<SpriteRenderer>();
         this.spriteRenderer.sprite = Resources.Load(spriteLocation, typeof(Sprite)) as Sprite;
         this.spriteRenderer.sortingOrder = 1;
 
+        CircleCollider2D collider = this.gameObject.AddComponent<CircleCollider2D>();
+        collider.isTrigger = true;
+        collider.radius = 0.5f;
+        //Rigidbody2D rigid = this.gameObject.AddComponent<Rigidbody2D>();
+        //rigid.isKinematic = true;
+
+        this.playerManager = this.gameObject.AddComponent<PlayerManager>();
+        this.playerManager.setPlayer(this);
         this.movementManager = this.gameObject.AddComponent<MovementManager>();
         this.movementManager.setPlayer(this);
         this.boostManager = this.gameObject.AddComponent<BoostManager>();
@@ -96,10 +106,10 @@ public class Player
         return this.username;
     }
 
-    public List<Player> getEnemies(Player p)
+    public static List<Player> getEnemies(Player p)
     {
         List<Player> enemies = new List<Player>();
-        foreach (Player player in gameManager.players)
+        foreach (Player player in GameManager.players)
         {
             if (player.username != p.username)
             {
@@ -112,7 +122,7 @@ public class Player
     public List<Player> getPlayers()
     {
         List<Player> players = new List<Player>();
-        foreach (Player player in gameManager.players)
+        foreach (Player player in GameManager.players)
         {
             players.Add(player);
         }
@@ -148,5 +158,13 @@ public class Player
     public bool isplayer1()
     {
         return username == "Player1";
+    }
+}
+
+public class PlayerManager : ManagerClass
+{
+    public Player GetPlayer()
+    {
+        return myPlayer;
     }
 }
