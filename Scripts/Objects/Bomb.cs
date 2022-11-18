@@ -25,7 +25,7 @@ public class Bomb : MonoBehaviour
         sprite_loc = "sci-fi-effects/explosion";
         this.sprites = Resources.LoadAll<Sprite>(sprite_loc);
         this.explosionRadius = 3.0f;
-        this.bombDamage = 20;
+        this.bombDamage = 24;
         isDetonated = false;
         fps = 16;
 
@@ -46,7 +46,7 @@ public class Bomb : MonoBehaviour
 
     private void updateSprite()
     {
-        Debug.Log("explosion");
+        //Debug.Log("explosion");
 
         flunctuationTime += Time.deltaTime;
         float fluctuationFrequency = 1f / fps;
@@ -68,7 +68,6 @@ public class Bomb : MonoBehaviour
     // public so it can be called from BombManager
     public void activateBomb()
     {
-        Debug.Log("detonating");
         isDetonated = true;
         currentSprite = 0;
         this.gameObject.transform.localScale = new Vector2(2f, 2f);
@@ -82,9 +81,32 @@ public class Bomb : MonoBehaviour
         foreach (Player p in players)
         {
             Vector2 playerPos = p.gameObject.transform.position;
+            // check if it's within radius
             if (Vector2.Distance(playerPos, bombPos) < explosionRadius)
             {
-                p.healthManager.minusHP(bombDamage);
+                // assume it's shielded and divide damage by two
+                int remainingDamage = bombDamage / 2;
+                // check if the shield is active
+                if (p.shieldManager.isShieldActive())
+                {
+                    Vector2 playerDirection = playerPos - bombPos;
+                    // check if the shield is in the way of the bomb
+                    float angle = Vector2.Angle(playerDirection, p.shieldManager.getTransformUpVector());
+                    // the angle between the player-bomb and the shield has to be >= 90 degrees to be shielded
+                    if(angle >= 90f)
+                    {
+                        // if shielded take half of the damage as energy
+                        remainingDamage -= p.energyManager.getEnergyPoints();
+                        p.energyManager.minusEP(bombDamage / 2);
+                        // check if the player has enough energy to absorb the explosion
+                        // if it's >=0 then deal the remaining damage as health
+                        if(remainingDamage < 0)
+                            continue;
+                    }
+                }
+                // if not shielded take all of the damage as health
+                // multiply back the damage by two
+                p.healthManager.minusHP(remainingDamage * 2);
             }
         }
     }

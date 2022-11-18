@@ -151,4 +151,19 @@ public class ShieldManager : ManagerClass
         }
         return false;
     }
+
+    public float getRotationAngle()
+    {
+        return shieldContainer.transform.rotation.eulerAngles.z;
+    }
+
+    public Vector2 getTransformUpVector()
+    {
+        return shieldContainer.transform.up;
+    }
+
+    public bool isShieldActive()
+    {
+        return isActive;
+    }
 }
