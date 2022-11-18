@@ -101,6 +101,7 @@ public class LaserManager : ManagerClass
             updatePlayerEnergy();
         }
     }
+
     void updateStatus()
     {
         if (Input.GetKey(laserKey))
