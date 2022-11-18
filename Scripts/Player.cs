@@ -17,6 +17,7 @@ public class Player
     public BombManager explosion;
     public ShieldManager shieldManager;
     public MissileManager missileManager;
+    public LaserManager laserManager;
     public UIManager uiManager;
     public Inventory inv;
     public Dictionary<string, KeyCode> controls;
@@ -46,6 +47,8 @@ public class Player
         this.shieldManager.setPlayer(this);
         this.missileManager = this.gameObject.AddComponent<MissileManager>();
         this.missileManager.setPlayer(this);
+        this.laserManager = this.gameObject.AddComponent<LaserManager>();
+        this.laserManager.setPlayer(this);
         this.uiManager = this.gameObject.AddComponent<UIManager>();
         this.uiManager.setPlayer(this);
         this.inv = this.gameObject.AddComponent<Inventory>();
@@ -76,6 +79,7 @@ public class Player
             { "Boost", KeyCode.Space},
             { "Bomb", KeyCode.E},
             { "Teleport", KeyCode.Q},
+            { "Laser", KeyCode.R},
 
             { "Shield", KeyCode.Tab},
             { "Missile", KeyCode.LeftShift},
@@ -110,7 +114,7 @@ public class Player
         List<Player> players = new List<Player>();
         foreach (Player player in gameManager.players)
         {
-                players.Add(player);
+            players.Add(player);
         }
         return players;
     }

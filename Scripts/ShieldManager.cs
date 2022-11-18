@@ -14,6 +14,7 @@ public class ShieldManager : ManagerClass
     private GameObject shieldObject;
     private GameObject shieldContainer;
 
+    // sprite related variables
     private SpriteRenderer spriteRenderer;
     private Sprite[] sprites;
     private int currentSprite;

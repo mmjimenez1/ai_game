@@ -44,6 +44,7 @@ public class GameManager : MonoBehaviour
                     { "Boost", KeyCode.RightShift},
                     { "Bomb", KeyCode.LeftBracket },
                     { "Teleport", KeyCode.O},
+                    { "Laser", KeyCode.RightBracket},
 
                     { "Shield", KeyCode.I},
                     { "Missile", KeyCode.Comma},

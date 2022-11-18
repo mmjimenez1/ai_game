@@ -34,7 +34,7 @@ public class StationBehavior : ManagerClass
         if (isSpawned)
         {
             increaseHealth();
-            Debug.Log("station spawned");
+            //Debug.Log("station spawned");
         }
         else
         {
