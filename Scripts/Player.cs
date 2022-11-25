@@ -15,7 +15,7 @@ public class Player
     public teleport teleport;
     public HealthManager healthManager;
     public EnergyManager energyManager;
-    public BombManager explosion;
+    public BombManager bombManager;
     public ShieldManager shieldManager;
     public MissileManager missileManager;
     public LaserManager laserManager;
@@ -47,8 +47,8 @@ public class Player
         this.boostManager.setPlayer(this);
         this.teleport = this.gameObject.AddComponent<teleport>();
         this.teleport.setPlayer(this);
-        this.explosion = this.gameObject.AddComponent <BombManager>();
-        this.explosion.setPlayer(this);
+        this.bombManager = this.gameObject.AddComponent <BombManager>();
+        this.bombManager.setPlayer(this);
         this.healthManager = this.gameObject.AddComponent<HealthManager>();
         this.healthManager.setPlayer(this);
         this.energyManager = this.gameObject.AddComponent<EnergyManager>();

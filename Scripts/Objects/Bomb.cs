@@ -46,8 +46,6 @@ public class Bomb : MonoBehaviour
 
     private void updateSprite()
     {
-        //Debug.Log("explosion");
-
         flunctuationTime += Time.deltaTime;
         float fluctuationFrequency = 1f / fps;
         if (flunctuationTime > fluctuationFrequency)

@@ -7,41 +7,40 @@ using UnityEngine.UI;
 public class Inventory : ManagerClass
 {
     public List<Item> items;
-    //public bool isplayer1;
-
     private void Start()
     {
         Inventory inventory = this;
 
         this.items = new List<Item>();
-        //bool player1 = isplayer1;
         string username = myPlayer.username;
 
         // add bomb-
         string bomb_spriteLoc = "bomb-2-512";
         float bomb_itemLoc = -8.99f;
         float bomb_cd = myPlayer.teleport.cur_tel_cool_down; 
-        inventory.items.Add(new Item(myPlayer, "bomb",bomb_spriteLoc, bomb_itemLoc, 0.1f, false,false, username, bomb_cd));
+        inventory.items.Add(new Item(myPlayer, "bomb",bomb_spriteLoc, bomb_itemLoc, 0.1f, true,false, username, bomb_cd));
 
         // add missile-
         string missile_spriteLoc = "missile";
         float missile_pos = -8.24f;
-        inventory.items.Add(new Item(myPlayer,"missile", missile_spriteLoc,missile_pos ,0.1f, false, false, username, 0));
+        inventory.items.Add(new Item(myPlayer,"missile", missile_spriteLoc,missile_pos ,0.1f, true, false, username, 0));
 
         // add lasers
-        string laser_spriteLoc = "lasers";
-        float laser_pos = -7.5f;
-        inventory.items.Add(new Item(myPlayer,"laser", laser_spriteLoc, laser_pos, 0.1f, false, false, username, 0));
+        //string laser_spriteLoc = "lasers";
+        //float laser_pos = -7.5f;
+        //inventory.items.Add(new Item(myPlayer,"laser", laser_spriteLoc, laser_pos, 0.1f, false, false, username, 0));
 
         // add teleport cool_down
         string teleport_spriteLoc = "gem/0003";
-        float tele_pos = -6.76f;
+        //float tele_pos = -6.76f;
+        float tele_pos = -7.5f;
         //float bomb_cd = myPlayer.teleport.cur_tel_cool_down;
         inventory.items.Add(new Item(myPlayer, "teleport", teleport_spriteLoc, tele_pos, 1.5f, false, true, username, 0));
 
         // add shield cool_down
         string speed_spriteLoc = "speed";
-        float speed_pos = -6.01f;
+        //float speed_pos = -6.01f;
+        float speed_pos = -6.76f;
         //float bomb_cd = myPlayer.teleport.cur_tel_cool_down;
         inventory.items.Add(new Item(myPlayer, "speed", speed_spriteLoc, speed_pos, 0.1f, false, true, username, 0));
     }
@@ -51,8 +50,10 @@ public class Inventory : ManagerClass
     {
         float curTime = Time.deltaTime;
 
+        items[0].updateAmmoIMG(myPlayer.bombManager.bomb_amt);
+        items[1].updateAmmoIMG(myPlayer.missileManager.ammunition);
+        items[2].updateCoolDownIMG(curTime);
         items[3].updateCoolDownIMG(curTime);
-        items[4].updateCoolDownIMG(curTime);
 
 
     }
@@ -128,15 +129,16 @@ public class Item
         this.mask.GetComponent<Image>().color = new Color32(29, 28, 79, 0);
 
         makeCanvas(5, ammo, cd);
-
     }
 
     private void makeCanvas(float cur_text,bool ammo, bool cooldown)
     {
-
         if (ammo)
         {
-
+            this.mask.GetComponent<Image>().color = new Color32(255, 255, 255, 0);
+            this.img1 = Resources.Load<Sprite>("sci-fi-effects/yellow_cloud/09");
+            this.mask.transform.parent = this.maksContainer.transform;
+            this.mask.sprite = img1;
         }
 
         if (cooldown)
@@ -147,19 +149,21 @@ public class Item
             this.mask.sprite = img1;
             this.mask.type = Image.Type.Filled;
             this.mask.fillAmount = 1.00f;
-
-            //if(cur_text < 0.0f)
-            //{
-            //    this.mask.fillAmount = 0.00f;
-
-            //}
-            //else
-            //{
-            //    this.mask.fillAmount = 1.00f;
-            //}
-
         }
     }
+
+    public void updateAmmoIMG(int amt)
+    {
+        if (amt >0)
+        {
+            this.mask.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+        }
+        else
+        {
+           this.mask.GetComponent<Image>().color = new Color32(29, 28, 79, 0);
+        }
+    }
+
 
     public void updateCoolDownIMG(float time)
     {
@@ -200,13 +204,7 @@ public class Item
                 this.mask.fillAmount = 1.00f;
             }
         }
-        
-
-
-        
     }
-
-    //public vo
 
 
 }
