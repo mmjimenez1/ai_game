@@ -16,8 +16,9 @@ public class UIManager : ManagerClass
     Rect windowRect = new Rect(0, 0, 400, 380);
     bool toggleTxt = false;
     string stringToEdit = "Text Label";
-    string textToEdit = "TextBox:\nHello World\nI've got few lines...";
-  
+    string textToEdit = "\n Defeat other player! \n" +
+        "Player 1 Controls -\n        Move: (click and drag planet)\n        Dash: move + space\n            * Increases the speed of the player by 3.\n            * Has a cool down timee of 5 seconds, before it can be used again.\n            * Damage:\n        Teleport: Q\n            * Drops a node, and teleports player\n            * Has a 5 second cool down period before teleport can be used again.\n            * Damage:\n       Bomb: E\n            * drops a bomb, and detonates\n            * If no bombs are available, can pick up with E.\n            * Damage:\n        Missiles: Left Shift\n            * Launches missiles that never miss enemy player.\n            * Damage:\n        Lasers: R\n            * shoots lasers.\n            * Damage:\n        Shield: Tab\n            * Displays shield\n            * Damage:\n\n    Player 2 Controls -\n        Move: (up, left, right, down, arrows)\n        Dash: move + space\n        Teleport: Q\n            * Drops a node, and teleports player\n            * Has a 5 second cool down period before teleport can be used again.\n            * Damage:\n        Drop a bomb: E\n            * drops a bomb, and detonates\n            * If no bombs are available, can pick up with E.\n            * Damage:\n\n        Missiles: Left Shift\n            * Launches missiles that never miss enemy player.\n            * Damage:\n\n        Lasers: R\n            * shoots lasers.\n            * Damage:\n\n        Shield: Tab\n            * Displays a shield.\n            * Shield can be rotated using I + ' or I + L or I + ; or I +p\n            * Damage:";
+    bool windowOpen = true;
 
     //private SpriteRenderer srEOutline;
     private SpriteRenderer srEBlue;
@@ -139,41 +140,62 @@ public class UIManager : ManagerClass
     void OnGUI()
     {
         GUI.skin = guiSkin;
-        //windowRect = GUI.Window(0, windowRect, DoMyWindow, "Play Game");
+        if (windowOpen)
+        {
+            windowRect = GUI.Window(0, windowRect, DoMyWindow, "");
+        }
+        
     }
 
 
     void DoMyWindow(int windowID)
     {
+        if (!GUI.Button(new Rect(20, 10, 100, 20), "X"))
+        {
+            //GUI.Box(new Rect(10, 50, 120, 250), "hi");
+            GUI.Label(new Rect(165, 20, 200, 200), "Play Game");
 
-        //GUI.Box(new Rect(10, 50, 120, 250), "hi");
-        GUI.Label(new Rect(20, 60, 100, 20), "Player Name: ");
-        GUI.Button(new Rect(20, 130, 100, 20), "Save");
+            GUI.Label(new Rect(20, 60, 100, 20), "Player 1 ");
+            GUI.Toggle(new Rect(20, 90, 180, 100), false, "");
 
-        stringToEdit = GUI.TextField(new Rect(15, 90, 110, 20), stringToEdit, 25);
-        //hSliderValue = GUI.HorizontalSlider(new Rect(15, 175, 110, 30), hSliderValue, 0.0f, 10.0f);
+            GUI.Label(new Rect(20, 200, 100, 20), "Player 2");
+            GUI.Toggle(new Rect(20, 240, 180, 100), false, "");
+            //GUI.Button(new Rect(20, 130, 100, 20), "Save");
 
-        //vSliderValue = GUI.VerticalSlider(new Rect(140, 50, 20, 200), vSliderValue, 100.0f, 0.0f);
+            //stringToEdit = GUI.TextField(new Rect(15, 90, 110, 20), stringToEdit, 25);
+            //hSliderValue = GUI.HorizontalSlider(new Rect(15, 175, 110, 30), hSliderValue, 0.0f, 10.0f);
 
-
-        toggleTxt = GUI.Toggle(new Rect(165, 50, 100, 30), toggleTxt, "Instructions: ");
-        textToEdit = GUI.TextArea(new Rect(165, 90, 185, 100), textToEdit, 200);
-
-        //GUI.Label(new Rect(180, 215, 100, 20), "ScrollView");
-        //scrollPosition = GUI.BeginScrollView(new Rect(180, 235, 160, 100), scrollPosition, new Rect(0, 0, 220, 200));
-        GUI.Button(new Rect(20, 10, 100, 20), "X");
-        //GUI.Button(new Rect(120, 10, 100, 20), "Top-right");
-        //GUI.Button(new Rect(0, 170, 100, 20), "Bottom-left");
-        //GUI.Button(new Rect(120, 170, 100, 20), "Bottom-right");
-        GUI.EndScrollView();
-
-        GUI.Button(new Rect(150, 300, 100, 20), "Start");
-
-        //hSbarValue = GUI.HorizontalScrollbar(new Rect(10, 360, 360, 30), hSbarValue, 5.0f, 0.0f, 10.0f);
-        //vSbarValue = GUI.VerticalScrollbar(new Rect(380, 25, 30, 300), vSbarValue, 1.0f, 30.0f, 0.0f);
+            //vSliderValue = GUI.VerticalSlider(new Rect(140, 50, 20, 200), vSliderValue, 100.0f, 0.0f);
 
 
-        //GUI.DragWindow(new Rect(0, 0, 10000, 10000));
+            toggleTxt = GUI.Toggle(new Rect(165, 50, 100, 30), toggleTxt, "Instructions: ");
+            textToEdit = GUI.TextArea(new Rect(165, 90, 235, 250), textToEdit, 500);
+
+            //GUI.Label(new Rect(180, 215, 100, 20), "ScrollView");
+            //scrollPosition = GUI.BeginScrollView(new Rect(180, 235, 160, 100), scrollPosition, new Rect(0, 0, 220, 200));
+
+            //GUI.Button(new Rect(120, 10, 100, 20), "Top-right");
+            //GUI.Button(new Rect(0, 170, 100, 20), "Bottom-left");
+            //GUI.Button(new Rect(120, 170, 100, 20), "Bottom-right");
+            GUI.EndScrollView();
+
+            //GUI.Button(new Rect(150, 300, 100, 20), "Start");
+
+            //hSbarValue = GUI.HorizontalScrollbar(new Rect(10, 360, 360, 30), hSbarValue, 5.0f, 0.0f, 10.0f);
+            //vSbarValue = GUI.VerticalScrollbar(new Rect(380, 25, 30, 300), vSbarValue, 1.0f, 30.0f, 0.0f);
+            //GUI.DragWindow(new Rect(0, 0, 10000, 10000));
+            
+            
+        }
+        else
+        {
+            windowOpen = false;
+        }
+    }
+
+    void closeWindow()
+    {
+        //new OnButtonClick
     }
 
 

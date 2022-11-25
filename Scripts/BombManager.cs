@@ -17,7 +17,7 @@ public class BombManager : ManagerClass
     void Start()
     {
         this.isActive = false;
-        this.bomb_amt = 50;
+        this.bomb_amt = 5;
     }
 
 

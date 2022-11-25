@@ -9,6 +9,7 @@ public class Timer : ManagerClass
 {
     public GUISkin guiSkin;
     private GUIStyle guiStyle = new GUIStyle();
+    public bool gameActive = false;
     private int x;
     private int y;
 

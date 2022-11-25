@@ -8,13 +8,14 @@ public class GameManager : MonoBehaviour
     public static Dictionary<string, Player> playerDictionary;
 
     public UIManager uIManager;
-    public Timer timer;
+    //public Timer timer;
     public StationBehavior station;
     //public Inventory inv;
 
     // Start is called before the first frame update
     void Start()
     {
+
         uIManager = this.gameObject.AddComponent<UIManager>();
         //timer = this.gameObject.AddComponent<Timer>();
         //inv = this.gameObject.AddComponent<Inventory>();
@@ -57,7 +58,6 @@ public class GameManager : MonoBehaviour
             }
         });
         station = this.gameObject.AddComponent<StationBehavior>();
-        station.lisPlayers = players;
 
         playerDictionary = GetPlayerDictionary();
     }
@@ -75,8 +75,27 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+        //findWinner();
+    }
 
+    private string findWinner()
+    {
+        List<Player> winners = players;
+        for (int i = 0; i < winners.Count; i++)
+        {
+            Player p = winners[i];
+            //Debug.Log("checking for winenrs");
+            if (p.healthManager.getHealthPoints() == 0)
+            {
+                winners.Remove(p);
+                Debug.Log(winners[0].username);
+            }
+            
+        }
+        string winner = winners[0].username;
+        Debug.Log(winner);
+        return winner;
+      
     }
 
 
