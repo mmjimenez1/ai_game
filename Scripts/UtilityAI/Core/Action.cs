@@ -23,9 +23,5 @@ public abstract class Action : ScriptableObject
         score = 0;
     }
 
-    public void doAction()
-    {
-
-    }
-
+    public abstract void doAction();
 }
