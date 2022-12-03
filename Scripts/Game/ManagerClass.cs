@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ManagerClass : MonoBehaviour
+public abstract class ManagerClass : MonoBehaviour
 {
     protected Player myPlayer;
 
