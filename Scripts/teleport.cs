@@ -71,6 +71,7 @@ public class teleport : ManagerClass
             teleportObject.SetActive(false);
 
         }
+
         // decrease cool_down counter
         if (cur_tel_cool_down > 0f)
         {
@@ -118,6 +119,8 @@ public class teleport : ManagerClass
 
         }
     }
+
+
 
     public bool getStatus()
     {

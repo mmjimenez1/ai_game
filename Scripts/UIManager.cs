@@ -140,10 +140,10 @@ public class UIManager : ManagerClass
     void OnGUI()
     {
         GUI.skin = guiSkin;
-        if (windowOpen)
-        {
-            windowRect = GUI.Window(0, windowRect, DoMyWindow, "");
-        }
+        //if (windowOpen)
+        //{
+        //    windowRect = GUI.Window(0, windowRect, DoMyWindow, "");
+        //}
         
     }
 

@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// AI Brain ->
+// 
 public class GameManager : MonoBehaviour
 {
     public static List<Player> players;
