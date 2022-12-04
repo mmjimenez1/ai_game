@@ -9,7 +9,6 @@ public class teleport : ManagerClass
     public bool is_dropped = false;
     public float tel_cool_down = 5.0f;
     public float cur_tel_cool_down;
-    public float timeElapsed;
 
     public int epCost;
 
@@ -35,7 +34,7 @@ public class teleport : ManagerClass
         this.spriteRenderer.sprite = sprites[cur_sprite];
         this.teleportObject.SetActive(false);
         this.spriteRenderer.sortingOrder = 0;
-        this.teleportObject.transform.localScale = new Vector2(2f,2f);
+        this.teleportObject.transform.localScale = new Vector2(2f, 2f);
         cur_tel_cool_down = 0f;
         is_dropped = false;
 
@@ -43,36 +42,36 @@ public class teleport : ManagerClass
         epCost = 10;
     }
 
-    // fix so it continues spinning after teleporting
-    // fix cool down so it starts after teleported to the location
-    // Update is called once per frame
+    
     void Update()
     {
+        manageCoolDown();
+        updateStatus();
         if (is_dropped)
         {
-            teleportObject.SetActive(true);
-
-            flunctuation_time += Time.deltaTime;
-            float flunctuationFrequency = 1f / fps;
-
-            if(flunctuation_time > flunctuationFrequency)
-            {
-                cur_sprite++;
-                if (cur_sprite >= sprites.Length)
-                {
-                    cur_sprite = 0;
-                }
-                    this.spriteRenderer.sprite = sprites[cur_sprite];
-                }
-            
+            updateNodeSprite();
         }
-        else
+    }
+
+
+    public void updateStatus()
+    {
+        if (Input.GetKeyDown(myPlayer.controls["Teleport"]))
         {
-            teleportObject.SetActive(false);
+            if (is_dropped)
+            {
+                teleport_object(node_location);
+            }
+            else
+            {
+                dropNode();
+            }
 
         }
+    }
 
-        // decrease cool_down counter
+    public void manageCoolDown()
+    {
         if (cur_tel_cool_down > 0f)
         {
             cur_tel_cool_down -= Time.deltaTime;
@@ -82,45 +81,33 @@ public class teleport : ManagerClass
             cur_tel_cool_down = 0f;
         }
 
-        if (is_dropped)
-        {
-            timeElapsed += Time.deltaTime;
-            if (timeElapsed >= 1)
-            {
-                timeElapsed--;
-            }
-        }
-
-        // if pressed q and have not dropped node
-        if (Input.GetKeyDown(myPlayer.controls["Teleport"]))
-        {
-            if (is_dropped)
-            {
-
-
-                if (cur_tel_cool_down <= 0f)
-                {
-                    teleport_object(node_location);
-                }
-                else
-                {
-                    Debug.Log("cooling..");
-                }
-            }
-            else
-            {
-               Debug.Log("storing cur pos");
-
-                node_location = myPlayer.gameObject.transform.position;
-                teleportObject.transform.position = node_location;
-                is_dropped = true;
-                timeElapsed = 0;
-            }
-
-        }
     }
 
+    public void updateNodeSprite(){
+        flunctuation_time += Time.deltaTime;
+        float flunctuationFrequency = 1f / fps;
 
+        if (flunctuation_time > flunctuationFrequency)
+        {
+            cur_sprite++;
+            if (cur_sprite >= sprites.Length)
+            {
+                cur_sprite = 0;
+            }
+            this.spriteRenderer.sprite = sprites[cur_sprite];
+        }
+
+    }
+
+    public void dropNode()
+    {
+        Debug.Log("storing cur pos");
+
+        node_location = myPlayer.gameObject.transform.position;
+        teleportObject.transform.position = node_location;
+        is_dropped = true;
+        this.teleportObject.SetActive(true);
+    }
 
     public bool getStatus()
     {
@@ -133,10 +120,11 @@ public class teleport : ManagerClass
 
     }
 
-    void teleport_object(Vector2 i_location)
+    public void teleport_object(Vector2 i_location)
     {
-        if (myPlayer.energyManager.isEnough(epCost))
+        if (cur_tel_cool_down <= 0f &&  myPlayer.energyManager.isEnough(epCost))
         {
+            this.teleportObject.SetActive(false);
             myPlayer.energyManager.minusEP(epCost);
             is_dropped = false;
             cur_tel_cool_down = tel_cool_down;
@@ -145,7 +133,12 @@ public class teleport : ManagerClass
         }
         else
         {
-            Debug.Log("not enough energy for teleport");
+            if(cur_tel_cool_down > 0)
+            {
+                Debug.Log("cooling..");
+            }
+            else
+                Debug.Log("not enough energy for teleport");
         }
         
     }

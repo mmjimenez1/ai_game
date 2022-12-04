@@ -2,17 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UseShield : MonoBehaviour
+public class UseShield : Action
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void doAction()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        throw new System.NotImplementedException();
     }
 }
