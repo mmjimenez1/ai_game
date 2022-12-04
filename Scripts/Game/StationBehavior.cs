@@ -14,7 +14,7 @@ public class StationBehavior : ManagerClass
     public bool isActive;
 
     public List<Player> lisPlayers;
-    private Vector2 station_pos;
+    public Vector2 station_pos;
 
     public float waitTime;
     public float duration;
@@ -55,16 +55,7 @@ public class StationBehavior : ManagerClass
     {
         if (!isActive)
         {
-            if (curTime > 0) 
-            {
-                this.curTime -= Time.deltaTime;
-                //Debug.Log("count down: " + curTime);
-            }
-            else 
-            {
-                this.curTime = 0f;
-                makeStation();
-            }
+            updateStationStatus();
         }
         else
         {
@@ -80,20 +71,31 @@ public class StationBehavior : ManagerClass
         }
     }
 
+    void updateStationStatus()
+    {
+        if (curTime > 0)
+        {
+            this.curTime -= Time.deltaTime;
+        }
+        else
+        {
+            this.curTime = 0f;
+            makeStation();
+        }
+    }
+
     void makeStation()
     {
         this.station_pos = new Vector2(Random.Range(-9f, 9f), Random.Range(-4.50f, 4.50f));
         this.isUsed = false;
         this.isActive = true;
         this.timeElapsed = duration;
-        //Debug.Log("making station");
         this.stationObject.transform.position = station_pos;
         this.stationObject.SetActive(true);
     }
 
     void despawn()
     {
-        //Debug.Log("Despawning at etime" + timeElapsed);
         this.isActive = false;
         this.curTime = waitTime;
         this.stationObject.SetActive(false);
