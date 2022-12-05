@@ -12,18 +12,24 @@ public class GameManager : MonoBehaviour
     public UIManager uIManager;
     //public Timer timer;
     public StationBehavior station;
+    public HealthStation healthStation;
+    public EnergyStation energyStation;
+    public BombStation bombStation;
+
     //public Inventory inv;
 
     // Start is called before the first frame update
     void Start()
     {
 
-        uIManager = this.gameObject.AddComponent<UIManager>();
+        //uIManager = this.gameObject.AddComponent<UIManager>();
         //timer = this.gameObject.AddComponent<Timer>();
         //inv = this.gameObject.AddComponent<Inventory>();
-        players = new List<Player>();
-        players.Add(new Player("Player1", "neptune"));
-        players.Add(new Player("Player2", "jupiter"));
+        players = new List<Player>
+        {
+            new Player("Player1", "neptune"),
+            new Player("Player2", "jupiter")
+        };
         players.ForEach(p => {
             //p.gameManager = this;
             if (p.username == "Player1")
@@ -60,6 +66,9 @@ public class GameManager : MonoBehaviour
             }
         });
         station = this.gameObject.AddComponent<StationBehavior>();
+        station.healthStation = healthStation;
+        station.energyStation = energyStation;
+        station.bombStation = bombStation;
 
         playerDictionary = GetPlayerDictionary();
     }

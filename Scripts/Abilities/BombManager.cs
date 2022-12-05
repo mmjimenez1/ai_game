@@ -77,6 +77,10 @@ public class BombManager : ManagerClass
         }
     }
 
+    public void pickUpBomb(int amount)
+    {
+        this.bomb_amt += amount;
+    }
 
     // uh hi
     public int getBombAmt()

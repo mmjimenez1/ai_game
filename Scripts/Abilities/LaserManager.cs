@@ -210,6 +210,7 @@ public class LaserManager : ManagerClass
             this.spriteRenderer.sprite = this.sprites[currentSprite];
         }
     }
+
     private class LaserCollision : MonoBehaviour
     {
         Player myPlayer;

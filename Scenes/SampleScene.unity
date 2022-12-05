@@ -237,8 +237,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uIManager: {fileID: 0}
-  timer: {fileID: 0}
   station: {fileID: 0}
+  healthStation: {fileID: 11400000, guid: 3e1000509be52db44871d40e2a54333c, type: 2}
+  energyStation: {fileID: 11400000, guid: b5f1d2ff02edee241b646ddfd8e0effb, type: 2}
+  bombStation: {fileID: 11400000, guid: 784cab9456593db49879cc4bccc1d425, type: 2}
 --- !u!4 &1440608216
 Transform:
   m_ObjectHideFlags: 0
