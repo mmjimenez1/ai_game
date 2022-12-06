@@ -21,7 +21,4 @@ public abstract class Consideration : ScriptableObject
     }
 
     public abstract float ScoreConsideration();
-
-
-
 }

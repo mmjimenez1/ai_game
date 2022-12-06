@@ -2,17 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UseTeleport : MonoBehaviour
+public class UseTeleport : Action
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void doAction(Player myPlayer)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        myPlayer.teleport.teleport_object(myPlayer.teleport.node_location);
     }
 }

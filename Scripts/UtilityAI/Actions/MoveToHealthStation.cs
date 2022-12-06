@@ -2,17 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveToHealthStation : MonoBehaviour
+public class MoveToHealthStation : Action
 {
-    // Start is called before the first frame update
-    void Start()
+    private Vector2 station_position;
+
+    public override void doAction(Player myPlayer)
     {
-        
+        findStation();
+        //myPlayer.movementManager.moveManager();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void findStation()
     {
-        
+        //station_position = StationBehavior.station_pos;
     }
+
+
 }

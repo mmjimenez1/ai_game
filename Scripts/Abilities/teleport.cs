@@ -5,7 +5,7 @@ using UnityEngine;
 public class teleport : ManagerClass
 {
     // teleport stuff
-    Vector2 node_location;
+    public Vector2 node_location;
     public bool is_dropped = false;
     public float tel_cool_down = 5.0f;
     public float cur_tel_cool_down;

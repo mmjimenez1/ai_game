@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // AI Brain ->
-// 
+//
 public class GameManager : MonoBehaviour
 {
     public static List<Player> players;
@@ -15,7 +15,6 @@ public class GameManager : MonoBehaviour
     public HealthStation healthStation;
     public EnergyStation energyStation;
     public BombStation bombStation;
-
     //public Inventory inv;
 
     // Start is called before the first frame update
