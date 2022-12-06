@@ -10,6 +10,8 @@ public abstract class SpawnableItem : ScriptableObject
     public float duration;
     public int pickUpAmount;
 
+    public Vector2 bounds;
+
     public Sprite containerSprite;
     public Sprite itemSprite;
     public Color containerColor;
@@ -47,6 +49,8 @@ public abstract class SpawnableItem : ScriptableObject
 
         timeElapsed = waitTime;
         container.SetActive(false);
+
+        bounds = new Vector2(9f, 4.5f);
     }
 
     protected abstract void setUpItemScale();
@@ -65,7 +69,9 @@ public abstract class SpawnableItem : ScriptableObject
 
     public void spawn()
     {
-        spawnPosition = new Vector2(Random.Range(-9f, 9f), Random.Range(-4.50f, 4.50f));
+        float x = Random.Range(-bounds.x, bounds.x);
+        float y = Random.Range(-bounds.y, bounds.y);
+        spawnPosition = new Vector2(x, y);
         isActive = true;
         timeElapsed = duration;
         container.transform.position = spawnPosition;

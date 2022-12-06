@@ -6,7 +6,7 @@ public class BombManager : ManagerClass
 {
     public bool isActive;
     private GameObject bombObject;
-    private Bomb bombComponent;
+    public Bomb bombComponent { get; private set; }
 
     public int bomb_amt;
 

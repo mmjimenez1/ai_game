@@ -1,18 +1,18 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript3 : MonoBehaviour
+[CreateAssetMenu(fileName = "EnemyInOwnBombRange", menuName = "UtilityAI/Considerations/EnemyInOwnBombRange")]
+public class EnemyInOwnBombRange : Consideration
 {
-    // Start is called before the first frame update
-    void Start()
+    public override float ScoreConsideration(AIManager aiManager)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Player player = aiManager.getPlayer();
+        float boomRadius = player.bombManager.bombComponent.explosionRadius;
+        Vector2 bombPosition = player.bombManager.bombComponent.transform.position;
+        Vector2 enemyPosition = player.getClosestPlayer().gameObject.transform.position;
+        bool inRange = Vector2.Distance(enemyPosition, bombPosition) < boomRadius;
+        return Convert.ToInt32(inRange);
     }
 }
