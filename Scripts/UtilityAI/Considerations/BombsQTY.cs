@@ -10,7 +10,7 @@ public class BombsQTY : Consideration
     public override float ScoreConsideration(AIManager aiManager)
     {
         int bombAmount = aiManager.getPlayer().bombManager.getBombAmt();
-        float enoughBombs = (float) bombAmount / 5f; ;
+        float enoughBombs = (float) bombAmount / 5f;
         score = responseCurve.Evaluate(Mathf.Clamp01(enoughBombs));
         return score;
     }

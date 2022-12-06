@@ -17,6 +17,7 @@ public class MovementManager : ManagerClass
     // Start is called before the first frame update
     void Start()
     {
+        isDestinationSet = false;
         direction = new Vector2(0f, 0f);
         baseSpeed = speed;
 
@@ -39,7 +40,7 @@ public class MovementManager : ManagerClass
 
     void updateDirection()
     {
-        if(destination != null)
+        if(isDestinationSet)
         {
             direction = destination - (Vector2) transform.position;
         }
