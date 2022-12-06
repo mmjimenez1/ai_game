@@ -12,8 +12,6 @@ public abstract class Action : ScriptableObject
     {
         get { return bestScore; }
         set { this.bestScore = Mathf.Clamp01(value); }
-
-
     }
 
     public Consideration[] considerations;
@@ -23,5 +21,5 @@ public abstract class Action : ScriptableObject
         score = 0;
     }
 
-    public abstract void doAction();
+    public abstract void doAction(AIManager aiManager);
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class UseShield : Action
 {
-    public override void doAction()
+    public override void doAction(AIManager aiManager)
     {
         throw new System.NotImplementedException();
     }

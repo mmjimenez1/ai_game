@@ -1,18 +1,14 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+[CreateAssetMenu(fileName = "HasBomb", menuName = "UtilityAI/Considerations/HasBomb")]
+public class HasBomb : Consideration
 {
-    // Start is called before the first frame update
-    void Start()
+    public override float ScoreConsideration(AIManager aiManager)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        bool hasBomb = aiManager.getPlayer().bombManager.getBombAmt() > 0;
+        return Convert.ToInt32(hasBomb);
     }
 }

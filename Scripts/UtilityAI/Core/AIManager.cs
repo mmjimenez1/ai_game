@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class EnemyManager: MonoBehaviour
+public class AIManager: ManagerClass
 {
     public AIBrain brain { get; set; }
     public Action[] possibleActions;
@@ -18,7 +18,13 @@ public class EnemyManager: MonoBehaviour
         brain = GetComponent<AIBrain>();
     }
 
+    public Player getPlayer()
+    {
+        return myPlayer;
+    }
 
-
-
+    public void GrabBomb()
+    {
+        //StartCoroutine(GrabBomb)
+    }
 }

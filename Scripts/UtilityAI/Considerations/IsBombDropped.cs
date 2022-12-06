@@ -1,18 +1,18 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript1 : MonoBehaviour
+[CreateAssetMenu(fileName = "IsBombDropped", menuName = "UtilityAI/Considerations/IsBombDropped")]
+public class IsBombDropped : Consideration
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private bool invertResponse = false;
 
-    // Update is called once per frame
-    void Update()
+    public override float ScoreConsideration(AIManager aiManager)
     {
-        
+        bool IsBombDropped = aiManager.getPlayer().bombManager.isActive;
+        if (invertResponse)
+            IsBombDropped = !IsBombDropped;
+        return Convert.ToInt32(IsBombDropped);
     }
 }

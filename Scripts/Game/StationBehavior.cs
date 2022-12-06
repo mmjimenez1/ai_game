@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class StationBehavior : ManagerClass
 {
-    public HealthStation healthStation { private get; set; }
-    public EnergyStation energyStation { private get; set; }
-    public BombStation bombStation { private get; set; }
+    public HealthStation healthStation { get; set; }
+    public EnergyStation energyStation { get; set; }
+    public BombStation bombStation { get; set; }
 
     //private SpriteRenderer stationImg;
     //private SpriteRenderer healthImg;

@@ -2,17 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DropBomb : MonoBehaviour
+[CreateAssetMenu(fileName = "DropBomb", menuName = "UtilityAI/Actions/DropBomb")]
+public class DropBomb : Action
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void doAction(AIManager aiManager)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Player player = aiManager.getPlayer();
+        player.bombManager.dropBomb();
     }
 }

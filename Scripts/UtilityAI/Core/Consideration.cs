@@ -8,7 +8,6 @@ public abstract class Consideration : ScriptableObject
     public string considerationName;
     public float totalScore;
 
-
     public float score
     {
         get { return totalScore; }
@@ -20,8 +19,5 @@ public abstract class Consideration : ScriptableObject
         score = 0;
     }
 
-    public abstract float ScoreConsideration();
-
-
-
+    public abstract float ScoreConsideration(AIManager aiManager);
 }

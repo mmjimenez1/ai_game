@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class DropNode : Action
 {
-    public override void doAction(){
+    public override void doAction(AIManager aiManager)
+    {
 
     }
 }

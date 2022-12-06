@@ -1,18 +1,14 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IsBombStrategicPos : MonoBehaviour
+[CreateAssetMenu(fileName = "IsBombStrategicPos", menuName = "UtilityAI/Considerations/IsBombStrategicPos")]
+public class IsBombStrategicPos : Consideration
 {
-    // Start is called before the first frame update
-    void Start()
+    public override float ScoreConsideration(AIManager aiManager)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        //bool IsBombStrategicPos = aiManager.getPlayer().bombManager.getBombAmt() > 0;
+        return Convert.ToInt32(IsBombStrategicPos);
     }
 }
