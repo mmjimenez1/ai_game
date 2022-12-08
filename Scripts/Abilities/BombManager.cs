@@ -1,13 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.FilePathAttribute;
 
 public class BombManager : ManagerClass
 {
     public bool isActive;
     private GameObject bombObject;
-    private Bomb bombComponent;
+    public Bomb bombComponent { get; private set; }
 
     public int bomb_amt;
 
@@ -32,7 +31,7 @@ public class BombManager : ManagerClass
         if (Input.GetKeyDown(myPlayer.controls["Bomb"]))
         {
             if (isActive)
-                activateBomb();
+                detonateBomb();
             else
                 dropBomb();
         }
@@ -44,7 +43,7 @@ public class BombManager : ManagerClass
         bombComponent = bombObject.AddComponent<Bomb>();
     }
 
-    private void dropBomb()
+    public void dropBomb()
     {
         if (bomb_amt > 0)
         {
@@ -67,7 +66,7 @@ public class BombManager : ManagerClass
         
     }
 
-    private void activateBomb()
+    public void detonateBomb()
     {
         if (isActive)
         {
@@ -82,20 +81,9 @@ public class BombManager : ManagerClass
         this.bomb_amt += amount;
     }
 
-    // uh hi
     public int getBombAmt()
     {
         return bomb_amt;
     }
-
-
-    // tf is this
-    public void uBombAmt(int amt)
-    {
-        bomb_amt = amt;
-    }
-
-
-
 }
 

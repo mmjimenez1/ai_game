@@ -9,17 +9,18 @@ public class MovementManager : ManagerClass
     public float baseSpeed = 15.0f;
     public Vector2 direction;
 
-    NavMeshAgent agent;
+    public Vector2 destination { private get; set; }
+    public bool isDestinationSet { get; set; }
 
     //private Player myPlayer;
 
     // Start is called before the first frame update
     void Start()
     {
+        isDestinationSet = false;
         direction = new Vector2(0f, 0f);
         baseSpeed = speed;
 
-        agent = GetComponent<NavMeshAgent>();
     }
 
     // Update is called once per frame
@@ -39,7 +40,11 @@ public class MovementManager : ManagerClass
 
     void updateDirection()
     {
-        if (Input.GetMouseButton(0) && myPlayer.username == "Player1")
+        if(isDestinationSet)
+        {
+            direction = destination - (Vector2) transform.position;
+        }
+        else if (Input.GetMouseButton(0) && myPlayer.username == "Player1")
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             Vector2 mousePos = ray.origin;

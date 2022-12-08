@@ -2,17 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DetonateBomb : MonoBehaviour
+[CreateAssetMenu(fileName = "DetonateBomb", menuName = "UtilityAI/Actions/DetonateBomb")]
+public class DetonateBomb : Action
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void doAction(AIManager aiManager)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Player player = aiManager.getPlayer();
+        player.bombManager.detonateBomb();
     }
 }

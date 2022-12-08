@@ -1,18 +1,14 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class IsBombSpawned : MonoBehaviour
+[CreateAssetMenu(fileName = "IsBombSpawned", menuName = "UtilityAI/Considerations/IsBombSpawned")]
+public class IsBombSpawned : Consideration
 {
-    // Start is called before the first frame update
-    void Start()
+    public override float ScoreConsideration(AIManager aiManager)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        return Convert.ToInt32(GameManager.gameManager.bombStation.isActive);
     }
 }

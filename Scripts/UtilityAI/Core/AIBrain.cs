@@ -6,11 +6,11 @@ using UnityEngine;
 public class AIBrain : MonoBehaviour
 {
     public Action bestAction { get; set; }
-    private EnemyManager enemy;
+    private AIManager aiManager;
 
     void Start()
     {
-        enemy = GetComponent<EnemyManager>();
+        aiManager = GetComponent<AIManager>();
     }
 
     void Update()
@@ -40,7 +40,7 @@ public class AIBrain : MonoBehaviour
         float score = 1f;
         for(int i= 0; i< curAction.considerations.Length; i++)
         {
-            float curScore = curAction.considerations[i].ScoreConsideration();
+            float curScore = curAction.considerations[i].ScoreConsideration(aiManager);
             score *= curScore;
 
             if(score == 0)

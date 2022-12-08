@@ -8,10 +8,11 @@ public class GameManager : MonoBehaviour
 {
     public static List<Player> players;
     public static Dictionary<string, Player> playerDictionary;
+    public static GameManager gameManager;
 
     public UIManager uIManager;
     //public Timer timer;
-    public StationBehavior station;
+    public StationBehavior stationBehavior;
     public HealthStation healthStation;
     public EnergyStation energyStation;
     public BombStation bombStation;
@@ -20,7 +21,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        gameManager = this;
         //uIManager = this.gameObject.AddComponent<UIManager>();
         //timer = this.gameObject.AddComponent<Timer>();
         //inv = this.gameObject.AddComponent<Inventory>();
@@ -64,10 +65,10 @@ public class GameManager : MonoBehaviour
                 });
             }
         });
-        station = this.gameObject.AddComponent<StationBehavior>();
-        station.healthStation = healthStation;
-        station.energyStation = energyStation;
-        station.bombStation = bombStation;
+        stationBehavior = this.gameObject.AddComponent<StationBehavior>();
+        stationBehavior.healthStation = healthStation;
+        stationBehavior.energyStation = energyStation;
+        stationBehavior.bombStation = bombStation;
 
         playerDictionary = GetPlayerDictionary();
     }

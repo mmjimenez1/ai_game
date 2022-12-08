@@ -16,3 +16,4 @@ public class IsInBombPickUpRange : MonoBehaviour
         
     }
 }
+// not necessary
