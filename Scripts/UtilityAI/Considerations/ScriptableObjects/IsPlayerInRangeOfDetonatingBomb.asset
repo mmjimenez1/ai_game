@@ -9,11 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 936454456fe87441cb71c4bbbd517e1d, type: 3}
-  m_Name: DropNode
+  m_Script: {fileID: 11500000, guid: 691b5eeda3abb40dda4c6fbe6c517e09, type: 3}
+  m_Name: IsPlayerInRangeOfDetonatingBomb
   m_EditorClassIdentifier: 
-  actionName: 
-  bestScore: 0
-  considerations:
-  - {fileID: 11400000, guid: 7f11078b279e544e2aec35c48f34cf9d, type: 2}
-  - {fileID: 0}
+  considerationName: 
+  totalScore: 0
+  radius: 3

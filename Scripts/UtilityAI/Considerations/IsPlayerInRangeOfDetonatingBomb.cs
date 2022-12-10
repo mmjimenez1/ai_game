@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "IsPlayerInRangeOfDetonatingBomb", menuName = "UtilityAI/Considerations/InBombRange")]
+[CreateAssetMenu(fileName = "IsPlayerInRangeOfDetonatingBomb", menuName = "UtilityAI/Considerations/InDetonatingBombRange")]
 
 public class IsPlayerInRangeOfDetonatingBomb : Consideration
 {

@@ -6,6 +6,7 @@ using UnityEngine;
 public class AIBrain : MonoBehaviour
 {
     public Action bestAction { get; set; }
+    public bool finishedDeciding { get; set; }
     private AIManager aiManager;
 
     void Start()
@@ -15,6 +16,10 @@ public class AIBrain : MonoBehaviour
 
     void Update()
     {
+        if(bestAction = null)
+        {
+            decideBestAction(aiManager.possibleActions);
+        }
     }
 
     public void decideBestAction(Action[] actionsAvailable)
@@ -31,6 +36,7 @@ public class AIBrain : MonoBehaviour
         }
 
         bestAction = actionsAvailable[bestActionIndex];
+        finishedDeciding = true;
 
 
     }

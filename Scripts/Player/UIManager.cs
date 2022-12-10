@@ -18,7 +18,7 @@ public class UIManager : ManagerClass
     string stringToEdit = "Text Label";
     string textToEdit = "\n Defeat other player! \n" +
         "Player 1 Controls -\n        Move: (click and drag planet)\n        Dash: move + space\n            * Increases the speed of the player by 3.\n            * Has a cool down timee of 5 seconds, before it can be used again.\n            * Damage:\n        Teleport: Q\n            * Drops a node, and teleports player\n            * Has a 5 second cool down period before teleport can be used again.\n            * Damage:\n       Bomb: E\n            * drops a bomb, and detonates\n            * If no bombs are available, can pick up with E.\n            * Damage:\n        Missiles: Left Shift\n            * Launches missiles that never miss enemy player.\n            * Damage:\n        Lasers: R\n            * shoots lasers.\n            * Damage:\n        Shield: Tab\n            * Displays shield\n            * Damage:\n\n    Player 2 Controls -\n        Move: (up, left, right, down, arrows)\n        Dash: move + space\n        Teleport: Q\n            * Drops a node, and teleports player\n            * Has a 5 second cool down period before teleport can be used again.\n            * Damage:\n        Drop a bomb: E\n            * drops a bomb, and detonates\n            * If no bombs are available, can pick up with E.\n            * Damage:\n\n        Missiles: Left Shift\n            * Launches missiles that never miss enemy player.\n            * Damage:\n\n        Lasers: R\n            * shoots lasers.\n            * Damage:\n\n        Shield: Tab\n            * Displays a shield.\n            * Shield can be rotated using I + ' or I + L or I + ; or I +p\n            * Damage:";
-    bool windowOpen = true;
+    //bool windowOpen = true;
 
     //private SpriteRenderer srEOutline;
     private SpriteRenderer srEBlue;
@@ -189,7 +189,7 @@ public class UIManager : ManagerClass
         }
         else
         {
-            windowOpen = false;
+            //windowOpen = false;
         }
     }
 

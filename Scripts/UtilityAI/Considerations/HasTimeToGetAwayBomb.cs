@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(fileName = "HasTimeToGetAwayBomb", menuName = "UtilityAI/Considerations/HasTimeToGetAwayBomb")]
 public class HasTimeToGetAwayBomb : Consideration
 {
     [SerializeField] private float radius = 3;

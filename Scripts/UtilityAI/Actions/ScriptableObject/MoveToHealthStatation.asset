@@ -9,11 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 936454456fe87441cb71c4bbbd517e1d, type: 3}
-  m_Name: DropNode
+  m_Script: {fileID: 11500000, guid: c7c0104d755a84880ac5d967c2014b33, type: 3}
+  m_Name: MoveToHealthStatation
   m_EditorClassIdentifier: 
   actionName: 
   bestScore: 0
-  considerations:
-  - {fileID: 11400000, guid: 7f11078b279e544e2aec35c48f34cf9d, type: 2}
-  - {fileID: 0}
+  considerations: []
