@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // AI Brain ->
-// 
+//
 public class GameManager : MonoBehaviour
 {
     public static List<Player> players;
@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     public HealthStation healthStation;
     public EnergyStation energyStation;
     public BombStation bombStation;
-
+    //public List<Vector2> listBombLocations;
     //public Inventory inv;
 
     // Start is called before the first frame update
@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
             //p.gameManager = this;
             if (p.username == "Player1")
                 p.uiManager.isPlayer1 = true;
-                //p.inv.isplayer1 = true;
+            //p.inv.isplayer1 = true;
             if (p.username == "Player2")
             {
                 p.uiManager.isPlayer1 = false;
@@ -74,6 +74,12 @@ public class GameManager : MonoBehaviour
         playerDictionary = GetPlayerDictionary();
     }
 
+    // Update is called once per frame
+    void Update()
+    {
+        //findWinner();
+    }
+
     private Dictionary<string, Player> GetPlayerDictionary()
     {
         Dictionary<string, Player> dict = new Dictionary<string, Player>();
@@ -82,12 +88,6 @@ public class GameManager : MonoBehaviour
             dict.Add(p.username, p);
         }
         return dict;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        //findWinner();
     }
 
     private string findWinner()
@@ -110,5 +110,16 @@ public class GameManager : MonoBehaviour
       
     }
 
+    public List<Vector2> getBombLocation(){
+            List<Vector2> bombs = null;
+            foreach (Player p in players)
+            {
+                if (p.bombManager.isActive)
+                {
+                    bombs.Add(p.bombManager.bombLocation);
+                }
+            }
+            return bombs;  
+     }
 
  }

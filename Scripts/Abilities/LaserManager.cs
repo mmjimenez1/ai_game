@@ -8,12 +8,12 @@ using UnityEngine.UIElements;
 
 public class LaserManager : ManagerClass
 {
+    public bool isActive { get; protected set; }
     KeyCode laserKey;
     private int dmgPerSecond;
     private int epPerSecond;
     private float energyConsumed;
     [SerializeField]
-    private bool isActive;
 
     private GameObject laserObject;
     private GameObject laserContainer;

@@ -2,17 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveToHealthStation : MonoBehaviour
+[CreateAssetMenu(fileName = "MoveToHealthStatation", menuName = "UtilityAI/Actions/MoveToHealthStatation")]
+public class MoveToHealthStation : Action
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void doAction(AIManager aIManager)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Player p = aIManager.getPlayer();
+        p.movementManager.isDestinationSet = true;
+        p.movementManager.destination = GameManager.gameManager.healthStation.spawnPosition;
     }
 }

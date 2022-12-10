@@ -60,6 +60,14 @@ public class BoostManager : ManagerClass
         }
     }
 
+    public bool isAvailable()
+    {
+        if (currentBoostCooldown <= 0f && myPlayer.energyManager.isEnough(epCost))
+            return true;
+        else
+            return false;
+    }
+
     public float getBoostCoolDown()
     {
         return boostCooldown;

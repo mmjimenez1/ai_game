@@ -2,17 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UseTeleport : MonoBehaviour
+[CreateAssetMenu(fileName = "UseTeleport", menuName = "UtilityAI/Actions/UseTeleport")]
+public class UseTeleport : Action
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void doAction(AIManager aIManager)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Player p = aIManager.getPlayer();
+        p.movementManager.isDestinationSet = true;
+        p.movementManager.destination = p.teleport.node_location;
     }
 }

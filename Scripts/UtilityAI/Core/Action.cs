@@ -20,6 +20,5 @@ public abstract class Action : ScriptableObject
     {
         score = 0;
     }
-
     public abstract void doAction(AIManager aiManager);
 }
