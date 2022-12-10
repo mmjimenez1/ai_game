@@ -2,20 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(fileName = "MoveToHealthStatation", menuName = "UtilityAI/Actions/MoveToHealthStatation")]
 public class MoveToHealthStation : Action
 {
-    private Vector2 station_position;
-
-    public override void doAction(Player myPlayer)
+    public override void doAction(AIManager aIManager)
     {
-        findStation();
-        //myPlayer.movementManager.moveManager();
+        Player p = aIManager.getPlayer();
+        p.movementManager.isDestinationSet = true;
+        p.movementManager.destination = GameManager.gameManager.healthStation.spawnPosition;
     }
-
-    private void findStation()
-    {
-        //station_position = StationBehavior.station_pos;
-    }
-
-
 }

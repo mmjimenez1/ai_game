@@ -2,17 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IsBoostAvailable : MonoBehaviour
+[CreateAssetMenu(fileName = "IsBoostAvailable", menuName = "UtilityAI/Considerations/IsBoostAvailable")]
+public class IsBoostAvailable : Consideration
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private bool invertFlag = false;
 
-    // Update is called once per frame
-    void Update()
+    public override float ScoreConsideration(AIManager aiManager)
     {
-        
+        Player p = aiManager.getPlayer();
+        bool isBoostAvailable = p.boostManager.isAvailable();
+        if (invertFlag)
+            isBoostAvailable = !isBoostAvailable;
+
+        if (isBoostAvailable)
+            score = 1f;
+        else
+            score = 0f;
+
+        return score;
+
     }
 }

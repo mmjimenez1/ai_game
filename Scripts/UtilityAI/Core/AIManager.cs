@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public class AIManager: ManagerClass
 {
     public AIBrain brain { get; set; }
@@ -22,6 +21,7 @@ public class AIManager: ManagerClass
     {
         return myPlayer;
     }
+
 
     public void GrabBomb()
     {

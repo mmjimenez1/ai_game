@@ -2,17 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IsHealthStationSpawned : MonoBehaviour
+[CreateAssetMenu(fileName = "IsHealthStationSpawned", menuName = "UtilityAI/Considerations/IsHealthStationSpawned")]
+public class IsHealthStationSpawned : Consideration
 {
-    // Start is called before the first frame update
-    void Start()
+    public override float ScoreConsideration(AIManager aiManager)
     {
-        
-    }
+       bool isHSpawned = GameManager.gameManager.healthStation.isActive;
+     
+        if (isHSpawned)
+        {
+            score = 1f;
+        }
+        else
+        {
+            score = 0f;
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        return score;
     }
 }

@@ -2,17 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IsEnemyBombPlaced : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+[CreateAssetMenu(fileName = "IsEnemyBombPlaced", menuName = "UtilityAI/Considerations/IsEnemyBombPlaced")]
 
-    // Update is called once per frame
-    void Update()
+public class IsEnemyBombPlaced : Consideration
+{
+    public override float ScoreConsideration(AIManager aiManager)
     {
-        
+        score = 0f;
+        Player p = aiManager.getPlayer();
+        List<Player> enemies = Player.getEnemies(p);
+        foreach(Player player in enemies)
+        {
+            if (player.bombManager.isActive)
+            {
+                score = 1f;
+            }
+        }
+
+        return score;
     }
 }

@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(fileName = "UseTeleport", menuName = "UtilityAI/Actions/UseTeleport")]
 public class UseTeleport : Action
 {
-    public override void doAction(Player myPlayer)
+    public override void doAction(AIManager aIManager)
     {
-        myPlayer.teleport.teleport_object(myPlayer.teleport.node_location);
+        Player p = aIManager.getPlayer();
+        p.movementManager.isDestinationSet = true;
+        p.movementManager.destination = p.teleport.node_location;
     }
 }

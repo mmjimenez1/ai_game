@@ -2,17 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IsNodeDropped : MonoBehaviour
+[CreateAssetMenu(fileName = "IsNodeDropped", menuName = "UtilityAI/Considerations/IsNodeDropped")]
+public class IsNodeDropped : Consideration
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private bool invertFlag = false;
+    public override float ScoreConsideration(AIManager aiManager)
     {
-        
-    }
+        Player p = aiManager.getPlayer();
+        bool isnodeDropped = p.teleport.is_dropped;
+        if (invertFlag)
+        {
+            isnodeDropped = !isnodeDropped;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        }
+
+        if(isnodeDropped == true)
+        {
+            score = 1f;
+        }
+        else
+        {
+            score = 0f;
+        }
+
+        return score;
     }
 }

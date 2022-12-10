@@ -7,6 +7,7 @@ public class BombManager : ManagerClass
     public bool isActive;
     private GameObject bombObject;
     public Bomb bombComponent { get; private set; }
+    public Vector2 bombLocation;
 
     public int bomb_amt;
 
@@ -56,6 +57,7 @@ public class BombManager : ManagerClass
                 bombObject.SetActive(true);
                 isActive = true;
                 bombObject.transform.position = cur_location;
+                bombLocation = cur_location;
                 bomb_amt = bomb_amt - 1;
             }
         }

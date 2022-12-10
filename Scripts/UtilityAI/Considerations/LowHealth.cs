@@ -2,17 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LowHealth : MonoBehaviour
+[CreateAssetMenu(fileName = "LowHealth", menuName = "UtilityAI/Considerations/LowHealth")]
+public class LowHealth : Consideration
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private AnimationCurve healthCurve;
+    public override float ScoreConsideration(AIManager aiManager)
     {
-        
-    }
+        Player p = aiManager.getPlayer();
+        int curHealth = p.healthManager.getHealthPoints();
+        int healthMax = p.healthManager.getHealthCap();
+        float healthPercent = (float) curHealth / healthMax;
+        Debug.Log("health %:" + healthPercent);
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        score = healthCurve.Evaluate(Mathf.Clamp01(healthPercent));
+        Debug.Log("health score:" + score);
+        return score;
     }
 }

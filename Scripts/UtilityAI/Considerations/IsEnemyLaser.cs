@@ -2,17 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IsEnemyLaser : MonoBehaviour
+[CreateAssetMenu(fileName = "IsEnemyLaser", menuName = "UtilityAI/Considerations/IsEnemyLaser")]
+
+// should this be detected enemy laser shoooting?
+public class IsEnemyLaser : Consideration
 {
-    // Start is called before the first frame update
-    void Start()
+    public override float ScoreConsideration(AIManager aiManager)
     {
-        
+        score = 0f;
+        Player p = aiManager.getPlayer();
+        List<Player> enemies = Player.getEnemies(p);
+        foreach (Player player in enemies)
+        {
+            if (player.laserManager.isActive)
+            {
+                Debug.Log("enemy player laser active");
+                score = 1f;
+            }
+        }
+
+        return score;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

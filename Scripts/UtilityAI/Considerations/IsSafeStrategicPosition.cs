@@ -2,17 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IsSafeStrategicPosition : MonoBehaviour
+[CreateAssetMenu(fileName = "IsSafeStrategicPosition", menuName = "UtilityAI/Considerations/IsSafeStrategicPosition")]
+
+public class IsSafeStrategicPosition : Consideration
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private AnimationCurve stratPosCurve;
+
+    public override float ScoreConsideration(AIManager aiManager)
     {
-        
+
+        throw new System.NotImplementedException();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
