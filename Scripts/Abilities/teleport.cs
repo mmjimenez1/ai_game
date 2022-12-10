@@ -35,7 +35,7 @@ public class teleport : ManagerClass
         this.teleportObject.SetActive(false);
         this.spriteRenderer.sortingOrder = 0;
         this.teleportObject.transform.localScale = new Vector2(2f, 2f);
-        cur_tel_cool_down = 0f;
+        cur_tel_cool_down = tel_cool_down;
         is_dropped = false;
 
         fps = 15;
@@ -74,12 +74,14 @@ public class teleport : ManagerClass
     {
         if (cur_tel_cool_down > 0f)
         {
+            Debug.Log("cooling");
             cur_tel_cool_down -= Time.deltaTime;
+            //Debug.Log("curTime" + cur_tel_cool_down);
         }
-        else
-        {
-            cur_tel_cool_down = 0f;
-        }
+        //else
+        //{
+        //    cur_tel_cool_down = 0f;
+        //}
 
     }
 
@@ -127,20 +129,11 @@ public class teleport : ManagerClass
             this.teleportObject.SetActive(false);
             myPlayer.energyManager.minusEP(epCost);
             is_dropped = false;
+            Debug.Log("reset teleport");
             cur_tel_cool_down = tel_cool_down;
             this.transform.position = i_location;
             Debug.Log("teleporting");
         }
-        else
-        {
-            if(cur_tel_cool_down > 0)
-            {
-                Debug.Log("cooling..");
-            }
-            else
-                Debug.Log("not enough energy for teleport");
-        }
-        
     }
 
     public float getCurCoolDown()
