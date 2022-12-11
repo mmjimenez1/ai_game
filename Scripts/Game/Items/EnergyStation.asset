@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: EnergyStation
   m_EditorClassIdentifier: 
   itemName: EnergyStation
-  waitTime: 1
+  waitTime: 20
   duration: 5
   pickUpAmount: 15
-  containerSprite: {fileID: 21300000, guid: bd669400d56136242a6fa13e284612bd, type: 3}
+  bounds: {x: 9, y: 4.5}
+  containerSprite: {fileID: 21300000, guid: e801200254740294c89c5f47f464d350, type: 3}
   itemSprite: {fileID: 21300000, guid: ff073474dc797c244a96f48483c3b223, type: 3}
-  containerColor: {r: 0, g: 1, b: 1, a: 1}
+  containerColor: {r: 0, g: 0.49803922, b: 1, a: 1}

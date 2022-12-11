@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8192a43cc83de473e8974196b81daebf, type: 3}
   m_Name: GrabBomb
   m_EditorClassIdentifier: 
-  actionName: 
+  actionName: GrabBomb
   bestScore: 0
-  considerations: []
+  considerations:
+  - {fileID: 11400000, guid: 423e38ec7bd08324fb8e133369ca60ad, type: 2}
+  - {fileID: 11400000, guid: c97a4c854b89c8942ace60dfb65e647d, type: 2}

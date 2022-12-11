@@ -16,6 +16,7 @@ MonoBehaviour:
   waitTime: 15
   duration: 5
   pickUpAmount: 10
-  containerSprite: {fileID: 21300000, guid: bd669400d56136242a6fa13e284612bd, type: 3}
+  bounds: {x: 9, y: 4.5}
+  containerSprite: {fileID: 21300000, guid: e801200254740294c89c5f47f464d350, type: 3}
   itemSprite: {fileID: 21300000, guid: a9449c16d81a94d57998133a091a6839, type: 3}
   containerColor: {r: 1, g: 0, b: 0, a: 1}
