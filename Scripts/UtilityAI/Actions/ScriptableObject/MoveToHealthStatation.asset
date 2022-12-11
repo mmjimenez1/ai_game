@@ -14,4 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actionName: 
   bestScore: 0
-  considerations: []
+  considerations:
+  - {fileID: 11400000, guid: 0ec8d860348174f7e9675d95ca102756, type: 2}
+  - {fileID: 11400000, guid: 84b5277c6a38f40e6a5365a5bffc5706, type: 2}

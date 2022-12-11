@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "EnemyInOwnBombRange", menuName = "UtilityAI/Considerations/EnemyInOwnBombRange")]
+[CreateAssetMenu(fileName = "enemyInOwnBombRange", menuName = "UtilityAI/Considerations/enemyInOwnBombRange")]
 public class EnemyInOwnBombRange : Consideration
 {
     public override float ScoreConsideration(AIManager aiManager)
