@@ -50,7 +50,7 @@ public class BoostManager : ManagerClass
         myPlayer.movementManager.speed = speed;
     }
 
-    void Boost()
+    public void Boost()
     {
         if (currentBoostCooldown <= 0f && myPlayer.energyManager.isEnough(epCost))
         {

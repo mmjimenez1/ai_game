@@ -25,7 +25,7 @@ public class IsBombStrategicPos : Consideration
                 Vector2 strategicPosition = new Vector2(x, y);
                 float distance = Vector2.SqrMagnitude(strategicPosition - playerPosition);
                 if(distance < shortestDistance)
-                    distance = shortestDistance;
+                    shortestDistance= distance;
             }
         }
         shortestDistance = Mathf.Sqrt(shortestDistance);
