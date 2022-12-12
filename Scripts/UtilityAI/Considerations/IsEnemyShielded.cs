@@ -1,18 +1,18 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IsEnemyShielded : MonoBehaviour
+[CreateAssetMenu(fileName = "IsEnemyShielded", menuName = "UtilityAI/Considerations/IsEnemyShielded")]
+public class IsEnemyShielded : Consideration
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private bool invertResponse = false;
+    public override float ScoreConsideration(AIManager aiManager)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Player enemy = aiManager.getPlayer().getClosestPlayer();
+        bool isShielded = enemy.shieldManager.isShieldActive();
+        if (invertResponse)
+            isShielded = !isShielded;
+        return Convert.ToInt32(isShielded);
     }
 }

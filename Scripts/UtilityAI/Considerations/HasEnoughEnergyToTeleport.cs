@@ -16,6 +16,5 @@ public class HasEnoughEnergyToTeleport : Consideration
         float energyPercent = (float) energyDifference / p.energyManager.getEnergyCap();
         score = responseCurve.Evaluate(Mathf.Clamp01(energyPercent));
         return score;
-
     }
 }

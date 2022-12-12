@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57002d36d641c4f8b845cd0a8e44623e, type: 3}
-  m_Name: EnemyInOwnBombRange
+  m_Script: {fileID: 11500000, guid: 1106c5b8943d793449f8d65f2c348fbf, type: 3}
+  m_Name: CanMoveOutOfBombRadiusInTime
   m_EditorClassIdentifier: 
-  considerationName: EnemyInOwnBombRange
+  considerationName: 
   totalScore: 0
