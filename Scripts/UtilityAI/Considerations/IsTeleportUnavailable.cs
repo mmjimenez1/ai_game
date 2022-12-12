@@ -6,11 +6,16 @@ using UnityEngine;
 
 public class IsTeleportUnavailable : Consideration
 {
+    [SerializeField] private bool invertFlag = false;
     public override float ScoreConsideration(AIManager aiManager)
     {
         Player p = aiManager.getPlayer();
         bool isInCoolDown = !(p.teleport.cur_tel_cool_down > 0);
         Debug.Log("is in cool down:" + isInCoolDown);
+
+        if (invertFlag)
+            isInCoolDown = !isInCoolDown;
+
         if (isInCoolDown)
             score = 0;
         else

@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e72bf4aa3ed6a4de4b4cb591ccc51989, type: 3}
-  m_Name: IsBoostAvailableInverted
+  m_Script: {fileID: 11500000, guid: eed6edc778bc242df8b5175c18a0fc48, type: 3}
+  m_Name: RotateShield
   m_EditorClassIdentifier: 
-  considerationName: IsBoostAvailableInverted
-  totalScore: 0
-  invertFlag: 1
+  actionName: 
+  bestScore: 0
+  considerations: []
