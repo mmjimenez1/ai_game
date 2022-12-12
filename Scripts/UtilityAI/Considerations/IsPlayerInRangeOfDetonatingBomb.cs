@@ -6,11 +6,10 @@ using UnityEngine;
 
 public class IsPlayerInRangeOfDetonatingBomb : Consideration
 {
-    [SerializeField] private float radius = 3;
     public override float ScoreConsideration(AIManager aiManager)
-    {
-
+    { 
         Player p = aiManager.getPlayer();
+        float radius = p.bombManager.bombComponent.explosionRadius;
         Vector2 playerPos = p.gameObject.transform.position;
         List<Vector2> bombLocations = GameManager.gameManager.getBombLocation();
         for (int i =0; i< bombLocations.Count; i++)
