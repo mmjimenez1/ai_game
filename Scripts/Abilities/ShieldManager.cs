@@ -121,7 +121,7 @@ public class ShieldManager : ManagerClass
         }
     }
 
-    void updateRotation()
+    public void updateRotation()
     {
         this.shieldContainer.transform.rotation = Quaternion.Slerp(this.shieldContainer.transform.rotation, this.targetRotation, this.rotationSpeed);
     }
@@ -139,6 +139,7 @@ public class ShieldManager : ManagerClass
             direction.y++;
         if (direction == Vector2.zero)
             direction = myPlayer.movementManager.direction;
+        //Debug.Log("direction =" + direction);
         if (direction != Vector2.zero)
         {
             direction.Normalize();
@@ -147,6 +148,8 @@ public class ShieldManager : ManagerClass
             //float deltaAngle = newAngle - currentZAngle;
             //this.shieldObject.transform.Rotate(Vector3.forward, deltaAngle);
             this.targetRotation = Quaternion.Euler(new Vector3(0, 0, newAngle));
+            //Debug.Log("normalized direction =" + direction);
+
             return true;
         }
         return false;
@@ -165,5 +168,10 @@ public class ShieldManager : ManagerClass
     public bool isShieldActive()
     {
         return isActive;
+    }
+
+    public void setTargetRotation(Quaternion rotation)
+    {
+        targetRotation = rotation;
     }
 }

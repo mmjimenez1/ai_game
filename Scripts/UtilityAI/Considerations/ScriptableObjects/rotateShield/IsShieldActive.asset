@@ -9,9 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e72bf4aa3ed6a4de4b4cb591ccc51989, type: 3}
-  m_Name: IsBoostAvailableInverted
+  m_Script: {fileID: 11500000, guid: a15877112501e46ea912c50251efde1c, type: 3}
+  m_Name: IsShieldActive
   m_EditorClassIdentifier: 
-  considerationName: IsBoostAvailableInverted
+  considerationName: IsShieldActive
   totalScore: 0
-  invertFlag: 1

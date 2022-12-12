@@ -9,9 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e72bf4aa3ed6a4de4b4cb591ccc51989, type: 3}
-  m_Name: IsBoostAvailableInverted
+  m_Script: {fileID: 11500000, guid: af13b5a7a832c48e59d3de06c08ea09e, type: 3}
+  m_Name: IsCloseToHealthStation
   m_EditorClassIdentifier: 
-  considerationName: IsBoostAvailableInverted
+  considerationName: 
   totalScore: 0
-  invertFlag: 1
+  disHealthStation:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
