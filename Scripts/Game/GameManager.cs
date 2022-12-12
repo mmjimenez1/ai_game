@@ -119,7 +119,7 @@ public class GameManager : MonoBehaviour
                     bombs.Add(p.bombManager.bombLocation);
                 }
             }
-            return bombs;  
+            return bombs;
      }
 
  }

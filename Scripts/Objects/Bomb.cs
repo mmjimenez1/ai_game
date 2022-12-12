@@ -18,6 +18,7 @@ public class Bomb : MonoBehaviour
     public float explosionRadius;
     public int bombDamage;
 
+    public static List<Bomb> bombList = new List<Bomb>();
 
     // Start is called before the first frame update
     void Start()
@@ -55,12 +56,21 @@ public class Bomb : MonoBehaviour
             {
                 isDetonated = false;
                 doDamage();
+                bombList.Remove(this);
                 Destroy(this.gameObject);
                 return;
             }
             flunctuationTime -= fluctuationFrequency;
             this.spriteRenderer.sprite = this.sprites[currentSprite];
         }
+    }
+
+    public float timeTillDamage()
+    {
+        float explosionTime = (float)this.sprites.Length / fps;
+        float currentTime = (float)currentSprite / fps;
+        float remainingTime = explosionTime - currentTime;
+        return Mathf.Clamp(remainingTime, 0f, explosionTime);
     }
 
     // public so it can be called from BombManager

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8260a58c85eb94ef2939b5e4c4c0e806, type: 3}
   m_Name: IsBombDropped
   m_EditorClassIdentifier: 
-  considerationName: 
+  considerationName: IsBombDropped
   totalScore: 0
   invertResponse: 0

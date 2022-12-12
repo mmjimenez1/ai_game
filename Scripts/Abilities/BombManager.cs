@@ -42,6 +42,7 @@ public class BombManager : ManagerClass
     {
         bombObject = new GameObject("Bomb " + myPlayer.username);
         bombComponent = bombObject.AddComponent<Bomb>();
+        Bomb.bombList.Add(bombComponent);
     }
 
     public void dropBomb()

@@ -10,8 +10,8 @@ public class LaserManager : ManagerClass
 {
     public bool isActive { get; protected set; }
     KeyCode laserKey;
-    private int dmgPerSecond;
-    private int epPerSecond;
+    public int dmgPerSecond { get; protected set; }
+    public int epPerSecond { get; protected set; }
     private float energyConsumed;
     [SerializeField]
 

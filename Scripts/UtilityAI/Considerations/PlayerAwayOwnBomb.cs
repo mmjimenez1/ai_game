@@ -1,18 +1,18 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerAwayOwnBomb : MonoBehaviour
+[CreateAssetMenu(fileName = "PlayerAwayOwnBomb", menuName = "UtilityAI/Considerations/PlayerAwayOwnBomb")]
+public class PlayerAwayOwnBomb : Consideration
 {
-    // Start is called before the first frame update
-    void Start()
+    public override float ScoreConsideration(AIManager aiManager)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Player player = aiManager.getPlayer();
+        float boomRadius = player.bombManager.bombComponent.explosionRadius;
+        Vector2 bombPosition = player.bombManager.bombComponent.transform.position;
+        Vector2 playerPosition = player.gameObject.transform.position;
+        bool isAway = Vector2.Distance(playerPosition, bombPosition) > boomRadius;
+        return Convert.ToInt32(isAway);
     }
 }
