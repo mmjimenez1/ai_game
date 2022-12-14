@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8983bf42a7f004546ac350560c171aed, type: 3}
   m_Name: IsNodeDropped
   m_EditorClassIdentifier: 
-  considerationName: 
+  considerationName: IsNodeDropped
   totalScore: 0
   invertFlag: 0

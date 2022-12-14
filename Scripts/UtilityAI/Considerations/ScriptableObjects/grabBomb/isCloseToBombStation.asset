@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c96da48c53707449a221be9c9c2ecad, type: 3}
   m_Name: isCloseToBombStation
   m_EditorClassIdentifier: 
-  considerationName: 
+  considerationName: IsCloseTooBombStation
   totalScore: 0
   responseCurve:
     serializedVersion: 2

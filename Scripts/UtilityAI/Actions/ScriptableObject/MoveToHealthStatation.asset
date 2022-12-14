@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7c0104d755a84880ac5d967c2014b33, type: 3}
   m_Name: MoveToHealthStatation
   m_EditorClassIdentifier: 
-  actionName: 
+  actionName: MoveToHealthStation
   bestScore: 0
   considerations:
   - {fileID: 11400000, guid: 0ec8d860348174f7e9675d95ca102756, type: 2}
   - {fileID: 11400000, guid: 84b5277c6a38f40e6a5365a5bffc5706, type: 2}
+  - {fileID: 11400000, guid: e52c5217b14224b4cbb374bf3c1eca15, type: 2}

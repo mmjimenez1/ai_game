@@ -6,6 +6,7 @@ using UnityEngine;
 public class UseShield : Action { 
     public override void doAction(AIManager aiManager)
     {
+        Debug.Log("activating shield");
         Player p = aiManager.getPlayer();
         p.shieldManager.setActiveShield(true);
         Debug.Log("Using shield");

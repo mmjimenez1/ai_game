@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11447cde6dc794951b62f01da038b5b0, type: 3}
   m_Name: HasEnoughEnergyToTeleport
   m_EditorClassIdentifier: 
-  considerationName: 
+  considerationName: HasEnoughEnergyToTeleport
   totalScore: 0
   responseCurve:
     serializedVersion: 2

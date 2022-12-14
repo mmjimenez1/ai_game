@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e9c04ee131394970b3497265c2fe318, type: 3}
   m_Name: UseTeleport
   m_EditorClassIdentifier: 
-  actionName: 
+  actionName: UseTeleport
   bestScore: 0
   considerations:
   - {fileID: 11400000, guid: b08fb9d9be3f74cfc8bef4126c2f3881, type: 2}

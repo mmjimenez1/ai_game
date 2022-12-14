@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17da1a8548a39d34aa297f6cf6532fcc, type: 3}
   m_Name: HasEnoughEnergyLaser
   m_EditorClassIdentifier: 
-  considerationName: 
+  considerationName: HasEnoughEnergyLaser
   totalScore: 0
   responseCurve:
     serializedVersion: 2

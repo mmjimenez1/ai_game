@@ -110,16 +110,17 @@ public class GameManager : MonoBehaviour
       
     }
 
-    public List<Vector2> getBombLocation(){
-            List<Vector2> bombs = null;
-            foreach (Player p in players)
-            {
-                if (p.bombManager.isActive)
-                {
-                    bombs.Add(p.bombManager.bombLocation);
-                }
-            }
-            return bombs;
-     }
+    //public List<Vector2> getBombLocation(){
+    //        List<Vector2> bombs = null;
+    //        foreach (Player p in players)
+    //        {
+    //            if (p.bombManager.isActive)
+    //            {
+    //                bombs.Add(p.bombManager.bombLocation);
+    //            }
+    //        }
+    //        Debug.Log("bombs = " + bombs);
+    //        return bombs;
+    // }
 
  }
