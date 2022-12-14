@@ -12,6 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 691b5eeda3abb40dda4c6fbe6c517e09, type: 3}
   m_Name: IsPlayerInRangeOfDetonatingBomb
   m_EditorClassIdentifier: 
-  considerationName: 
+  considerationName: IsPlayerInRangeOfDetonatingBomb
   totalScore: 0
-  radius: 3

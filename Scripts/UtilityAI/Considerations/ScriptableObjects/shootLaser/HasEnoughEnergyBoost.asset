@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d13b50238d2f13d469c6722cf8076671, type: 3}
   m_Name: HasEnoughEnergyBoost
   m_EditorClassIdentifier: 
-  considerationName: 
+  considerationName: HasEnoughEnergy
   totalScore: 0
   invertResponse: 0

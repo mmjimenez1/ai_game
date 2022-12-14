@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55674b27ef59f41dcbd66bd4e94d9dc2, type: 3}
   m_Name: UseShield
   m_EditorClassIdentifier: 
-  actionName: 
+  actionName: UseShield
   bestScore: 0
   considerations:
   - {fileID: 11400000, guid: cf8a565920b654cc680dfe4c64af7da8, type: 2}

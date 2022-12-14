@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2b635758cb0941a6b9602a325d70fdf, type: 3}
   m_Name: ShootLaser
   m_EditorClassIdentifier: 
-  actionName: 
+  actionName: ShootLaser
   bestScore: 0
-  considerations: []
+  considerations:
+  - {fileID: 11400000, guid: 27c215d1aa4a2744aa0dca704d5524f2, type: 2}
+  - {fileID: 11400000, guid: 670af014ab9263745bd28c0c9d26d221, type: 2}
+  - {fileID: 11400000, guid: 3af3c81551d937f4a9b857c4a98aad06, type: 2}

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e72bf4aa3ed6a4de4b4cb591ccc51989, type: 3}
   m_Name: IsBoostAvailable
   m_EditorClassIdentifier: 
-  considerationName: 
+  considerationName: IsBoostAvailable
   totalScore: 0
   invertFlag: 0

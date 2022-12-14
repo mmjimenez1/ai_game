@@ -14,29 +14,27 @@ public class HasTimeToGetAwayBomb : Consideration
         Player p = aiManager.getPlayer();
         float radius = p.bombManager.bombComponent.explosionRadius;
         Vector2 playerPos = p.gameObject.transform.position;
-        List<Vector2> bombLocations = GameManager.gameManager.getBombLocation();
         float shortestDist = 10000f;
-        int shortestDistPos = 0;
+        float timeTillDamage = 0;
 
-        // find the closest bomb to the player
-        for (int i = 0; i < bombLocations.Count; i++)
+        foreach(Bomb bomb in Bomb.bombList)
         {
-            if (Vector2.Distance(playerPos, bombLocations[i]) > radius)
+            if (Vector2.Distance(playerPos, bomb.transform.position) < radius && (!bomb.isDetonated) )
             {
-                if (Vector2.Distance(playerPos, bombLocations[i]) < shortestDist)
-                {
-                    shortestDist = Vector2.Distance(playerPos, bombLocations[i]);
-                    shortestDistPos = i;
-                }
                 Debug.Log("Player in bomb radius");
+
+                if (Vector2.Distance(playerPos, bomb.transform.position) < shortestDist)
+                {
+                    shortestDist = Vector2.Distance(playerPos, bomb.transform.position);
+                    timeTillDamage = bomb.timeTillDamage();
+                }
             }
+
         }
 
-        // calculate the time it would take to escape the radius
-        // thinking calculate it based on velocity
-
-        float enoughDistance = 1 - (shortestDist / 3);
-        score = distanceAwayCurve.Evaluate(Mathf.Clamp01(enoughDistance));
+        float timeToExitRadius = (shortestDist )/ p.movementManager.baseSpeed;
+        float timeDifference = timeTillDamage - timeToExitRadius;
+        score = distanceAwayCurve.Evaluate(Mathf.Clamp01(timeDifference));
         return score;
     }
 }

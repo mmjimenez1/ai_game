@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2a1d7d53db654982a62f14e552ec79f, type: 3}
   m_Name: DetonateBomb
   m_EditorClassIdentifier: 
-  actionName: 
+  actionName: DetonanteBoomb
   bestScore: 0
-  considerations: []
+  considerations:
+  - {fileID: 11400000, guid: 423e38ec7bd08324fb8e133369ca60ad, type: 2}
+  - {fileID: 11400000, guid: d327733420a68f2489ba0b640e3cc7db, type: 2}
+  - {fileID: 11400000, guid: c97a4c854b89c8942ace60dfb65e647d, type: 2}

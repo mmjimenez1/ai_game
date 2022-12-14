@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5bd732f6023c4be38263ecde4966658, type: 3}
   m_Name: IsTeleportUnavailable
   m_EditorClassIdentifier: 
-  considerationName: 
+  considerationName: IsTeleportUnavailable
   totalScore: 0
+  invertFlag: 0

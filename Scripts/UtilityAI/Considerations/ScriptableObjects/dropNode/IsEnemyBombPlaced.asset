@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb87468e6361343c7bf349a32a951496, type: 3}
   m_Name: IsEnemyBombPlaced
   m_EditorClassIdentifier: 
-  considerationName: 
+  considerationName: IsEnemyBombPlaced
   totalScore: 0

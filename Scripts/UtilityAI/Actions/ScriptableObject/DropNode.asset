@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 936454456fe87441cb71c4bbbd517e1d, type: 3}
   m_Name: DropNode
   m_EditorClassIdentifier: 
-  actionName: 
+  actionName: DropNode
   bestScore: 0
   considerations:
   - {fileID: 11400000, guid: 7f11078b279e544e2aec35c48f34cf9d, type: 2}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: c2a0ed9da16254fada4d8991ae52174f, type: 2}

@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e48bfc8876c9441abb003c43fd1e1750, type: 3}
   m_Name: HasTimeToGetAwayBomb
   m_EditorClassIdentifier: 
-  considerationName: 
+  considerationName: HasTimeToGetAwayBomb
   totalScore: 0
-  radius: 3
   distanceAwayCurve:
     serializedVersion: 2
     m_Curve:

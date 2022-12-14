@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1043c9abafab42e8a63e2402629f496, type: 3}
   m_Name: IsHealthStationSpawned
   m_EditorClassIdentifier: 
-  considerationName: 
+  considerationName: IsHealthStationSpawned
   totalScore: 0

@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4ff62681f2be4e0f80618ded758264d, type: 3}
   m_Name: UseBoost
   m_EditorClassIdentifier: 
-  actionName: 
+  actionName: UseBoost
   bestScore: 0
-  considerations: []
+  considerations:
+  - {fileID: 11400000, guid: a4d8e102347ed314f88fa46f3587fa4c, type: 2}
+  - {fileID: 11400000, guid: 6a618b2aa0f6746f08e15e783107b039, type: 2}
+  - {fileID: 11400000, guid: 5fbfe3e82b1b24b46b07522489176c5d, type: 2}
+  - {fileID: 11400000, guid: 1b4fb080c559eec41b0568cd2b20f0ba, type: 2}

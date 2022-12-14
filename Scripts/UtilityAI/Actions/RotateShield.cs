@@ -7,6 +7,7 @@ public class RotateShield : Action
 {
     public override void doAction(AIManager aiManager)
     {
+        Debug.Log("rotating shield");
         Player p = aiManager.getPlayer();
         Player enemy = p.getClosestPlayer();
         Vector2 targetPos = Vector2.zero;

@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e6d5a3c8fcc74c55acad33bc686843f, type: 3}
   m_Name: IsEnemyLaser
   m_EditorClassIdentifier: 
-  considerationName: 
+  considerationName: IsEnemyLaser
   totalScore: 0

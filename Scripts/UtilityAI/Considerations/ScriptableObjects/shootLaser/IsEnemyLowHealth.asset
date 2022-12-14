@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b56d62acd16ee43348100e9c83f3fb40, type: 3}
   m_Name: IsEnemyLowHealth
   m_EditorClassIdentifier: 
-  considerationName: 
+  considerationName: IsEnemyLowHealth
   totalScore: 0
   responseCurve:
     serializedVersion: 2

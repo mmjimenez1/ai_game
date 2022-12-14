@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15328361935fc4f00885066aa5f99a8c, type: 3}
   m_Name: DropBomb
   m_EditorClassIdentifier: 
-  actionName: 
+  actionName: DropBomb
   bestScore: 0
-  considerations: []
+  considerations:
+  - {fileID: 11400000, guid: 839e0fe90b948cd40b621e93ca3a9d09, type: 2}
+  - {fileID: 11400000, guid: c298de8465579b346bd8bcc0092badd4, type: 2}
+  - {fileID: 11400000, guid: e5fb19844c6c1a746929f2658100c646, type: 2}
