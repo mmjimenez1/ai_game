@@ -8,19 +8,14 @@ public class AIManager : ManagerClass
     public Action[] possibleActions;
     public Action[] movementActions;
 
-    private void Start()
-    {
-
-    }
-
     private void Update()
     {
         updateMovement();
-        if (brain.finishedDeciding)
-        {
-            brain.finishedDeciding = false;
-            brain.bestAction.doAction(this);
-        }
+        //if (brain.finishedDeciding)
+        //{
+        //    brain.finishedDeciding = false;
+        //    brain.bestAction.doAction(this);
+        //}
     }
 
     private void updateMovement()
@@ -28,6 +23,14 @@ public class AIManager : ManagerClass
         Action movement = brain.decideBestMovement(movementActions);
         movement.doAction(this);
         Debug.Log("Best movement: " + movement.name + "  " + movement.score);
+    }
+
+    private void updateActions()
+    {
+        List<Action> actions = brain.getAvailableActions(possibleActions, 0.8f);
+        foreach (Action action in actions) {
+            action.doAction(this);
+        }
     }
 
     public void onFinishedAction(){

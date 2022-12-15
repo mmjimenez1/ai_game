@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 
 public class AIBrain : MonoBehaviour
@@ -37,6 +38,20 @@ public class AIBrain : MonoBehaviour
 
         bestAction = actionsAvailable[bestActionIndex];
         finishedDeciding = true;
+    }
+
+    public List<Action> getAvailableActions(Action[] actionsAvailable, float threshold)
+    {
+        threshold = Mathf.Clamp01(threshold);
+        List<Action> actions = new List<Action>();
+        for (int i = 0; i < actionsAvailable.Length; i++)
+        {
+            if (scoreAction(actionsAvailable[i]) >= threshold)
+            {
+                actions.Add(actionsAvailable[i]);
+            }
+        }
+        return actions;
     }
 
     public Action decideBestMovement(Action[] movementActions)
