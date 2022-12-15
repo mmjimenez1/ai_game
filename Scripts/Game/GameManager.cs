@@ -16,6 +16,11 @@ public class GameManager : MonoBehaviour
     public HealthStation healthStation;
     public EnergyStation energyStation;
     public BombStation bombStation;
+
+    // AI actions
+    public Action[] possibleActions;
+    public Action[] movementActions;
+
     //public List<Vector2> listBombLocations;
     //public Inventory inv;
 
@@ -38,6 +43,7 @@ public class GameManager : MonoBehaviour
             //p.inv.isplayer1 = true;
             if (p.username == "Player2")
             {
+                p.setUpAI(possibleActions, movementActions);
                 p.uiManager.isPlayer1 = false;
                 //p.inv.isplayer1 = false;
                 p.setControls(new Dictionary<string, KeyCode>()

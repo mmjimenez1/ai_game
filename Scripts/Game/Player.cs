@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,6 +20,7 @@ public class Player
     public ShieldManager shieldManager;
     public MissileManager missileManager;
     public LaserManager laserManager;
+    public AIManager aiManager;
     public UIManager uiManager;
     public Inventory inv;
     public Dictionary<string, KeyCode> controls;
@@ -63,6 +65,7 @@ public class Player
         this.uiManager.setPlayer(this);
         this.inv = this.gameObject.AddComponent<Inventory>();
         this.inv.setPlayer(this);
+        this.aiManager = null;
 
         setDefaultControls();
     }
@@ -158,6 +161,15 @@ public class Player
     public bool isplayer1()
     {
         return username == "Player1";
+    }
+
+    public void setUpAI(Action[] possibleActions, Action[] movementActions)
+    {
+        this.aiManager = this.gameObject.AddComponent<AIManager>();
+        aiManager.possibleActions = possibleActions;
+        aiManager.movementActions = movementActions;
+        aiManager.brain = this.gameObject.AddComponent<AIBrain>();
+        this.aiManager.setPlayer(this);
     }
 }
 

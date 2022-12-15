@@ -26,9 +26,9 @@ public class AIBrain : MonoBehaviour
     {
         float score = 0f;
         int bestActionIndex = 0;
-        for(int i = 0; i < actionsAvailable.Length; i++)
+        for (int i = 0; i < actionsAvailable.Length; i++)
         {
-            if (scoreAction(actionsAvailable[i])> score)
+            if (scoreAction(actionsAvailable[i]) > score)
             {
                 bestActionIndex = i;
                 score = actionsAvailable[i].score;
@@ -37,30 +37,41 @@ public class AIBrain : MonoBehaviour
 
         bestAction = actionsAvailable[bestActionIndex];
         finishedDeciding = true;
+    }
 
-
+    public Action decideBestMovement(Action[] movementActions)
+    {
+        float score = 0f;
+        int bestActionIndex = 0;
+        for (int i = 0; i < movementActions.Length; i++)
+        {
+            if (scoreAction(movementActions[i]) > score)
+            {
+                bestActionIndex = i;
+                score = movementActions[i].score;
+            }
+        }
+        return movementActions[bestActionIndex];
     }
 
     public float scoreAction(Action curAction)
     {
         float score = 1f;
-        for(int i= 0; i< curAction.considerations.Length; i++)
+        for(int i = 0; i < curAction.considerations.Length; i++)
         {
             float curScore = curAction.considerations[i].ScoreConsideration(aiManager);
             score *= curScore;
 
-            if(score == 0)
+            if(score == 0f)
             {
-                curAction.score = 0;
+                curAction.score = 0f;
                 return curAction.score;
             }
         }
-
-
         
         float ogScore = score;
-        float modFactor = 1 - (1 / curAction.considerations.Length);
-        float makeupValue = (1 - ogScore) * modFactor;
+        float modFactor = 1f - (1f / curAction.considerations.Length);
+        float makeupValue = (1f - ogScore) * modFactor;
         curAction.score = ogScore + (makeupValue * ogScore);
 
         return curAction.score;

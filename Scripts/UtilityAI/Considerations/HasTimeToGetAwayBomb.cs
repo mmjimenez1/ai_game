@@ -12,7 +12,7 @@ public class HasTimeToGetAwayBomb : Consideration
     public override float ScoreConsideration(AIManager aiManager)
     {
         Player p = aiManager.getPlayer();
-        float radius = p.bombManager.bombComponent.explosionRadius;
+        float radius = Bomb.explosionRadius;
         Vector2 playerPos = p.gameObject.transform.position;
         float shortestDist = 10000f;
         float timeTillDamage = 0;

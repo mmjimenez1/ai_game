@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "GrabBomb", menuName = "UtilityAI/Actions/GrabBomb")]
-public class GrabBomb : Action
+[CreateAssetMenu(fileName = "MoveToBombStation", menuName = "UtilityAI/Actions/MoveToBombStation")]
+public class MoveToBombStation : Action
 {
     public override void doAction(AIManager aiManager)
     {

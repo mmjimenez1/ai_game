@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8192a43cc83de473e8974196b81daebf, type: 3}
-  m_Name: GrabBomb
+  m_Name: MoveToBombStation
   m_EditorClassIdentifier: 
-  actionName: GrabBomb
+  actionName: MoveToBombStation
   bestScore: 0
   considerations:
   - {fileID: 11400000, guid: 423e38ec7bd08324fb8e133369ca60ad, type: 2}
+  - {fileID: 11400000, guid: d327733420a68f2489ba0b640e3cc7db, type: 2}
   - {fileID: 11400000, guid: c97a4c854b89c8942ace60dfb65e647d, type: 2}

@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b56d62acd16ee43348100e9c83f3fb40, type: 3}
-  m_Name: IsEnemyLowHealth
+  m_Script: {fileID: 11500000, guid: 7c96da48c53707449a221be9c9c2ecad, type: 3}
+  m_Name: isCloseToBombStation
   m_EditorClassIdentifier: 
-  considerationName: IsEnemyLowHealth
+  considerationName: isCloseToBombStation
   totalScore: 0
   responseCurve:
     serializedVersion: 2
@@ -20,20 +20,20 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 1
-      inSlope: -1
-      outSlope: -1
-      tangentMode: 34
+      inSlope: 0.040594257
+      outSlope: 0.040594257
+      tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.33333334
+      outWeight: 0.073124394
     - serializedVersion: 3
       time: 1
       value: 0
-      inSlope: -1
-      outSlope: -1
-      tangentMode: 34
+      inSlope: -2.6448421
+      outSlope: -2.6448421
+      tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
+      inWeight: 0.050122857
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2

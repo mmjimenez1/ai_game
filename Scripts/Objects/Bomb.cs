@@ -15,7 +15,7 @@ public class Bomb : MonoBehaviour
 
     public int fps;
 
-    public float explosionRadius;
+    public static float explosionRadius = 3.0f;
     public int bombDamage;
 
     public static List<Bomb> bombList = new List<Bomb>();
@@ -25,7 +25,6 @@ public class Bomb : MonoBehaviour
     {
         sprite_loc = "sci-fi-effects/explosion";
         this.sprites = Resources.LoadAll<Sprite>(sprite_loc);
-        this.explosionRadius = 3.0f;
         this.bombDamage = 24;
         isDetonated = false;
         fps = 16;

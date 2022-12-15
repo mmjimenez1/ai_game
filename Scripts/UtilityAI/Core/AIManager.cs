@@ -6,20 +6,27 @@ public class AIManager : ManagerClass
 {
     public AIBrain brain { get; set; }
     public Action[] possibleActions;
+    public Action[] movementActions;
 
     private void Start()
     {
-        brain = GetComponent<AIBrain>();
 
     }
 
     private void Update()
     {
-        if (brain.finishedDeciding)
-        {
-            brain.finishedDeciding = false;
-            brain.bestAction.doAction(this);
-        }
+        updateMovement();
+        //if (brain.finishedDeciding)
+        //{
+        //    brain.finishedDeciding = false;
+        //    brain.bestAction.doAction(this);
+        //}
+    }
+
+    private void updateMovement()
+    {
+        Action movement = brain.decideBestMovement(movementActions);
+        movement.doAction(this);
     }
 
     public void onFinishedAction(){
@@ -29,11 +36,5 @@ public class AIManager : ManagerClass
     public Player getPlayer()
     {
         return myPlayer;
-    }
-
-
-    public void GrabBomb()
-    {
-        //StartCoroutine(GrabBomb)
     }
 }

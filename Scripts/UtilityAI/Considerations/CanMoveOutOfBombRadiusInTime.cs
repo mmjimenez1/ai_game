@@ -13,13 +13,16 @@ public class CanMoveOutOfBombRadiusInTime : Consideration
         Vector2 playerPos = player.gameObject.transform.position;
         Player enemy = player.getClosestPlayer();
 
+        float explosionRadius = Bomb.explosionRadius;
         // check for all detonating bombs
-        foreach(Bomb bomb in Bomb.bombList){
+        foreach (Bomb bomb in Bomb.bombList){
             if (!bomb.isDetonated) continue;
             Vector2 bombPosition = bomb.transform.position;
-            float explosionRadius = bomb.explosionRadius;
             float distance = Vector2.Distance(bombPosition, playerPos);
-            float secondsToFlee = distance / playerSpeed;
+            float distanceToRadius = explosionRadius - distance;
+            if (distanceToRadius < 0f)
+                continue;
+            float secondsToFlee = distanceToRadius / playerSpeed;
             float secondsTillDamage = bomb.timeTillDamage();
             // if there is not enough time to flee, return false
             if(secondsToFlee > secondsTillDamage)

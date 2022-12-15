@@ -9,10 +9,10 @@ public class PlayerAwayOwnBomb : Consideration
     public override float ScoreConsideration(AIManager aiManager)
     {
         Player player = aiManager.getPlayer();
-        float boomRadius = player.bombManager.bombComponent.explosionRadius;
+        float bombRadius = Bomb.explosionRadius;
         Vector2 bombPosition = player.bombManager.bombComponent.transform.position;
         Vector2 playerPosition = player.gameObject.transform.position;
-        bool isAway = Vector2.Distance(playerPosition, bombPosition) > boomRadius;
+        bool isAway = Vector2.Distance(playerPosition, bombPosition) > bombRadius;
         return Convert.ToInt32(isAway);
     }
 }
