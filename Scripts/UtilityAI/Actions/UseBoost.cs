@@ -10,4 +10,8 @@ public class UseBoost : Action
         Player player = aiManager.getPlayer();
         player.boostManager.Boost();
     }
+
+    public override void unableAction(AIManager aiManager)
+    {
+    }
 }

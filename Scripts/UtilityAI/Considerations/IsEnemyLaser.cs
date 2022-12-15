@@ -9,7 +9,6 @@ public class IsEnemyLaser : Consideration
 {
     public override float ScoreConsideration(AIManager aiManager)
     {
-        Debug.Log("considering if enemy laser is active");
         score = 0f;
         Player p = aiManager.getPlayer();
         //List<Player> enemies = Player.getEnemies(p);

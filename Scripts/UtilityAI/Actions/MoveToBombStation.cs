@@ -11,4 +11,8 @@ public class MoveToBombStation : Action
         player.movementManager.isDestinationSet= true;
         player.movementManager.destination = GameManager.gameManager.bombStation.spawnPosition;
     }
+
+    public override void unableAction(AIManager aiManager)
+    {
+    }
 }

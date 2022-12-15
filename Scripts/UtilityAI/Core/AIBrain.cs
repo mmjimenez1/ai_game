@@ -40,20 +40,6 @@ public class AIBrain : MonoBehaviour
         finishedDeciding = true;
     }
 
-    public List<Action> getAvailableActions(Action[] actionsAvailable, float threshold)
-    {
-        threshold = Mathf.Clamp01(threshold);
-        List<Action> actions = new List<Action>();
-        for (int i = 0; i < actionsAvailable.Length; i++)
-        {
-            if (scoreAction(actionsAvailable[i]) >= threshold)
-            {
-                actions.Add(actionsAvailable[i]);
-            }
-        }
-        return actions;
-    }
-
     public Action decideBestMovement(Action[] movementActions)
     {
         float score = 0f;

@@ -10,4 +10,8 @@ public class DetonateBomb : Action
         Player player = aiManager.getPlayer();
         player.bombManager.detonateBomb();
     }
+
+    public override void unableAction(AIManager aiManager)
+    {
+    }
 }

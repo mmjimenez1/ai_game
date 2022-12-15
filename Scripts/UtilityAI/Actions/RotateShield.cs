@@ -32,4 +32,8 @@ public class RotateShield : Action
         p.shieldManager.setTargetRotation(Quaternion.Euler(new Vector3(0, 0, newAngle)));
         p.shieldManager.updateRotation();
     }
+
+    public override void unableAction(AIManager aiManager)
+    {
+    }
 }

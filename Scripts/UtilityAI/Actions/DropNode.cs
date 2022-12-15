@@ -12,4 +12,8 @@ public class DropNode : Action
         p.teleport.dropNode();
 
     }
+
+    public override void unableAction(AIManager aiManager)
+    {
+    }
 }

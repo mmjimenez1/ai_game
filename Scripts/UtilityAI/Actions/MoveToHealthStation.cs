@@ -11,4 +11,8 @@ public class MoveToHealthStation : Action
         p.movementManager.isDestinationSet = true;
         p.movementManager.destination = GameManager.gameManager.healthStation.spawnPosition;
     }
+
+    public override void unableAction(AIManager aiManager)
+    {
+    }
 }

@@ -11,6 +11,7 @@ public class AIManager : ManagerClass
     private void Update()
     {
         updateMovement();
+        updateActions(0.8f);
         //if (brain.finishedDeciding)
         //{
         //    brain.finishedDeciding = false;
@@ -25,11 +26,20 @@ public class AIManager : ManagerClass
         Debug.Log("Best movement: " + movement.name + "  " + movement.score);
     }
 
-    private void updateActions()
+    private void updateActions(float threshold)
     {
-        List<Action> actions = brain.getAvailableActions(possibleActions, 0.8f);
-        foreach (Action action in actions) {
-            action.doAction(this);
+        for (int i = 0; i < possibleActions.Length; i++)
+        {
+            Action action = possibleActions[i];
+            if (brain.scoreAction(action) >= threshold)
+            {
+                Debug.Log("Doing action: " + action.name + "  " + action.score);
+                action.doAction(this);
+            }
+            else
+            {
+                action.unableAction(this);
+            }
         }
     }
 

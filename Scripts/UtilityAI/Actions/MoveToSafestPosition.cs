@@ -36,4 +36,8 @@ public class MoveToSafestPosition : Action
         player.movementManager.isDestinationSet = true;
         player.movementManager.destination = destinationLocation;
     }
+
+    public override void unableAction(AIManager aiManager)
+    {
+    }
 }

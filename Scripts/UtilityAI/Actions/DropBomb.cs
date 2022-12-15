@@ -10,4 +10,8 @@ public class DropBomb : Action
         Player player = aiManager.getPlayer();
         player.bombManager.dropBomb();
     }
+
+    public override void unableAction(AIManager aiManager)
+    {
+    }
 }

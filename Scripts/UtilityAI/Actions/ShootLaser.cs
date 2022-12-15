@@ -10,4 +10,10 @@ public class ShootLaser : Action
         Player player = aiManager.getPlayer();
         player.laserManager.setActiveLaser(true);
     }
+
+    public override void unableAction(AIManager aiManager)
+    {
+        Player player = aiManager.getPlayer();
+        player.laserManager.setActiveLaser(false);
+    }
 }

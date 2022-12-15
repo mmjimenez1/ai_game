@@ -27,6 +27,11 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        startGame(false);
+    }
+
+    private void startGame(bool twoPlayer)
+    {
         gameManager = this;
         //uIManager = this.gameObject.AddComponent<UIManager>();
         //timer = this.gameObject.AddComponent<Timer>();
@@ -43,7 +48,8 @@ public class GameManager : MonoBehaviour
             //p.inv.isplayer1 = true;
             if (p.username == "Player2")
             {
-                p.setUpAI(possibleActions, movementActions);
+                if(!twoPlayer)
+                    p.setUpAI(possibleActions, movementActions);
                 p.uiManager.isPlayer1 = false;
                 //p.inv.isplayer1 = false;
                 p.setControls(new Dictionary<string, KeyCode>()

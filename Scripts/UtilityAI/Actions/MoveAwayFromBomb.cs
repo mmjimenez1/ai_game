@@ -33,4 +33,8 @@ public class MoveAwayFromBomb : Action
         player.movementManager.isDestinationSet = true;
         player.movementManager.destination = playerPosition + moveTo;
     }
+
+    public override void unableAction(AIManager aiManager)
+    {
+    }
 }

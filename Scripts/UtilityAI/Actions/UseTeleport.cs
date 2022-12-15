@@ -11,4 +11,8 @@ public class UseTeleport : Action
         p.movementManager.isDestinationSet = true;
         p.movementManager.destination = p.teleport.node_location;
     }
+
+    public override void unableAction(AIManager aiManager)
+    {
+    }
 }
