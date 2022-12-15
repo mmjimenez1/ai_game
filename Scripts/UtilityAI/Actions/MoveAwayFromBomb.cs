@@ -8,7 +8,7 @@ public class MoveAwayFromBomb : Action
     public override void doAction(AIManager aiManager)
     {
         Player player = aiManager.getPlayer();
-        float explosionRadius = Bomb.explosionRadius;
+        float explosionRadius = Bomb.explosionRadius * 1.5f;
         Vector2 playerPosition = player.gameObject.transform.position;
 
         Vector2 moveTo = Vector2.zero;

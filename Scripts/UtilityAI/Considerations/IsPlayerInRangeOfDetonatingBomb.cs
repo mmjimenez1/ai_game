@@ -23,8 +23,10 @@ public class IsPlayerInRangeOfDetonatingBomb : Consideration
         //}
         foreach(Bomb bomb in Bomb.bombList)
         {
+            if (!bomb.isDetonated)
+                continue;
             Vector2 bombPos = bomb.transform.position;
-            if (Vector2.Distance(playerPos, bombPos) < radius)
+            if (Vector2.Distance(playerPos, bombPos) <= 1.5f * radius)
             {
                 Debug.Log("Player in bomb radius, teleport!");
                 return 1;
