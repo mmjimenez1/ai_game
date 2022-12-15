@@ -29,9 +29,8 @@ public class MoveAwayFromBomb : Action
             bombToPlayerVector *= distanceToRadius;
             moveTo += bombToPlayerVector;
         }
-        moveTo.Normalize();
 
         player.movementManager.isDestinationSet = true;
-        player.movementManager.destination = moveTo;
+        player.movementManager.destination = playerPosition + moveTo;
     }
 }

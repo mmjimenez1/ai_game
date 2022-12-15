@@ -16,17 +16,18 @@ public class AIManager : ManagerClass
     private void Update()
     {
         updateMovement();
-        //if (brain.finishedDeciding)
-        //{
-        //    brain.finishedDeciding = false;
-        //    brain.bestAction.doAction(this);
-        //}
+        if (brain.finishedDeciding)
+        {
+            brain.finishedDeciding = false;
+            brain.bestAction.doAction(this);
+        }
     }
 
     private void updateMovement()
     {
         Action movement = brain.decideBestMovement(movementActions);
         movement.doAction(this);
+        Debug.Log("Best movement: " + movement.name + "  " + movement.score);
     }
 
     public void onFinishedAction(){

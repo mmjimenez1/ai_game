@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1106c5b8943d793449f8d65f2c348fbf, type: 3}
   m_Name: CanMoveOutOfBombRadiusInTime
   m_EditorClassIdentifier: 
-  considerationName: CanMoveOutOfBomb
+  considerationName: CanMoveOutOfBombRadiusInTIme
   totalScore: 0

@@ -74,7 +74,7 @@ public class teleport : ManagerClass
     {
         if (cur_tel_cool_down > 0f)
         {
-            Debug.Log("cooling");
+            //Debug.Log("cooling");
             cur_tel_cool_down -= Time.deltaTime;
             //Debug.Log("curTime" + cur_tel_cool_down);
         }

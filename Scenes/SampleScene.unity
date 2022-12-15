@@ -237,10 +237,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uIManager: {fileID: 0}
-  station: {fileID: 0}
+  stationBehavior: {fileID: 0}
   healthStation: {fileID: 11400000, guid: 3e1000509be52db44871d40e2a54333c, type: 2}
   energyStation: {fileID: 11400000, guid: b5f1d2ff02edee241b646ddfd8e0effb, type: 2}
   bombStation: {fileID: 11400000, guid: 784cab9456593db49879cc4bccc1d425, type: 2}
+  possibleActions:
+  - {fileID: 11400000, guid: 3b77a1c183dd1f34ab337467edab6515, type: 2}
+  - {fileID: 11400000, guid: 4041574a9f385564f8f68d84cc9221d1, type: 2}
+  - {fileID: 11400000, guid: 9746676a521ff4d319a1c82ca827613b, type: 2}
+  - {fileID: 11400000, guid: 3c267dd860b2b4486beec06a49c84380, type: 2}
+  - {fileID: 11400000, guid: cd948476696ca6c40a83b523270b1b22, type: 2}
+  - {fileID: 11400000, guid: 8387c178755244ec98e0b20f6d81ac2c, type: 2}
+  - {fileID: 11400000, guid: 76e23865e5bfe46229a8e9a16a4114b5, type: 2}
+  movementActions:
+  - {fileID: 11400000, guid: 2bb508bb1b59b5b44a5ec64a2f03b913, type: 2}
+  - {fileID: 11400000, guid: 0b02c129273f94024a61309696054264, type: 2}
+  - {fileID: 11400000, guid: 459b7a095a20b2c4887e06271722c160, type: 2}
+  - {fileID: 11400000, guid: 73de3a74e7c573f4d9f2d1180630f657, type: 2}
 --- !u!4 &1440608216
 Transform:
   m_ObjectHideFlags: 0
@@ -249,7 +262,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1440608214}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.31785983, y: 1.0861361, z: -1.7219695}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

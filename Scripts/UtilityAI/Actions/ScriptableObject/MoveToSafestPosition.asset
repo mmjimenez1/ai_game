@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 202d25d13f2388045af80ac58b1787bd, type: 3}
   m_Name: MoveToSafestPosition
   m_EditorClassIdentifier: 
-  actionName: 
+  actionName: MoveToSafestPosition
   bestScore: 0
-  considerations: []
+  considerations:
+  - {fileID: 11400000, guid: a4d8e102347ed314f88fa46f3587fa4c, type: 2}

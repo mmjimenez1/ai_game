@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02f36b2e015ddbf4da998bb11b3448cc, type: 3}
   m_Name: MoveAwayFromBomb
   m_EditorClassIdentifier: 
-  actionName: 
+  actionName: MoveAwayFromBomb
   bestScore: 0
-  considerations: []
+  considerations:
+  - {fileID: 11400000, guid: a4d8e102347ed314f88fa46f3587fa4c, type: 2}

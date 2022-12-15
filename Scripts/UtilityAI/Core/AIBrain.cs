@@ -43,6 +43,7 @@ public class AIBrain : MonoBehaviour
     {
         float score = 0f;
         int bestActionIndex = 0;
+        Debug.Log("Analyzing movements: ");
         for (int i = 0; i < movementActions.Length; i++)
         {
             if (scoreAction(movementActions[i]) > score)
@@ -50,6 +51,7 @@ public class AIBrain : MonoBehaviour
                 bestActionIndex = i;
                 score = movementActions[i].score;
             }
+            Debug.Log(movementActions[i] + " : " + movementActions[i].score);
         }
         return movementActions[bestActionIndex];
     }

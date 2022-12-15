@@ -9,9 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d13b50238d2f13d469c6722cf8076671, type: 3}
-  m_Name: HasEnoughEnergyBoost
+  m_Script: {fileID: 11500000, guid: c867c41621474ba488cb985ae1608278, type: 3}
+  m_Name: DefaultConsideration
   m_EditorClassIdentifier: 
-  considerationName: HasEnoughEnergy
+  considerationName: 
   totalScore: 0
-  invertResponse: 0

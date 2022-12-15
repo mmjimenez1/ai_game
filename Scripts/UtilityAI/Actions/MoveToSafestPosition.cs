@@ -14,7 +14,7 @@ public class MoveToSafestPosition : Action
         Vector2 enemyPosition = enemy.gameObject.transform.position;
         Vector2 bounds = GameManager.gameManager.bombStation.bounds;
 
-        Vector2[] corners = new Vector2[3];
+        Vector2[] corners = new Vector2[4];
         corners[0] = new Vector2(bounds.x, bounds.y);
         corners[1] = new Vector2(-bounds.x, bounds.y);
         corners[2] = new Vector2(-bounds.x, -bounds.y);
@@ -32,10 +32,8 @@ public class MoveToSafestPosition : Action
             }
         }
         Vector2 destinationLocation = (farthestCorner + enemyPosition) * 0.5f;
-        Vector2 moveTo = destinationLocation - playerPosition;
-        moveTo.Normalize();
 
         player.movementManager.isDestinationSet = true;
-        player.movementManager.destination = moveTo;
+        player.movementManager.destination = destinationLocation;
     }
 }
