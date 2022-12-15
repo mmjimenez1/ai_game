@@ -27,6 +27,7 @@ public class LaserManager : ManagerClass
     public int framesPerSecond;
     private float fluctuationTime;
     private string spritesLocation;
+    public bool aiLaserActive;
 
     private float initialHalfLength;
     // username -> health, energy
@@ -104,7 +105,7 @@ public class LaserManager : ManagerClass
 
     void updateStatus()
     {
-        if (Input.GetKey(laserKey))
+        if (Input.GetKey(laserKey) || aiLaserActive)
         {
             if (!isActive)
                 setActiveLaser(true);

@@ -43,7 +43,7 @@ public class MovementManager : ManagerClass
         if(isDestinationSet)
         {
             direction = destination - (Vector2) transform.position;
-            if (direction.magnitude < 0.1f)
+            if (direction.magnitude < 0.2f)
                 direction = Vector2.zero;
         }
         else if (Input.GetMouseButton(0) && myPlayer.username == "Player1")
