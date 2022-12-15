@@ -11,13 +11,17 @@ public class AIBrain : MonoBehaviour
 
     void Start()
     {
+        Debug.Log("start brain");
         aiManager = GetComponent<AIManager>();
     }
 
     void Update()
     {
-        if(bestAction = null)
+        Debug.Log("updating brain");
+
+        if (bestAction is null)
         {
+            Debug.Log("deciding best action");
             decideBestAction(aiManager.possibleActions);
         }
     }
@@ -28,6 +32,7 @@ public class AIBrain : MonoBehaviour
         int bestActionIndex = 0;
         for(int i = 0; i < actionsAvailable.Length; i++)
         {
+            Debug.Log("considering Action:" + actionsAvailable[i].actionName);
             if (scoreAction(actionsAvailable[i])> score)
             {
                 bestActionIndex = i;

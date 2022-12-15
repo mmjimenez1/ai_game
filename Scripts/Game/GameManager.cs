@@ -90,6 +90,10 @@ public class GameManager : MonoBehaviour
         return dict;
     }
 
+    public Player getAIPlayer()
+    {
+        return players[1];
+    }
     private string findWinner()
     {
         List<Player> winners = players;

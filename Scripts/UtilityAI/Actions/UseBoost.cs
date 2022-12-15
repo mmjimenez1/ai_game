@@ -7,7 +7,9 @@ public class UseBoost : Action
 {
     public override void doAction(AIManager aiManager)
     {
+        Debug.Log("using boost");
         Player player = aiManager.getPlayer();
         player.boostManager.Boost();
+        aiManager.onFinishedAction();
     }
 }

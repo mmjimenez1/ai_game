@@ -10,7 +10,16 @@ public class IsPlayerInRangeOfDetonatingBomb : Consideration
     {
         Debug.Log("considering whether player in range of detonating bomb");
         Player p = aiManager.getPlayer();
-        float radius = p.bombManager.bombComponent.explosionRadius;
+        float radius = 0;
+        if (p.bombManager.bombComponent is not null)
+        {
+            radius = p.bombManager.bombComponent.explosionRadius;
+
+        }
+        else
+        {
+            return 0;
+        }
         Vector2 playerPos = p.gameObject.transform.position;
         //List<Vector2> bombLocations = GameManager.gameManager.getBombLocation();
         //for (int i =0; i< bombLocations.Count; i++)

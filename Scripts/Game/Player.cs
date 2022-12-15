@@ -23,6 +23,9 @@ public class Player
     public Inventory inv;
     public Dictionary<string, KeyCode> controls;
 
+    public AIManager aIManager;
+    public AIBrain aIBrain;
+
     public Player(string username, string spriteLocation)
     {
         this.username = username;
@@ -63,6 +66,13 @@ public class Player
         this.uiManager.setPlayer(this);
         this.inv = this.gameObject.AddComponent<Inventory>();
         this.inv.setPlayer(this);
+        if (username == "Player2")
+        {
+            this.aIBrain = this.gameObject.AddComponent<AIBrain>();
+            this.aIManager = this.gameObject.AddComponent<AIManager>();
+            //this.aIManager.setPlayer(this);
+        }
+        
 
         setDefaultControls();
     }

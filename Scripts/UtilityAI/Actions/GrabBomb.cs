@@ -7,8 +7,10 @@ public class GrabBomb : Action
 {
     public override void doAction(AIManager aiManager)
     {
+        Debug.Log("grabbing bomb");
         Player player = aiManager.getPlayer();
         player.movementManager.isDestinationSet= true;
         player.movementManager.destination = GameManager.gameManager.bombStation.spawnPosition;
+        aiManager.onFinishedAction();
     }
 }

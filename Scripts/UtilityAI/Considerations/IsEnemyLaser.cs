@@ -19,7 +19,7 @@ public class IsEnemyLaser : Consideration
             if (enemy.laserManager.isActive)
             {
                 Debug.Log("enemy player laser active");
-                score = 1f;
+                score = 1000f;
             }
         //}
 

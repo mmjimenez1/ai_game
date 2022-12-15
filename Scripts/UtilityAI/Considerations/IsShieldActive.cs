@@ -7,6 +7,7 @@ public class IsShieldActive : Consideration
 {
     public override float ScoreConsideration(AIManager aiManager)
     {
+        Debug.Log("is considering is shield active");
         Player p = aiManager.getPlayer();
         bool isActive = p.shieldManager.enabled;
         if (isActive)

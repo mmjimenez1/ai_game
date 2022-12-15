@@ -10,15 +10,17 @@ public class IsSafeStrategicPosition : Consideration
 
     public override float ScoreConsideration(AIManager aiManager)
     {
+        Debug.Log("considering is safe position");
+
         Player p = aiManager.getPlayer();
         Player enemy = p.getClosestPlayer();
         Vector2 playerPos = p.gameObject.transform.position;
         Vector2 enemyPos = enemy.gameObject.transform.position;
 
         float distanceBtwn = Vector2.Distance(playerPos,enemyPos);
-        Debug.Log("distanc between players: " + distanceBtwn);
+        //Debug.Log("distanc between players: " + distanceBtwn);
         score = stratPosCurve.Evaluate(Mathf.Clamp01(distanceBtwn));
-        Debug.Log("safe position(teleport) score ="  + score);
+        //Debug.Log("safe position(teleport) score ="  + score);
         return score;
         
         

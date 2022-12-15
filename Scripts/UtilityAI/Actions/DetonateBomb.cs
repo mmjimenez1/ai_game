@@ -7,7 +7,9 @@ public class DetonateBomb : Action
 {
     public override void doAction(AIManager aiManager)
     {
+        Debug.Log("detonating bomb");
         Player player = aiManager.getPlayer();
         player.bombManager.detonateBomb();
+        aiManager.onFinishedAction();
     }
 }

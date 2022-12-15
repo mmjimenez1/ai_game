@@ -31,5 +31,7 @@ public class RotateShield : Action
         float newAngle = -Vector2.SignedAngle(targetPos, Vector2.up);
         p.shieldManager.setTargetRotation(Quaternion.Euler(new Vector3(0, 0, newAngle)));
         p.shieldManager.updateRotation();
+
+        aiManager.onFinishedAction();
     }
 }

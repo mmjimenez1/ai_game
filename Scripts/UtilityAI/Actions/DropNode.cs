@@ -8,8 +8,10 @@ public class DropNode : Action
 {
     public override void doAction(AIManager aiManager)
     {
+        Debug.Log("dropping t node");
         Player p = aiManager.getPlayer();
         p.teleport.dropNode();
+        aiManager.onFinishedAction();
 
     }
 }

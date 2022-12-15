@@ -12,10 +12,10 @@ public class LowHealth : Consideration
         int curHealth = p.healthManager.getHealthPoints();
         int healthMax = p.healthManager.getHealthCap();
         float healthPercent = (float) curHealth / healthMax;
-        Debug.Log("health %:" + healthPercent);
+        //Debug.Log("health %:" + healthPercent);
 
         score = healthCurve.Evaluate(Mathf.Clamp01(healthPercent));
-        Debug.Log("health score:" + score);
+        //Debug.Log("health score:" + score);
         return score;
     }
 }
