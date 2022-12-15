@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: MoveToSafestPosition
   m_EditorClassIdentifier: 
   actionName: MoveToSafestPosition
-  bestScore: 0
+  bestScore: 0.5
   considerations:
-  - {fileID: 11400000, guid: a4d8e102347ed314f88fa46f3587fa4c, type: 2}
+  - {fileID: 11400000, guid: 8ccab59d2b0a01040a66403d67ab77fc, type: 2}

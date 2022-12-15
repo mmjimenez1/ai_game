@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     public HealthStation healthStation;
     public EnergyStation energyStation;
     public BombStation bombStation;
+    public GameObject canvas;
 
     // AI actions
     public Action[] possibleActions;
@@ -27,11 +28,12 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        startGame(false);
+        //startGame(false);
     }
 
-    private void startGame(bool twoPlayer)
+    public void startGame(bool twoPlayer)
     {
+        canvas.SetActive(false);
         gameManager = this;
         //uIManager = this.gameObject.AddComponent<UIManager>();
         //timer = this.gameObject.AddComponent<Timer>();
