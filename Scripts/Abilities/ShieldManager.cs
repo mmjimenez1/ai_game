@@ -83,7 +83,7 @@ public class ShieldManager : ManagerClass
             myPlayer.missileManager.setActiveMissile(false);
             this.isActive = true;
             this.shieldContainer.SetActive(true);
-            myPlayer.energyManager.minusEP(epPerSecond);
+            //myPlayer.energyManager.minusEP(epPerSecond);
         }
         else
         {

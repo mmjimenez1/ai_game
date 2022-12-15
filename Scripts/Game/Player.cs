@@ -95,7 +95,7 @@ public class Player
             { "Laser", KeyCode.R},
 
             { "Shield", KeyCode.LeftShift},
-            //{ "Missile", KeyCode.Tab},
+            { "Missile", KeyCode.None},
             { "Shield_Left", KeyCode.A},
             { "Shield_Right", KeyCode.D},
             { "Shield_Down", KeyCode.S},
