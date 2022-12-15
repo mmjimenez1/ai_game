@@ -69,8 +69,8 @@ public class GameManager : MonoBehaviour
                     { "Teleport", KeyCode.O},
                     { "Laser", KeyCode.RightBracket},
 
-                    { "Shield", KeyCode.I},
-                    { "Missile", KeyCode.Comma},
+                    { "Shield", KeyCode.Comma},
+                    //{ "Missile", KeyCode.I},
                     { "Shield_Left", KeyCode.L},
                     { "Shield_Right", KeyCode.Quote},
                     { "Shield_Down", KeyCode.Semicolon},

@@ -94,8 +94,8 @@ public class Player
             { "Teleport", KeyCode.Q},
             { "Laser", KeyCode.R},
 
-            { "Shield", KeyCode.Tab},
-            { "Missile", KeyCode.LeftShift},
+            { "Shield", KeyCode.LeftShift},
+            //{ "Missile", KeyCode.Tab},
             { "Shield_Left", KeyCode.A},
             { "Shield_Right", KeyCode.D},
             { "Shield_Down", KeyCode.S},
