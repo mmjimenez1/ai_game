@@ -62,5 +62,7 @@ User (Blue Planet) plays against AI agent (Brown Planet), winner is the one who 
 
 ## Installation- 
         * Use git clone into a Unity project to access the assets.
+        * Rename ai_game folder to Assets.
+        * Run project using Unity.
        
 
