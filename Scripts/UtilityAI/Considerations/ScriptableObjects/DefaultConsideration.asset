@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c867c41621474ba488cb985ae1608278, type: 3}
   m_Name: DefaultConsideration
   m_EditorClassIdentifier: 
-  considerationName: 
+  considerationName: DefaultConsideration
   totalScore: 0

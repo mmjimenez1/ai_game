@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: EnergyStation
   m_EditorClassIdentifier: 
   itemName: EnergyStation
-  waitTime: 20
+  waitTime: 12
   duration: 5
   pickUpAmount: 15
   bounds: {x: 9, y: 4.5}

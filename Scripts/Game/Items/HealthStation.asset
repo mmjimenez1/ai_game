@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: HealthStation
   m_EditorClassIdentifier: 
   itemName: HealthStation
-  waitTime: 15
+  waitTime: 10
   duration: 5
   pickUpAmount: 10
   bounds: {x: 9, y: 4.5}

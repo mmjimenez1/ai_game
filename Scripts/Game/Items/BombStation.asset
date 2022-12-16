@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BombStation
   m_EditorClassIdentifier: 
   itemName: BombStation
-  waitTime: 15
+  waitTime: 8
   duration: 6
   pickUpAmount: 1
   bounds: {x: 9, y: 4.5}
