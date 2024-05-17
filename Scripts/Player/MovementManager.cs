@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -8,6 +9,9 @@ public class MovementManager : ManagerClass
     public float speed = 15.0f;
     public float baseSpeed = 15.0f;
     public Vector2 direction;
+
+    public Vector2 minScreen;
+    public Vector2 maxScreen;
 
     public Vector2 destination { private get; set; }
     public bool isDestinationSet { get; set; }
@@ -20,7 +24,8 @@ public class MovementManager : ManagerClass
         isDestinationSet = false;
         direction = new Vector2(0f, 0f);
         baseSpeed = speed;
-
+        minScreen = new Vector2(-11f, -5f);
+        maxScreen = new Vector2(11f, 5f);
     }
 
     // Update is called once per frame
@@ -34,7 +39,15 @@ public class MovementManager : ManagerClass
     {
         Vector2 pos = this.transform.position;
         pos.x += direction.x * speed * Time.deltaTime;
+        if(pos.x < minScreen.x)
+            pos.x = minScreen.x;
+        else if (pos.x > maxScreen.x)
+            pos.x = maxScreen.x;
         pos.y += direction.y * speed * Time.deltaTime;
+        if (pos.y < minScreen.y)
+            pos.y = minScreen.y;
+        else if(pos.y > maxScreen.y)
+            pos.y = maxScreen.y;
         this.transform.position = pos;
     }
 
